@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="returnBookTabPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ReturnBookController">
+   <children>
+      <Text layoutX="14.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USN : ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="returnBookUsn" layoutX="64.0" layoutY="51.0" prefHeight="31.0" prefWidth="314.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <Text layoutX="553.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return Books Form" underline="true">
+         <font>
+            <Font name="Calibri Bold" size="28.0" />
+         </font>
+      </Text>
+      <Label fx:id="returnBookTabPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="95.0" prefHeight="21.0" prefWidth="665.0" text="N record(s) found. Please select one from below table">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TableView fx:id="returnBookTable" layoutX="9.0" layoutY="131.0" prefHeight="503.0" prefWidth="665.0" style="-fx-font-size: 14;">
+        <columns>
+          <TableColumn fx:id="returnBookColumnId" prefWidth="75.0" text="Index" />
+          <TableColumn fx:id="returnBookColumnBookCode" prefWidth="151.0" text="Book Code" />
+            <TableColumn fx:id="returnBookColumnBookTitle" prefWidth="438.0" text="Book Title" />
+        </columns>
+      </TableView>
+      <Text layoutX="702.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transaction Details" underline="true">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <DatePicker fx:id="returnBookReturnDate" editable="false" layoutX="824.0" layoutY="375.0" prefHeight="31.0" prefWidth="223.0" promptText="Select Return Date" />
+      <CheckBox fx:id="returnBookDamaged" layoutX="825.0" layoutY="422.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="101.0" text="Damaged">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </CheckBox>
+      <Text layoutX="703.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marks as : " wrappingWidth="92.27734252810478">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <CheckBox fx:id="returnBookLost" layoutX="963.0" layoutY="422.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="101.0" text="Lost">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </CheckBox>
+      <Text layoutX="702.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return Date : " wrappingWidth="123.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Line endX="318.0" layoutX="992.0" layoutY="352.0" opacity="0.33" startX="-287.0" />
+      <Text layoutX="703.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remarks : " wrappingWidth="92.27734252810478">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="returnBookRemarks" layoutX="825.0" layoutY="465.0" prefHeight="79.0" prefWidth="487.0" promptText="eg. If a book is lost then write something like amount paid etc">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextArea>
+      <Button layoutX="1117.0" layoutY="590.0" mnemonicParsing="false" onAction="#returnBookTransaction" prefHeight="37.0" prefWidth="195.0" style="-fx-background-color: lightgreen; -fx-border-color: grey;" text="Return">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Line endX="-100.0" endY="577.0" layoutX="788.0" layoutY="56.0" opacity="0.29" startX="-100.0" />
+      <Label layoutX="705.0" layoutY="129.0" prefHeight="25.0" prefWidth="56.0" text="Name : ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="705.0" layoutY="165.0" prefHeight="25.0" prefWidth="62.0" text="Branch : ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="705.0" layoutY="200.0" prefHeight="25.0" prefWidth="44.0" text="Sem : ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="705.0" layoutY="238.0" prefHeight="25.0" prefWidth="108.0" text="Book Title : ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="705.0" layoutY="274.0" prefHeight="25.0" prefWidth="182.0" text="Amirah / Shelf Number : ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="705.0" layoutY="304.0" prefHeight="25.0" prefWidth="101.0" text="Issue Date : ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="705.0" layoutY="97.0" prefHeight="25.0" prefWidth="31.0" text="ID : ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="returnBookIssueDate" layoutX="887.0" layoutY="304.0" prefHeight="25.0" prefWidth="422.0" text="|">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="returnBookShelf" layoutX="887.0" layoutY="274.0" prefHeight="25.0" prefWidth="422.0" text="|">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="returnBookBookTitle" layoutX="887.0" layoutY="238.0" prefHeight="25.0" prefWidth="422.0" text="|">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="returnBookSem" layoutX="887.0" layoutY="200.0" prefHeight="25.0" prefWidth="422.0" text="|">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="returnBookBranch" layoutX="887.0" layoutY="165.0" prefHeight="25.0" prefWidth="422.0" text="|">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="returnBookName" layoutX="887.0" layoutY="129.0" prefHeight="25.0" prefWidth="422.0" text="|">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="returnBookId" layoutX="887.0" layoutY="93.0" prefHeight="25.0" prefWidth="422.0" text="|">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
