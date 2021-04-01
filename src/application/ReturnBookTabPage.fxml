@@ -30,7 +30,7 @@
             <Font name="Calibri Bold" size="28.0" />
          </font>
       </Text>
-      <Label fx:id="returnBookTabPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="95.0" prefHeight="21.0" prefWidth="665.0" text="N record(s) found. Please select one from below table">
+      <Label fx:id="returnBookTabPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="95.0" prefHeight="21.0" prefWidth="665.0" text="N record(s) found. Please select one from below table" textFill="RED">
          <font>
             <Font size="15.0" />
          </font>
@@ -74,7 +74,7 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <TextArea fx:id="returnBookRemarks" layoutX="825.0" layoutY="465.0" prefHeight="79.0" prefWidth="487.0" promptText="eg. If a book is lost then write something like amount paid etc">
+      <TextArea fx:id="returnBookRemarks" disable="true" layoutX="825.0" layoutY="465.0" prefHeight="79.0" prefWidth="487.0" promptText="eg. If a book is lost then write something like amount paid etc">
          <font>
             <Font size="15.0" />
          </font>

@@ -54,7 +54,6 @@ public class StaffManagementController implements Initializable{				// a simply 
 	@FXML
 	public TableColumn<Staff, String> staffColumnPassword;
 	
-	StageController stage = new StageController();
 	
 	
 	
@@ -88,16 +87,26 @@ public class StaffManagementController implements Initializable{				// a simply 
 		});
 
 		
+		staffTabPage.setOnMouseEntered(event->{
+			if (SettingsController.tabNumber == 5) {
+				SettingsController.tabNumber = 0;
+				refreshTab();
+			}
+		});
+		
 	}
 	
 
 	
 	
-	
-	
-	
-	
-	
+	public void refreshTab(){
+		staffTabPageStatus.setText("");
+		newStaffName.setText("");
+		newStaffEmail.setText("");
+		newStaffPassword.setText("");
+		staffSearch.setText("");
+		populateStaffTable();
+	}
 	
 	
 	

@@ -65,7 +65,7 @@ public class BookTransactionManagementController implements Initializable {
 	public TableColumn<BookTransaction, String> bookTransactionColumnReturnDate;
 	@FXML
 	public TableColumn<BookTransaction, String> bookTransactionColumnRemarks;
-	
+		
 	
 	
 	@Override
@@ -97,7 +97,16 @@ public class BookTransactionManagementController implements Initializable {
 	     		 bookTransactionColumnId.setSortType(TableColumn.SortType.DESCENDING);
 	         }  
 	     });		
-
+		
+		//a  jugaad way after hours of shitting
+		bookTransactionTabPage.setOnMouseEntered(event->{
+			if (SettingsController.tabNumber == 2) {
+				SettingsController.tabNumber = 0;
+				refreshTab();
+			}
+		});
+		
+		
 	}
 	
 	

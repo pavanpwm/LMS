@@ -9,10 +9,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -21,6 +24,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class IssueBookController implements Initializable{
 	
@@ -75,7 +80,7 @@ public class IssueBookController implements Initializable{
 	         public void handle(KeyEvent keyEvent) {
 	        	 //populate student details field
 	        	 Student student = new StudentManagementService().getStudentByUsn(issueBookUsn.getText().trim());
-	        	 if(student != null) {
+	        	 if(student != null ) {
 	        		 issueBookUsn.setText(student.getUsn());
 	        		 issueBookName.setText(student.getName());
 	        		 issueBookBranch.setText(student.getBranch());
@@ -100,18 +105,28 @@ public class IssueBookController implements Initializable{
 	         @Override  
 	         public void handle(KeyEvent keyEvent) {
 	        	 Book book =   new BookManagementService().getBookByBookCode( issueBookBookCode.getText().trim());
-	        	 if(book != null) {
-	        		 issueBookBookCode.setText(book.getCode().toUpperCase());
+	        	 boolean boolAlreadyAdded = bookAlreadyExistsInTable();
+	        	 if(book != null && !boolAlreadyAdded) {
+	        		 issueBookBookCode.setText(book.getCode());
 	        		 issueBookBookTitle.setText(book.getTitle());
 	        		 issueBookTabPageStatus.setText("One book found for book code : " + issueBookBookCode.getText());
 	        		 try { wait(500);; }catch (Exception e) {}
 	        		 updateIssueBookTable();
+	        	 }else if(boolAlreadyAdded){
 	        		 
 	        	 }else{
 	        		 issueBookTabPageStatus.setText("No Book found for book code : " + issueBookBookCode.getText());
 	        	 }
 	         }  
     	});
+    	
+    	DashboardManagementController.issueOrReturnStage.setOnCloseRequest(new EventHandler<WindowEvent>() { 			//get iisueStage that was show() from DashboardManagementController class
+	          public void handle(WindowEvent we) {
+	              SettingsController.tabNumber = 1;
+	          }
+	      });
+    
+    	
 	}
 
 
@@ -119,13 +134,13 @@ public class IssueBookController implements Initializable{
 
 	public void updateIssueBookTable() {
 		if(bookAlreadyExistsInTable()) {
-			issueBookTabPageStatus.setText("Book is already added");
+    		issueBookBookTitle.setText("");
 		}else {
 			if (issueBookBookCode.getText().isEmpty() ||issueBookBookTitle.getText().isEmpty() ) {
 				issueBookTabPageStatus.setText("Please dont leave star (*) marked fields empty!.");
 			}else {
 				Book book = new Book();
-	    		book.setCode(issueBookBookCode.getText());
+	    		book.setCode(issueBookBookCode.getText().toUpperCase());
 	    		book.setTitle(issueBookBookTitle.getText());
 	    		issueBookTable.getItems().add(book);
 	    		issueBookBookCode.setText("");
@@ -141,7 +156,8 @@ public class IssueBookController implements Initializable{
 		ObservableList<Book> list =  issueBookTable.getItems();
 		for (int i = 0; i < list.size(); i++) {
 			if(list.get(i).getCode().trim().equalsIgnoreCase(issueBookBookCode.getText().trim())) {
-            	return true;
+				issueBookTabPageStatus.setText("Book is already added");
+				return true;
             }
 		}
 		return false;
@@ -160,7 +176,7 @@ public class IssueBookController implements Initializable{
 	            BookTransaction bookTransaction = new BookTransaction(issueBookUsn.getText().toUpperCase(), issueBookName.getText(), issueBookBranch.getText(), issueBookSem.getText(), eachBook.getCode().toUpperCase(), eachBook.getTitle(), issueBookPhone.getText(), issueBookEmail.getText(), issueBookIssueDate.getValue().toString(), "", "Issued", "");
 	            new BookTransactionManagementService().addNewBookTransaction(bookTransaction);
 	            //set status in Book  table
-	            new BookManagementService().updateBookStatus(eachBook.getCode());
+	            new BookManagementService().updateBookStatus("Issued", eachBook.getCode());
 			}
 			
 			issueBookTable.getItems().clear();
@@ -168,6 +184,28 @@ public class IssueBookController implements Initializable{
 		}
 		
 	}
+	
+	
+	
+	
+	public void removeSelected() {
+		if (issueBookTable.getSelectionModel().getSelectedItems().isEmpty()) {
+			issueBookTabPageStatus.setText("Please select a book to remove");
+		}else {
+			issueBookTable.getItems().remove(issueBookTable.getSelectionModel().getSelectedItems().get(0));
+	    	issueBookTabPageStatus.setText("Books Successfully issued.");
+		}
+		
+	}
+	
+	public void removeAll() {
+		issueBookTable.getItems().clear();
+    	issueBookTabPageStatus.setText("Books Successfully issued.");
+	}
+	
+	
+	
+	
 	
 
 	

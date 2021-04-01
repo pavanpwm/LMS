@@ -90,7 +90,14 @@ public class StudentManagementController implements Initializable {
 	         public void handle(KeyEvent keyEvent) {
 	        	 studentTable.getItems().setAll(new StudentManagementService().getObservableStudentList(new StudentManagementService().getSearchedStudentList(studentSearch.getText())));
 	         }  
-	     });		
+	     });
+		
+		studentTabPage.setOnMouseEntered(event->{
+			if (SettingsController.tabNumber == 4) {
+				SettingsController.tabNumber = 0;
+				refreshTab();
+			}
+		});
 
 	}
 	

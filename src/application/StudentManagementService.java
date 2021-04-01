@@ -107,8 +107,10 @@ public class StudentManagementService {
 		 }
 		 if (studentList.isEmpty()) {
 			return null;
+		}else {
+			return studentList.get(0);
 		}
-		return studentList.get(0);
+		
 	}
 	
 	

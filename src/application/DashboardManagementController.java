@@ -2,9 +2,11 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,15 +15,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+
+
 
 public class DashboardManagementController implements Initializable{
 
 	
 	@FXML
 	public Pane dashboardTabPage;
+
 
 	@FXML
 	public TableView<BookTransaction> mostFamousBooksTable;
@@ -51,26 +58,124 @@ public class DashboardManagementController implements Initializable{
 	public Label totalBooksReturnedToday;
 	
 	
+	public static Stage issueOrReturnStage;
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		
+		mostFamousBooksTableRank.setCellValueFactory(new PropertyValueFactory<BookTransaction, Integer>("id"));
+		mostFamousBooksTableName.setCellValueFactory(new PropertyValueFactory<BookTransaction, String>("title"));
+    	
+    	
+		todaysTransactionsTableId.setCellValueFactory(new PropertyValueFactory<BookTransaction, Integer>("id"));
+		todaysTransactionsTableName.setCellValueFactory(new PropertyValueFactory<BookTransaction, String>("name"));
+		todaysTransactionsTableBookCode.setCellValueFactory(new PropertyValueFactory<BookTransaction, String>("code"));
+		todaysTransactionsTableStatus.setCellValueFactory(new PropertyValueFactory<BookTransaction, String>("status"));
+		refreshTab();
+
+		
+		
+		//a  jugaad way after hours of shitting
+		dashboardTabPage.setOnMouseEntered(event->{
+			if (SettingsController.tabNumber == 1) {
+				SettingsController.tabNumber = 0;
+				refreshTab();
+			}
+		});
+		
+				
 	}
 	
 	
+	public void refreshTab(){
+		// get all transactions in a list and pass it to below methods
+		List<BookTransaction> list = new BookTransactionManagementService() .getFullBookTransactionList();
+		populateRankTable(list);
+		populateTodaysTransacntionTable(list);
+		drawChartAndSetCounts(list);
+	}
+	
+	
+	
+	
+	
+	
+	public void populateRankTable(List<BookTransaction> list){
+		
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i).setId(0);
+			for (int j = 0; j < list.size(); j++) {
+				if (list.get(i).getCode().equalsIgnoreCase(list.get(j).getCode())) {
+					list.get(i).setId(list.get(i).getId() + 1);
+				}
+			}
+		}
+		
+		//Comparator<BookTransaction> myList = Comparator.comparing(BookTransaction :: getId);
+		//Collections.sort(list, myList);
+		//Collections.reverse(list);
+		
+		mostFamousBooksTable.getItems().setAll(new BookTransactionManagementService().getObservableBookTransactionList(list));
+	}
+
+	
+	public void populateTodaysTransacntionTable(List<BookTransaction> list){
+		todaysTransactionsTable.getItems()
+		.setAll(new BookTransactionManagementService().getObservableBookTransactionList(new BookTransactionManagementService().getSearchedBookTransactionList( LocalDate.now().toString() , "search" )));
+	}
+	
+	
+	
+	public void drawChartAndSetCounts(List<BookTransaction> list) {
+		totalBooksAdded.setText("sdfsfsdf");
+		totalBooksAvailable.setText("sdfsfsdf");
+		totalBooksIssuedToday.setText("sdfsfsdf");
+		totalBooksReturnedToday.setText("sdfsfsdf");
+	}
+	
+	
+	
+	
+
+	
+	
+	
 	public void issueBook(ActionEvent event) throws IOException {
-		Stage issueStage = new Stage();
-		issueStage.initOwner(((Node)(event.getSource())).getScene().getWindow());
-		issueStage.initModality(Modality.APPLICATION_MODAL);
+		
+		issueOrReturnStage = new Stage();
+		issueOrReturnStage.initOwner(((Node)(event.getSource())).getScene().getWindow());
+		issueOrReturnStage.initModality(Modality.APPLICATION_MODAL);
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("IssueBookTabPage.fxml"));							
 		Pane root = loader.load();
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		issueStage.setScene(scene);
-		issueStage.setResizable(false);
-		issueStage.setTitle("LMS GECR");
-		issueStage.showAndWait();
+		issueOrReturnStage.setScene(scene);
+		issueOrReturnStage.setResizable(false);
+		issueOrReturnStage.setTitle("LMS GECR");
+		issueOrReturnStage.showAndWait();
+
+	}
+	
+	
+	public void returnBook(ActionEvent event) throws IOException {
+		
+		issueOrReturnStage = new Stage();
+		issueOrReturnStage.initOwner(((Node)(event.getSource())).getScene().getWindow());
+		issueOrReturnStage.initModality(Modality.APPLICATION_MODAL);
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("ReturnBookTabPage.fxml"));							
+		Pane root = loader.load();
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		issueOrReturnStage.setScene(scene);
+		issueOrReturnStage.setResizable(false);
+		issueOrReturnStage.setTitle("LMS GECR");
+		issueOrReturnStage.showAndWait();		
+		
+
 	}
 	
 	

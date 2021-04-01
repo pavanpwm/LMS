@@ -66,7 +66,7 @@
                </children>
             </HBox>
             <Line endX="-148.0" endY="492.0" layoutX="641.0" layoutY="141.0" opacity="0.21" startX="-148.0" startY="-101.0" />
-            <Button layoutX="1016.0" layoutY="39.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: lightskyblue; -fx-border-color: grey;" text="Return Book">
+            <Button layoutX="1016.0" layoutY="39.0" mnemonicParsing="false" onAction="#returnBook" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: lightskyblue; -fx-border-color: grey;" text="Return Book">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

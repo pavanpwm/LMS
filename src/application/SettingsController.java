@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -32,6 +33,18 @@ public class SettingsController implements Initializable {
 	@FXML
 	public Label setingsPageStatus;
 	
+	@FXML
+	public Tab dashboardTab;
+	@FXML
+	public Tab bookTransactionsTab;
+	@FXML
+	public Tab bookManagementTab;
+	@FXML
+	public Tab studentManagementTab;
+	@FXML
+	public Tab staffManagementTab;
+	
+	public static int tabNumber = 0;
 	
 	
 	
@@ -41,6 +54,38 @@ public class SettingsController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		initialiseHomePage();
+		
+		
+		
+		dashboardTab.setOnSelectionChanged(event->{
+			if (dashboardTab.isSelected()) {
+				tabNumber = 1;
+	        }
+		});
+		bookTransactionsTab.setOnSelectionChanged(event->{
+			if (bookTransactionsTab.isSelected()) {
+				tabNumber = 2;
+	        }
+		});
+		bookManagementTab.setOnSelectionChanged(event->{
+			if (bookManagementTab.isSelected()) {
+				tabNumber = 3;
+	        }
+		});
+		studentManagementTab.setOnSelectionChanged(event->{
+			if (studentManagementTab.isSelected()) {
+				tabNumber = 4;
+	        }
+		});
+		staffManagementTab.setOnSelectionChanged(event->{
+			if (staffManagementTab.isSelected()) {
+				tabNumber = 5;
+	        }
+		});
+		
+		
+		
+		
 	}
 	
 	
@@ -71,8 +116,6 @@ public class SettingsController implements Initializable {
 	}
 
 
-
-	
 	
 	
 	

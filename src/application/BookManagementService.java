@@ -122,12 +122,12 @@ public class BookManagementService {
 	}
 	
 	
-	public void  updateBookStatus(String code) {
+	public void  updateBookStatus(String status, String code) {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
         		Transaction transaction = session.beginTransaction();
         		TypedQuery uQuery = session.getNamedQuery("updateBookStatus");
         		uQuery.setParameter("code",code.toUpperCase());
-        		uQuery.setParameter("status", "Issued");
+        		uQuery.setParameter("status", status);
                 uQuery.executeUpdate();
                 transaction.commit();
 		}

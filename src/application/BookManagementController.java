@@ -78,6 +78,13 @@ public class BookManagementController implements Initializable {
 			        	 bookTable.getItems().setAll(new BookManagementService().getObservableBookList(new BookManagementService().getSearchedBookList(bookSearch.getText())));
 			         }  
 			});
+		
+		bookTabPage.setOnMouseEntered(event->{
+			if (SettingsController.tabNumber == 3) {
+				SettingsController.tabNumber = 0;
+				refreshTab();
+			}
+		});
 
 	}
 	

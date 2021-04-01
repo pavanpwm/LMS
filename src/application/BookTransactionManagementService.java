@@ -50,39 +50,39 @@ public class BookTransactionManagementService {
 	}
 
 
-	public List<BookTransaction> getSearchedBookTransactionList(String searchText, String query) {
+	public List<BookTransaction> getSearchedBookTransactionList(String searchText, String queryType) {
 		List<BookTransaction> fullBookTransactionList = getFullBookTransactionList();
 		List<BookTransaction> searchedBookTransactionList = new ArrayList<BookTransaction>();		// always use ArrayList to constucta list else returning a list might throw NPE
 		
-		if (query.equalsIgnoreCase("search")) {
+		if (queryType.equalsIgnoreCase("search")) {
 			for(int i=0; i<fullBookTransactionList.size(); i++) {
 				if(fullBookTransactionList.get(i).toString().toLowerCase().contains(searchText.toLowerCase())) {
 					searchedBookTransactionList.add(fullBookTransactionList.get(i));
 				}
 			}
 			return searchedBookTransactionList;
-		}else if (query.equalsIgnoreCase("issued")) {
+		}else if (queryType.equalsIgnoreCase("issued")) {
 			for(int i=0; i<fullBookTransactionList.size(); i++) {
 				if(fullBookTransactionList.get(i).getStatus().toString().toLowerCase().contains("issued")) {
 					searchedBookTransactionList.add(fullBookTransactionList.get(i));
 				}
 			}
 			return searchedBookTransactionList;
-		}else if (query.equalsIgnoreCase("returned")) {
+		}else if (queryType.equalsIgnoreCase("returned")) {
 			for(int i=0; i<fullBookTransactionList.size(); i++) {
 				if(fullBookTransactionList.get(i).getStatus().toString().toLowerCase().contains("returned")) {
 					searchedBookTransactionList.add(fullBookTransactionList.get(i));
 				}
 			}
 			return searchedBookTransactionList;
-		}else if (query.equalsIgnoreCase("lost")) {
+		}else if (queryType.equalsIgnoreCase("lost")) {
 			for(int i=0; i<fullBookTransactionList.size(); i++) {
 				if(fullBookTransactionList.get(i).getStatus().toString().toLowerCase().contains("lost")) {
 					searchedBookTransactionList.add(fullBookTransactionList.get(i));
 				}
 			}
 			return searchedBookTransactionList;
-		}else if (query.equalsIgnoreCase("damaged")) {
+		}else if (queryType.equalsIgnoreCase("damaged")) {
 			for(int i=0; i<fullBookTransactionList.size(); i++) {
 				if(fullBookTransactionList.get(i).getStatus().toString().toLowerCase().contains("damaged")) {
 					searchedBookTransactionList.add(fullBookTransactionList.get(i));
