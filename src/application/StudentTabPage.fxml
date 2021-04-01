@@ -82,12 +82,12 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Text>
-                        <Button layoutX="1167.0" layoutY="63.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="152.0" style="-fx-background-color: lightgreen; -fx-border-color: grey;" text="Upload Excel">
+                        <Button layoutX="1167.0" layoutY="63.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="152.0" style="-fx-background-color: lightgreen; -fx-border-color: grey;" text="Import From Excel">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Button>
-            <Label fx:id="studentTabPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="333.0" layoutY="97.0" prefHeight="31.0" prefWidth="663.0" textAlignment="CENTER" textFill="#222222">
+            <Label fx:id="studentTabPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="333.0" layoutY="97.0" prefHeight="31.0" prefWidth="663.0" textAlignment="CENTER" textFill="#f80000">
                <font>
                   <Font size="15.0" />
                </font>
@@ -101,15 +101,15 @@
                            <font>
                               <Font size="15.0" />
                            </font></TextField>
-                        <TableView fx:id="studentTable" layoutX="9.0" layoutY="169.0" prefHeight="472.0" prefWidth="1310.0" style="-fx-font-size: 14;" tableMenuButtonVisible="true">
+                        <TableView fx:id="studentTable" layoutX="9.0" layoutY="169.0" prefHeight="472.0" prefWidth="1310.0" style="-fx-font-size: 16; -fx-alignment: CENTER;" tableMenuButtonVisible="true">
                           <columns>
-                            <TableColumn fx:id="studentColumnId" prefWidth="75.0" style="-fx-font-size: 14; -fx-alignment: CENTER;" text="Index" />
-                            <TableColumn fx:id="studentColumnUsn" prefWidth="166.0" style="-fx-font-size: 14; -fx-alignment: CENTER;" text="USN" />
-                              <TableColumn fx:id="studentColumnName" prefWidth="259.0" style="-fx-font-size: 14; -fx-alignment: CENTER;" text="Name" />
-                              <TableColumn fx:id="studentColumnBranch" prefWidth="109.0" style="-fx-font-size: 14; -fx-alignment: CENTER;" text="Branch" />
-                              <TableColumn fx:id="studentColumnSem" prefWidth="118.0" style="-fx-font-size: 14; -fx-alignment: CENTER;" text="Sem" />
-                              <TableColumn fx:id="studentColumnPhone" prefWidth="213.0" style="-fx-font-size: 14; -fx-alignment: CENTER;" text="Phone" />
-                              <TableColumn fx:id="studentColumnEmail" prefWidth="355.0" style="-fx-font-size: 14; -fx-alignment: CENTER;" text="Email" />
+                            <TableColumn fx:id="studentColumnId" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Index" />
+                            <TableColumn fx:id="studentColumnUsn" prefWidth="166.0" style="-fx-alignment: CENTER;" text="USN" />
+                              <TableColumn fx:id="studentColumnName" prefWidth="259.0" style="-fx-alignment: CENTER;" text="Name" />
+                              <TableColumn fx:id="studentColumnBranch" prefWidth="109.0" style="-fx-alignment: CENTER;" text="Branch" />
+                              <TableColumn fx:id="studentColumnSem" prefWidth="118.0" style="-fx-alignment: CENTER;" text="Sem" />
+                              <TableColumn fx:id="studentColumnPhone" prefWidth="213.0" style="-fx-alignment: CENTER;" text="Phone" />
+                              <TableColumn fx:id="studentColumnEmail" prefWidth="355.0" style="-fx-alignment: CENTER;" text="Email" />
                           </columns>
                <contextMenu>
                   <ContextMenu>

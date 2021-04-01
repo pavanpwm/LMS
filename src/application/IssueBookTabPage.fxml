@@ -112,10 +112,10 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <TableView fx:id="issueBookTable" layoutX="6.0" layoutY="265.0" prefHeight="326.0" prefWidth="1316.0" style="-fx-font-size: 14;">
+      <TableView fx:id="issueBookTable" layoutX="6.0" layoutY="265.0" prefHeight="326.0" prefWidth="1316.0" style="-fx-font-size: 16; -fx-alignment: CENTER;">
         <columns>
-          <TableColumn fx:id="issueBookColumnBookCode" prefWidth="241.0" text="Book Code" />
-          <TableColumn fx:id="issueBookColumnBookTitle" prefWidth="1058.0" text="Book Title" />
+          <TableColumn fx:id="issueBookColumnBookCode" prefWidth="241.0" style="-fx-alignment: CENTER;" text="Book Code" />
+          <TableColumn fx:id="issueBookColumnBookTitle" prefWidth="1058.0" style="-fx-alignment: CENTER;" text="Book Title" />
         </columns>
          <contextMenu>
             <ContextMenu>

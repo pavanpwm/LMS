@@ -1,5 +1,6 @@
 package application;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -8,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -68,6 +70,26 @@ public class BookManagementService {
         }
 		return bookList;
 	}
+	
+	
+	public Long getBooksAddedCount() {
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			Query query = session.createQuery("select count(distinct b.id) from Book b");
+			Long count = (Long) query.iterate().next();
+			return (Long)count;
+        }
+	}
+	
+	
+	public Long getBooksAvailableCount() {
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			Query query = session.createQuery("select count(distinct b.id) from Book b where b.status='Available'");
+			Long count = (Long) query.iterate().next();
+			return count;
+        }
+	}
+	
+	
 	
 	
 	

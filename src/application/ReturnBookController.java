@@ -132,6 +132,7 @@ public class ReturnBookController implements Initializable{
 				returnBookBookTitle.setText(b.getTitle());
 				returnBookIssueDate.setText(b.getIssueDate());
 				
+				returnBookReturnDate.setValue(LocalDate.now());
 				returnBookRemarks.setText("");
 				returnBookRemarks.setDisable(true);
 				returnBookDamaged.setSelected(false);
@@ -174,7 +175,7 @@ public class ReturnBookController implements Initializable{
 				}else if (returnBookLost.isSelected()) {
 					new BookManagementService().updateBookStatus("Lost",b.getCode());
 				}else {
-					new BookManagementService().updateBookStatus("Returned",b.getCode());
+					new BookManagementService().updateBookStatus("Available",b.getCode());
 				}
 				
 				returnBookTabPageStatus.setText("Book - "+ b.getCode() + " Returned");

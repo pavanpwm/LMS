@@ -26,7 +26,6 @@ import javafx.stage.Stage;
 public class RegisterAndLoginController {
 	
 	
-	StaffManagementService regService = new StaffManagementService();
 	
 	@FXML
 	private TextField regName;
@@ -44,7 +43,8 @@ public class RegisterAndLoginController {
 	private Label loginStatus;
 	
 	StageController stage = new StageController();
-	
+	StaffManagementService regService = new StaffManagementService();
+
 	
 	
 	public void adminRegister(ActionEvent event) throws Exception {						// to handle exception you can wither use throws or try and  catch block

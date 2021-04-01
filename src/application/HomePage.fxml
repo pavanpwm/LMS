@@ -14,32 +14,32 @@
    <children>
       <TabPane layoutY="31.0" prefHeight="701.0" prefWidth="1330.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab fx:id="dashboardTab" style="-fx-border-color: lightblue;" text="Home">
+          <Tab fx:id="dashboardTab" text="Home">
             <content>
               <fx:include fx:id="dashboardTabPage" source="DashboardTabPage.fxml" />
             </content>
           </Tab>
-          <Tab fx:id="bookTransactionsTab" style="-fx-border-color: lightblue;" text="Book Transactions">
+          <Tab fx:id="bookTransactionsTab" text="Book Transactions">
             <content>
               <fx:include fx:id="transactionsTabPage" source="TransactionTabPage.fxml" />
             </content>
           </Tab>
-          <Tab fx:id="bookManagementTab" style="-fx-border-color: lightblue;" text="Books Management">
+          <Tab fx:id="bookManagementTab" text="Books Management">
             <content>
             	<fx:include fx:id="bookTabPage" source="BookTabPage.fxml" />
             </content>
           </Tab>
-          <Tab fx:id="studentManagementTab" style="-fx-border-color: lightblue;" text="Student Management">
+          <Tab fx:id="studentManagementTab" text="Student Management">
             <content>
             	<fx:include fx:id="studentTabPage" source="StudentTabPage.fxml" />
             </content>
           </Tab>
-          <Tab fx:id="staffManagementTab" style="-fx-border-color: lightblue;" text="Staff Management">
+          <Tab fx:id="staffManagementTab" text="Staff Management">
             <content>
               <fx:include fx:id="staffTabPage" source="StaffTabPage.fxml" />
             </content>
           </Tab>
-          <Tab style="-fx-border-color: lightblue;" text="Personal Settings">
+          <Tab text="Personal Settings">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: lightgrey;">
                      <children>
@@ -79,7 +79,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab style="-fx-border-color: lightblue;" text="Help">
+          <Tab text="Help">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
@@ -98,7 +98,7 @@
       </Label>
       <Label fx:id="loggedInStaffNameAndTime" alignment="TOP_RIGHT" layoutX="875.0" layoutY="3.0" prefHeight="22.0" prefWidth="455.0">
          <font>
-            <Font size="15.0" />
+            <Font name="System Italic" size="15.0" />
          </font></Label>
       <Label fx:id="staffId" layoutX="14.0" layoutY="724.0" prefHeight="17.0" prefWidth="86.0" visible="false" />
      

@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -52,10 +53,12 @@ public class SettingsController implements Initializable {
 	// below method generated due to implementation of Initializable interface
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		
+		if (StaffManagementService.loggedInStaff.getRole().equalsIgnoreCase("staff")) {
+			staffManagementTab.setDisable(true);
+		}
+		
 		initialiseHomePage();
-		
-		
 		
 		dashboardTab.setOnSelectionChanged(event->{
 			if (dashboardTab.isSelected()) {
@@ -93,7 +96,7 @@ public class SettingsController implements Initializable {
 	public void initialiseHomePage() {
 		staffId.setText(""+StaffManagementService.loggedInStaff.getId());
 		collegeName.setText(StaffManagementService.loggedInStaff.getCollege().toUpperCase());
-		loggedInStaffNameAndTime.setText("Logged-in as : " + StaffManagementService.loggedInStaff.getName() + " at " + LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
+		loggedInStaffNameAndTime.setText("Logged-in as  " + StaffManagementService.loggedInStaff.getName() + " at " + LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")));
 	}
 	
 	

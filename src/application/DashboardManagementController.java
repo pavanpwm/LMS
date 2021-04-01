@@ -3,8 +3,12 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.SortType;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
@@ -113,26 +118,36 @@ public class DashboardManagementController implements Initializable{
 			}
 		}
 		
-		//Comparator<BookTransaction> myList = Comparator.comparing(BookTransaction :: getId);
-		//Collections.sort(list, myList);
-		//Collections.reverse(list);
-		
+		Comparator<BookTransaction> myList = Comparator.comparing(BookTransaction :: getId);
+		Collections.sort(list, myList);
+		Collections.reverse(list);
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i).setId(i+1);
+		}
 		mostFamousBooksTable.getItems().setAll(new BookTransactionManagementService().getObservableBookTransactionList(list));
+		
 	}
 
 	
 	public void populateTodaysTransacntionTable(List<BookTransaction> list){
 		todaysTransactionsTable.getItems()
 		.setAll(new BookTransactionManagementService().getObservableBookTransactionList(new BookTransactionManagementService().getSearchedBookTransactionList( LocalDate.now().toString() , "search" )));
+		todaysTransactionsTableId.setSortType(SortType.DESCENDING);
+		todaysTransactionsTable.getSortOrder().setAll(todaysTransactionsTableId);
 	}
 	
 	
 	
 	public void drawChartAndSetCounts(List<BookTransaction> list) {
-		totalBooksAdded.setText("sdfsfsdf");
-		totalBooksAvailable.setText("sdfsfsdf");
-		totalBooksIssuedToday.setText("sdfsfsdf");
-		totalBooksReturnedToday.setText("sdfsfsdf");
+		totalBooksAdded.setText("Total Books Added : " + new BookManagementService().getBooksAddedCount());
+		totalBooksAvailable.setText("Books Available : " + new BookManagementService().getBooksAvailableCount());
+		totalBooksIssuedToday.setText("Books Issued Today : " + getBooksIssuedTodayCount());
+		totalBooksReturnedToday.setText("Books Returned Today : " + getBooksReturnedTodayCount());
+		
+		
+		
+		
+		//  code  for chart
 	}
 	
 	
@@ -179,6 +194,27 @@ public class DashboardManagementController implements Initializable{
 	}
 	
 	
+	public int getBooksIssuedTodayCount() {
+		ObservableList<BookTransaction> list =  todaysTransactionsTable.getItems();
+		int count =0;
+		for (int i = 0; i < list.size(); i++) {
+			if(list.get(i).getStatus().equalsIgnoreCase("Issued")) {
+				count++;
+            }
+		}
+		return count;
+	}
+	
+	public int getBooksReturnedTodayCount() {
+		ObservableList<BookTransaction> list =  todaysTransactionsTable.getItems();
+		int count =0;
+		for (int i = 0; i < list.size(); i++) {
+			if(list.get(i).getStatus().equalsIgnoreCase("Returned")) {
+				count++;
+            }
+		}
+		return count;
+	}
 	
 	
 }

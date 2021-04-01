@@ -59,7 +59,7 @@
                         </Button>
                         <TableView fx:id="staffTable" layoutX="10.0" layoutY="138.0" prefHeight="500.0" prefWidth="1310.0" tableMenuButtonVisible="true">
                           <columns>
-                            <TableColumn fx:id="staffColumnId" editable="false" prefWidth="93.0" resizable="false" style="-fx-font-size: 14; -fx-alignment: CENTER;" text="Index" />
+                            <TableColumn fx:id="staffColumnId" editable="false" prefWidth="93.0" resizable="false" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Index" />
                             <TableColumn fx:id="staffColumnName" editable="false" prefWidth="297.0" resizable="false" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Name" />
                               <TableColumn fx:id="staffColumnEmail" editable="false" prefWidth="536.0" resizable="false" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Email" />
                               <TableColumn fx:id="staffColumnPassword" editable="false" prefWidth="369.0" resizable="false" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Password" />

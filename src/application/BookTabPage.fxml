@@ -61,13 +61,13 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <TableView fx:id="bookTable" layoutX="5.0" layoutY="213.0" prefHeight="425.0" prefWidth="1321.0" tableMenuButtonVisible="true">
+                                          <TableView fx:id="bookTable" layoutX="5.0" layoutY="213.0" prefHeight="425.0" prefWidth="1321.0" style="-fx-alignment: CENTER; -fx-font-size: 16;" tableMenuButtonVisible="true">
                                              <columns>
-                                                <TableColumn fx:id="bookColumnId" editable="false" prefWidth="68.0" style="-fx-font-size: 14; -fx-alignment: CENTER;" text="Index" />
-                                                <TableColumn fx:id="bookColumnCode" editable="false" prefWidth="214.0" style="-fx-font-size: 14; -fx-alignment: CENTER;" text="Book Code" />
-                                                <TableColumn fx:id="bookColumnTitle" editable="false" prefWidth="663.0" style="-fx-font-size: 14; -fx-alignment: CENTER;" text="Book Title" />
-                                                <TableColumn fx:id="bookColumnShelf" editable="false" prefWidth="182.0" style="-fx-font-size: 14; -fx-alignment: CENTER;" text="Almirah/Shelf ID" />
-                                                <TableColumn fx:id="bookColumnStatus" editable="false" prefWidth="180.0" style="-fx-font-size: 14; -fx-alignment: CENTER;" text="Status" />
+                                                <TableColumn fx:id="bookColumnId" editable="false" prefWidth="68.0" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Index" />
+                                                <TableColumn fx:id="bookColumnCode" editable="false" prefWidth="214.0" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Book Code" />
+                                                <TableColumn fx:id="bookColumnTitle" editable="false" prefWidth="663.0" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Book Title" />
+                                                <TableColumn fx:id="bookColumnShelf" editable="false" prefWidth="182.0" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Almirah/Shelf ID" />
+                                                <TableColumn fx:id="bookColumnStatus" editable="false" prefWidth="180.0" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Status" />
                                              </columns>
                                  <contextMenu>
                                     <ContextMenu>
@@ -81,7 +81,7 @@
                                     </ContextMenu>
                                  </contextMenu>
                                           </TableView>
-                                          <Label fx:id="bookTabPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="234.0" layoutY="142.0" prefHeight="20.0" prefWidth="863.0">
+                                          <Label fx:id="bookTabPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="234.0" layoutY="142.0" prefHeight="20.0" prefWidth="863.0" textFill="RED">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>

@@ -19,10 +19,10 @@
    <children>
       <AnchorPane layoutX="-1.0" minHeight="0.0" minWidth="0.0" prefHeight="641.0" prefWidth="1330.0">
                      <children>
-                        <TableView fx:id="mostFamousBooksTable" layoutX="14.0" layoutY="261.0" prefHeight="374.0" prefWidth="465.0">
+                        <TableView fx:id="mostFamousBooksTable" layoutX="14.0" layoutY="261.0" prefHeight="374.0" prefWidth="465.0" style="-fx-font-size: 16; -fx-alignment: CENTER;">
                           <columns>
-                            <TableColumn fx:id="mostFamousBooksTableRank" prefWidth="59.000030517578125" text="Rank" />
-                            <TableColumn fx:id="mostFamousBooksTableName" prefWidth="404.0" text="Popular Books" />
+                            <TableColumn fx:id="mostFamousBooksTableRank" prefWidth="59.000030517578125" style="-fx-alignment: CENTER;" text="Rank" />
+                            <TableColumn fx:id="mostFamousBooksTableName" prefWidth="404.0" style="-fx-alignment: CENTER;" text="Popular Books" />
                           </columns>
                         </TableView>
                         <Text layoutX="506.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Today's Transaction Records">
@@ -30,37 +30,37 @@
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <TableView fx:id="todaysTransactionsTable" layoutX="506.0" layoutY="82.0" prefHeight="553.0" prefWidth="819.0" style="-fx-font-size: 14;">
+                        <TableView fx:id="todaysTransactionsTable" layoutX="506.0" layoutY="82.0" prefHeight="553.0" prefWidth="819.0" style="-fx-font-size: 16; -fx-alignment: CENTER;">
                            <columns>
-                              <TableColumn fx:id="todaysTransactionsTableId" prefWidth="89.0" text="Index" />
-                              <TableColumn fx:id="todaysTransactionsTableName" prefWidth="344.0" text="Name" />
-                              <TableColumn fx:id="todaysTransactionsTableBookCode" prefWidth="230.0" text="Book Code" />
-                  <TableColumn fx:id="todaysTransactionsTableStatus" prefWidth="155.0" text="Status" />
+                              <TableColumn fx:id="todaysTransactionsTableId" prefWidth="89.0" sortType="DESCENDING" style="-fx-alignment: CENTER;" text="Index" />
+                              <TableColumn fx:id="todaysTransactionsTableName" prefWidth="344.0" style="-fx-alignment: CENTER;" text="Name" />
+                              <TableColumn fx:id="todaysTransactionsTableBookCode" prefWidth="230.0" style="-fx-alignment: CENTER;" text="Book Code" />
+                  <TableColumn fx:id="todaysTransactionsTableStatus" prefWidth="155.0" style="-fx-alignment: CENTER;" text="Status" />
                            </columns>
                         </TableView>
             <HBox prefHeight="30.0" prefWidth="1330.0">
                <children>
                   <Label fx:id="totalBooksAdded" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="332.0" text="Total Books Added : ">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="System Bold Italic" size="15.0" />
                      </font>
                   </Label>
                   <Line endX="-148.0" endY="492.0" opacity="0.21" startX="-148.0" startY="462.5" />
                   <Label fx:id="totalBooksAvailable" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="332.0" text="Books Available : ">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="System Bold Italic" size="15.0" />
                      </font>
                   </Label>
                   <Line endX="-148.0" endY="492.0" opacity="0.21" startX="-148.0" startY="462.5" />
                   <Label fx:id="totalBooksIssuedToday" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="332.0" text="Books Issued Today : ">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="System Bold Italic" size="15.0" />
                      </font>
                   </Label>
                   <Line endX="-148.0" endY="492.0" opacity="0.21" startX="-148.0" startY="462.5" />
                   <Label fx:id="totalBooksReturnedToday" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="332.0" text="Books Returned Today : ">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="System Bold Italic" size="15.0" />
                      </font>
                   </Label>
                </children>
@@ -68,7 +68,7 @@
             <Line endX="-148.0" endY="492.0" layoutX="641.0" layoutY="141.0" opacity="0.21" startX="-148.0" startY="-101.0" />
             <Button layoutX="1016.0" layoutY="39.0" mnemonicParsing="false" onAction="#returnBook" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: lightskyblue; -fx-border-color: grey;" text="Return Book">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
                <effect>
                   <Glow />
@@ -76,7 +76,7 @@
             </Button>
             <Button layoutX="1173.0" layoutY="39.0" mnemonicParsing="false" onAction="#issueBook" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: lightgreen; -fx-border-color: grey;" text="Issue Book">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
                <effect>
                   <Glow />

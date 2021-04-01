@@ -35,11 +35,11 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TableView fx:id="returnBookTable" layoutX="9.0" layoutY="131.0" prefHeight="503.0" prefWidth="665.0" style="-fx-font-size: 14;">
+      <TableView fx:id="returnBookTable" layoutX="9.0" layoutY="131.0" prefHeight="503.0" prefWidth="665.0" style="-fx-font-size: 16; -fx-alignment: CENTER;">
         <columns>
-          <TableColumn fx:id="returnBookColumnId" prefWidth="75.0" text="Index" />
-          <TableColumn fx:id="returnBookColumnBookCode" prefWidth="151.0" text="Book Code" />
-            <TableColumn fx:id="returnBookColumnBookTitle" prefWidth="438.0" text="Book Title" />
+          <TableColumn fx:id="returnBookColumnId" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Index" />
+          <TableColumn fx:id="returnBookColumnBookCode" prefWidth="151.0" style="-fx-alignment: CENTER;" text="Book Code" />
+            <TableColumn fx:id="returnBookColumnBookTitle" prefWidth="438.0" style="-fx-alignment: CENTER;" text="Book Title" />
         </columns>
       </TableView>
       <Text layoutX="702.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transaction Details" underline="true">
@@ -55,7 +55,7 @@
       </CheckBox>
       <Text layoutX="703.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marks as : " wrappingWidth="92.27734252810478">
          <font>
-            <Font size="16.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
       </Text>
       <CheckBox fx:id="returnBookLost" layoutX="963.0" layoutY="422.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="101.0" text="Lost">
@@ -63,15 +63,15 @@
             <Font size="15.0" />
          </font>
       </CheckBox>
-      <Text layoutX="702.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return Date : " wrappingWidth="123.0">
+      <Text layoutX="702.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return Date* : " wrappingWidth="123.0">
          <font>
-            <Font size="16.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
       </Text>
       <Line endX="318.0" layoutX="992.0" layoutY="352.0" opacity="0.33" startX="-287.0" />
       <Text layoutX="703.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remarks : " wrappingWidth="92.27734252810478">
          <font>
-            <Font size="16.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
       </Text>
       <TextArea fx:id="returnBookRemarks" disable="true" layoutX="825.0" layoutY="465.0" prefHeight="79.0" prefWidth="487.0" promptText="eg. If a book is lost then write something like amount paid etc">
@@ -81,7 +81,7 @@
       </TextArea>
       <Button layoutX="1117.0" layoutY="590.0" mnemonicParsing="false" onAction="#returnBookTransaction" prefHeight="37.0" prefWidth="195.0" style="-fx-background-color: lightgreen; -fx-border-color: grey;" text="Return">
          <font>
-            <Font size="16.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Button>
       <Line endX="-100.0" endY="577.0" layoutX="788.0" layoutY="56.0" opacity="0.29" startX="-100.0" />

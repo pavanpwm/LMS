@@ -134,24 +134,28 @@ public class BookTransactionManagementController implements Initializable {
    	 	bookTransactionTable.getItems().setAll(new BookTransactionManagementService().getObservableBookTransactionList(new BookTransactionManagementService().getSearchedBookTransactionList( "Issued" , "issued" )));
 		bookTransactionTabPageStatus.setText("Showin results for books issued" );
 		bookTransactionColumnId.setSortType(TableColumn.SortType.DESCENDING);
+		bookTransactionTable.getSortOrder().setAll(bookTransactionColumnId);
 	}
 	
 	public void populateBookTransactionTableForReturned() {
    	 	bookTransactionTable.getItems().setAll(new BookTransactionManagementService().getObservableBookTransactionList(new BookTransactionManagementService().getSearchedBookTransactionList( "Returned" , "returned" )));
    	 	bookTransactionTabPageStatus.setText("Showin results for books returned" );
 		bookTransactionColumnId.setSortType(TableColumn.SortType.DESCENDING);
+		bookTransactionTable.getSortOrder().setAll(bookTransactionColumnId);
 	}
 	
 	public void populateBookTransactionTableForDamaged() {
 		bookTransactionTable.getItems().setAll(new BookTransactionManagementService().getObservableBookTransactionList(new BookTransactionManagementService().getSearchedBookTransactionList( "Damaged" , "damaged" )));
 		bookTransactionTabPageStatus.setText("Showin results for books damaged" );
 		bookTransactionColumnId.setSortType(TableColumn.SortType.DESCENDING);
+		bookTransactionTable.getSortOrder().setAll(bookTransactionColumnId);
 	}	
 	
 	public void populateBookTransactionTableForLost() {
 		bookTransactionTable.getItems().setAll(new BookTransactionManagementService().getObservableBookTransactionList(new BookTransactionManagementService().getSearchedBookTransactionList( "Lost" , "lost" )));
 		bookTransactionTabPageStatus.setText("Showin results for books lost");
 		bookTransactionColumnId.setSortType(TableColumn.SortType.DESCENDING);
+		bookTransactionTable.getSortOrder().setAll(bookTransactionColumnId);
 	}
 	
 	
