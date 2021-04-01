@@ -7,11 +7,12 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.fxml.FXMLLoader;
 
 
-public class StageController extends Application {
+public class MainClass extends Application {
 	
 	
 	
@@ -39,6 +40,7 @@ public class StageController extends Application {
 		newStage.setScene(scene);
 		newStage.setResizable(false);
 		newStage.setTitle("LMS GECR");
+		newStage.getIcons().add(new Image("/icon.png"));
 		newStage.show();  			// should be executed after setOnShow()
 	}
 	

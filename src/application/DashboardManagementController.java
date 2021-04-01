@@ -21,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.SortType;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -170,6 +171,7 @@ public class DashboardManagementController implements Initializable{
 		issueOrReturnStage.setScene(scene);
 		issueOrReturnStage.setResizable(false);
 		issueOrReturnStage.setTitle("LMS GECR");
+		issueOrReturnStage.getIcons().add(new Image("/icon.png"));
 		issueOrReturnStage.showAndWait();
 
 	}
@@ -188,6 +190,7 @@ public class DashboardManagementController implements Initializable{
 		issueOrReturnStage.setScene(scene);
 		issueOrReturnStage.setResizable(false);
 		issueOrReturnStage.setTitle("LMS GECR");
+		issueOrReturnStage.getIcons().add(new Image("/icon.png"));
 		issueOrReturnStage.showAndWait();		
 		
 

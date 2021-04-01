@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="514.0" minWidth="800.0" prefHeight="514.0" prefWidth="800.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegisterAndLoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="514.0" minWidth="800.0" prefHeight="514.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegisterAndLoginController">
    <children>
       <Text layoutX="185.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Library Management System" underline="true">
          <font>
@@ -30,6 +30,9 @@
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
+         <font>
+            <Font size="15.0" />
+         </font>
       </TextField>
       <Text layoutX="131.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="College Name :">
          <font>
@@ -40,11 +43,17 @@
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
+         <font>
+            <Font size="15.0" />
+         </font>
       </TextField>
       <TextField fx:id="regEmail" layoutX="279.0" layoutY="284.0" prefHeight="33.0" prefWidth="351.0">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
+         <font>
+            <Font size="15.0" />
+         </font>
       </TextField>
       <Text layoutX="131.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail :">
          <font>
@@ -60,6 +69,9 @@
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
+         <font>
+            <Font size="15.0" />
+         </font>
       </PasswordField>
       <Button layoutX="560.0" layoutY="410.0" mnemonicParsing="false" onAction="#adminRegister" style="-fx-background-color: green;" text="Submit">
          <font>
