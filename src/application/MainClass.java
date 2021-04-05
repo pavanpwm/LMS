@@ -33,15 +33,15 @@ public class MainClass extends Application {
 	public void runStageFXML(String fxml) throws Exception{
 		Stage newStage = new Stage();
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource(fxml));							// setLocation method rectifies Base location is undefined while incliding one fxml file in another
-		Pane root = loader.load();				//open stream and homecontroller implements initialisable were added so that we could controller ui from another class
+		loader.setLocation(getClass().getResource(fxml));							// setLocation method rectifies Base location is undefined while including one fxml file in another
+		Pane root = loader.load();				
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		newStage.setScene(scene);
 		newStage.setResizable(false);
 		newStage.setTitle("LMS GECR");
 		newStage.getIcons().add(new Image("/icon.png"));
-		newStage.show();  			// should be executed after setOnShow()
+		newStage.show();
 	}
 	
 	
