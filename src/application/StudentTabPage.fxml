@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
@@ -92,12 +93,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-                        <Text layoutX="14.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search : ">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="studentSearch" layoutX="73.0" layoutY="134.0" prefHeight="31.0" prefWidth="1246.0">
+                        <TextField fx:id="studentSearch" layoutX="47.0" layoutY="134.0" prefHeight="31.0" prefWidth="1272.0" promptText="Search">
                            <font>
                               <Font size="15.0" />
                            </font></TextField>
@@ -121,12 +117,11 @@
                       <MenuItem mnemonicParsing="false" onAction="#deleteStudent" text="Delete Student" />
                         <MenuItem disable="true" mnemonicParsing="false" text="-----------------" />
                         <MenuItem mnemonicParsing="false" onAction="#confirmDeleteAllStudents" text="Delete All Students" />
-                        <MenuItem disable="true" mnemonicParsing="false" text="-----------------" />
-                        <MenuItem mnemonicParsing="false" text="Print Table" />
                     </items>
                   </ContextMenu>
                </contextMenu>
                         </TableView>
+            <FontAwesomeIconView glyphName="SEARCH" layoutX="16.0" layoutY="154.0" size="20" />
                      </children></AnchorPane>
    </children>
 </Pane>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ContextMenu?>
@@ -43,7 +44,7 @@
                                           </Text>
                                           <Button layoutX="1249.0" layoutY="37.0" mnemonicParsing="false" onAction="#addOrEditBook" prefHeight="85.0" prefWidth="74.0" style="-fx-background-color: lightgreen; -fx-border-color: grey;" text="+ Add">
                                              <font>
-                                                <Font name="System Bold" size="13.0" />
+                                                <Font name="System Bold" size="16.0" />
                                              </font>
                                           </Button>
                                           <TextField fx:id="newBookShelf" layoutX="10.0" layoutY="90.0" prefHeight="25.0" prefWidth="282.0">
@@ -86,7 +87,8 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Label>
-            <CheckBox fx:id="bookRequestCheckBox" layoutX="14.0" layoutY="134.0" mnemonicParsing="false" onAction="#ifBookRequest" text="Add as Book Request" />
+            <CheckBox fx:id="bookRequestCheckBox" layoutX="14.0" layoutY="134.0" mnemonicParsing="false" onAction="#ifBookRequest" text="Add as a book request" />
+            <FontAwesomeIconView glyphName="BARCODE" layoutX="101.0" layoutY="27.0" size="25" wrappingWidth="27.0" />
                                        </children></AnchorPane>
    </children>
 </Pane>

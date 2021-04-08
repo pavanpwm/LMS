@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.StackedBarChart?>
@@ -17,15 +18,15 @@
 
 <Pane fx:id="dashboardTabPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DashboardManagementController">
    <children>
-      <AnchorPane layoutX="-1.0" minHeight="0.0" minWidth="0.0" prefHeight="641.0" prefWidth="1330.0">
+      <AnchorPane layoutX="-1.0" minHeight="0.0" minWidth="0.0" prefHeight="641.0" prefWidth="1330.0" style="-fx-background-color: white;">
                      <children>
-                        <TableView fx:id="mostFamousBooksTable" layoutX="14.0" layoutY="261.0" prefHeight="374.0" prefWidth="465.0" style="-fx-font-size: 16; -fx-alignment: CENTER;">
+                        <TableView fx:id="mostFamousBooksTable" layoutX="14.0" layoutY="302.0" prefHeight="333.0" prefWidth="465.0" style="-fx-font-size: 16; -fx-alignment: CENTER;">
                           <columns>
                             <TableColumn fx:id="mostFamousBooksTableRank" prefWidth="59.000030517578125" style="-fx-alignment: CENTER;" text="Rank" />
                             <TableColumn fx:id="mostFamousBooksTableName" prefWidth="404.0" style="-fx-alignment: CENTER;" text="Popular Books" />
                           </columns>
                         </TableView>
-                        <Text layoutX="506.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Today's Transaction Records">
+                        <Text layoutX="534.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Today's Transaction Records">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -66,7 +67,7 @@
                </children>
             </HBox>
             <Line endX="-148.0" endY="492.0" layoutX="641.0" layoutY="141.0" opacity="0.21" startX="-148.0" startY="-101.0" />
-            <Button layoutX="1016.0" layoutY="39.0" mnemonicParsing="false" onAction="#returnBook" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: lightskyblue; -fx-border-color: grey;" text="Return Book">
+            <Button layoutX="1016.0" layoutY="39.0" mnemonicParsing="false" onAction="#returnBook" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: lightskyblue; -fx-border-color: black;" text="Return Book">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -74,7 +75,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button layoutX="1173.0" layoutY="39.0" mnemonicParsing="false" onAction="#issueBook" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: lightgreen; -fx-border-color: grey;" text="Issue Book">
+            <Button layoutX="1173.0" layoutY="39.0" mnemonicParsing="false" onAction="#issueBook" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: lightgreen; -fx-border-color: black;" text="Issue Book">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -83,7 +84,7 @@
                </effect>
             </Button>
             <Line endX="1158.0" endY="-101.0" layoutX="162.0" layoutY="132.0" opacity="0.21" startX="-154.0" startY="-101.0" />
-            <StackedBarChart layoutX="14.0" layoutY="44.0" prefHeight="211.0" prefWidth="465.0">
+            <StackedBarChart layoutX="3.0" layoutY="75.0" prefHeight="221.0" prefWidth="484.0">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>
@@ -91,6 +92,13 @@
                 <NumberAxis side="LEFT" />
               </yAxis>
             </StackedBarChart>
+            <FontAwesomeIconView glyphName="TABLE" layoutX="507.0" layoutY="64.0" size="22" />
+            <FontAwesomeIconView glyphName="BAR_CHART" layoutX="21.0" layoutY="66.0" size="23" />
+            <Text layoutX="53.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quarterly Transactions">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
                      </children></AnchorPane>
    </children>
 </Pane>

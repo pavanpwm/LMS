@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -13,9 +13,9 @@
 
 <Pane fx:id="bookTransactionTabPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BookTransactionManagementController">
    <children>
-      <MenuButton layoutX="14.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: lightblue; -fx-border-color: grey;" text="Filter Transactions">
+      <MenuButton layoutX="37.0" layoutY="19.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="167.0" style="-fx-border-color: lightgrey; -fx-background-color: white;" text="Filter transactions">
         <items>
-          <MenuItem mnemonicParsing="false" onAction="#populateBookTransactionTableForShowAll" text="Show All" />
+          <MenuItem mnemonicParsing="false" onAction="#populateBookTransactionTableForShowAll" text="Show All                               " />
           <MenuItem mnemonicParsing="false" onAction="#populateBookTransactionTableForIssued" text="Issued" />
             <MenuItem mnemonicParsing="false" onAction="#populateBookTransactionTableForReturned" text="Returned" />
             <MenuItem mnemonicParsing="false" onAction="#populateBookTransactionTableForDamaged" text="Damaged" />
@@ -25,7 +25,7 @@
             <Font size="15.0" />
          </font>
       </MenuButton>
-      <TextField fx:id="bookTransactionSearch" layoutX="183.0" layoutY="20.0" prefHeight="31.0" prefWidth="1143.0" promptText="Search Book Transactions here">
+      <TextField fx:id="bookTransactionSearch" layoutX="246.0" layoutY="20.0" prefHeight="31.0" prefWidth="1075.0" promptText="Search book transactions here">
          <font>
             <Font size="15.0" />
          </font>
@@ -55,10 +55,9 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button layoutX="1233.0" layoutY="55.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #F5DEB3; -fx-border-color: #F4A460;" text="Print">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Button>
+      <FontAwesomeIconView glyphName="FILTER" layoutX="14.0" layoutY="43.0" size="25" />
+      <FontAwesomeIconView glyphName="SEARCH" layoutX="218.0" layoutY="43.0" size="24" />
+      <FontAwesomeIconView id="print" glyphName="PRINT" layoutX="1241.0" layoutY="81.0" size="30" />
+      <FontAwesomeIconView id="excel" glyphName="FILE_EXCEL_ALT" layoutX="1293.0" layoutY="80.0" size="27" />
    </children>
 </Pane>

@@ -1,15 +1,22 @@
 package application;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.*;  
 import javax.persistence.*;  
 import org.hibernate.*;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;  
 
 
@@ -28,6 +35,8 @@ public class RegisterAndLoginController {
 	
 	
 	
+	
+
 	@FXML
 	private TextField regName;
 	@FXML
@@ -43,6 +52,8 @@ public class RegisterAndLoginController {
 	@FXML
 	private Label loginStatus;
 	
+	
+	
 	MainClass stage = new MainClass();
 	StaffManagementService regService = new StaffManagementService();
 
@@ -50,12 +61,10 @@ public class RegisterAndLoginController {
 	
 	public void adminRegister(ActionEvent event) throws Exception {						// to handle exception you can wither use throws or try and  catch block
 		StaffManagementService regService = new StaffManagementService();
-			if( regService.registerStaff(regName.getText(), regCollege.getText(), regEmail.getText(), regPassword.getText(), "admin") ) {
+			if( !( regName.getText().isEmpty() || regCollege.getText().isEmpty() || regEmail.getText().isEmpty() || regPassword.getText().isEmpty() )  && regService.registerStaff(regName.getText(), regCollege.getText(), regEmail.getText(), regPassword.getText(), "admin") ) {
 				stage.runStageFXML("LoginPage.fxml");
 				((Node)(event.getSource())).getScene().getWindow().hide();				// note the sequence of these two lines i.e first open a new stage and close previous one
-			}else {
-				System.out.println("couldnt register");
-		}
+			}
 	}
 	
 	
@@ -68,6 +77,7 @@ public class RegisterAndLoginController {
 			loginStatus.setText("Incorrect login credentials!");
 		}
 	}
+
 	
 	
 	

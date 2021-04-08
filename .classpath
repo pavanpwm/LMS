@@ -32,5 +32,6 @@
 	<classpathentry kind="lib" path="D:/Users/pavan BTD/Desktop/LMS Design/Libraries/hibernatejar/hibernatejar/postgresql-42.2.2.jar"/>
 	<classpathentry kind="lib" path="D:/Users/pavan BTD/Desktop/LMS Design/Libraries/hibernatejar/hibernatejar/proxool-0.8.3.jar"/>
 	<classpathentry kind="lib" path="D:/Users/pavan BTD/Desktop/LMS Design/Libraries/hibernatejar/hibernatejar/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/Users/pavan BTD/Desktop/LMS Design/Libraries/fontawesomefx-8.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

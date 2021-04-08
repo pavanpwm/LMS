@@ -23,8 +23,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 
@@ -83,7 +85,7 @@ public class DashboardManagementController implements Initializable{
 
 		
 		
-		//a  jugaad way after hours of shitting
+		//a  jugaadu way after hours of shitting
 		dashboardTabPage.setOnMouseEntered(event->{
 			if (SettingsController.tabNumber == 1) {
 				SettingsController.tabNumber = 0;
@@ -171,7 +173,7 @@ public class DashboardManagementController implements Initializable{
 		issueOrReturnStage.setScene(scene);
 		issueOrReturnStage.setResizable(false);
 		issueOrReturnStage.setTitle("LMS GECR");
-		issueOrReturnStage.getIcons().add(new Image("/icon.png"));
+		issueOrReturnStage.getIcons().add(new Image("/images/icon.png"));
 		issueOrReturnStage.showAndWait();
 
 	}
@@ -190,7 +192,7 @@ public class DashboardManagementController implements Initializable{
 		issueOrReturnStage.setScene(scene);
 		issueOrReturnStage.setResizable(false);
 		issueOrReturnStage.setTitle("LMS GECR");
-		issueOrReturnStage.getIcons().add(new Image("/icon.png"));
+		issueOrReturnStage.getIcons().add(new Image("/images/icon.png"));
 		issueOrReturnStage.showAndWait();		
 		
 
