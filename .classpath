@@ -33,5 +33,15 @@
 	<classpathentry kind="lib" path="D:/Users/pavan BTD/Desktop/LMS Design/Libraries/hibernatejar/hibernatejar/proxool-0.8.3.jar"/>
 	<classpathentry kind="lib" path="D:/Users/pavan BTD/Desktop/LMS Design/Libraries/hibernatejar/hibernatejar/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="lib" path="D:/Users/pavan BTD/Desktop/LMS Design/Libraries/fontawesomefx-8.9.jar"/>
+	<classpathentry kind="lib" path="D:/Users/pavan BTD/Desktop/LMS Design/Libraries/boxable-1.5-RC.jar"/>
+	<classpathentry kind="lib" path="D:/Users/pavan BTD/Desktop/LMS Design/Libraries/javax.mail-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/Users/pavan BTD/Desktop/LMS Design/Libraries/pdfbox-2.0.3.jar"/>
+	<classpathentry kind="lib" path="D:/Users/pavan BTD/Desktop/LMS Design/Libraries/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/Users/pavan BTD/Desktop/LMS Design/Libraries/commons-codec-1.11.jar"/>
+	<classpathentry kind="lib" path="D:/Users/pavan BTD/Desktop/LMS Design/Libraries/commons-csv-1.4.jar"/>
+	<classpathentry kind="lib" path="D:/Users/pavan BTD/Desktop/LMS Design/Libraries/commons-lang3-3.9.jar"/>
+	<classpathentry kind="lib" path="D:/Users/pavan BTD/Desktop/LMS Design/Libraries/fontbox-2.0.4.jar"/>
+	<classpathentry kind="lib" path="D:/Users/pavan BTD/Desktop/LMS Design/Libraries/gson-2.8.1.jar"/>
+	<classpathentry kind="lib" path="D:/Users/pavan BTD/Desktop/LMS Design/Libraries/guava-21.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

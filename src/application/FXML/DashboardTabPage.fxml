@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="dashboardTabPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.home.DashboardManagementController">
+   <children>
+      <AnchorPane layoutX="-1.0" minHeight="0.0" minWidth="0.0" prefHeight="641.0" prefWidth="1330.0" style="-fx-background-color: white;">
+                     <children>
+                        <TableView fx:id="mostFamousBooksTable" layoutX="14.0" layoutY="302.0" prefHeight="333.0" prefWidth="465.0" style="-fx-font-size: 16; -fx-alignment: CENTER;">
+                          <columns>
+                            <TableColumn fx:id="mostFamousBooksTableRank" prefWidth="59.000030517578125" style="-fx-alignment: CENTER;" text="Rank" />
+                            <TableColumn fx:id="mostFamousBooksTableName" prefWidth="404.0" style="-fx-alignment: CENTER;" text="Popular Books" />
+                          </columns>
+                        </TableView>
+                        <Text layoutX="534.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Today's Transaction Records">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <TableView fx:id="todaysTransactionsTable" layoutX="506.0" layoutY="82.0" prefHeight="553.0" prefWidth="819.0" style="-fx-font-size: 16; -fx-alignment: CENTER;">
+                           <columns>
+                              <TableColumn fx:id="todaysTransactionsTableId" prefWidth="89.0" sortType="DESCENDING" style="-fx-alignment: CENTER;" text="Index" />
+                              <TableColumn fx:id="todaysTransactionsTableName" prefWidth="344.0" style="-fx-alignment: CENTER;" text="Name" />
+                              <TableColumn fx:id="todaysTransactionsTableBookCode" prefWidth="230.0" style="-fx-alignment: CENTER;" text="Book Code" />
+                  <TableColumn fx:id="todaysTransactionsTableStatus" prefWidth="155.0" style="-fx-alignment: CENTER;" text="Status" />
+                           </columns>
+                        </TableView>
+            <HBox prefHeight="30.0" prefWidth="1330.0">
+               <children>
+                  <Label fx:id="totalBooksAdded" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="332.0" text="Total Books Added : ">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                  </Label>
+                  <Line endX="-148.0" endY="492.0" opacity="0.21" startX="-148.0" startY="462.5" />
+                  <Label fx:id="totalBooksAvailable" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="332.0" text="Books Available : ">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                  </Label>
+                  <Line endX="-148.0" endY="492.0" opacity="0.21" startX="-148.0" startY="462.5" />
+                  <Label fx:id="totalBooksIssuedToday" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="332.0" text="Books Issued Today : ">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                  </Label>
+                  <Line endX="-148.0" endY="492.0" opacity="0.21" startX="-148.0" startY="462.5" />
+                  <Label fx:id="totalBooksReturnedToday" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="332.0" text="Books Returned Today : ">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Line endX="-148.0" endY="492.0" layoutX="641.0" layoutY="141.0" opacity="0.21" startX="-148.0" startY="-101.0" />
+            <Button layoutX="1016.0" layoutY="39.0" mnemonicParsing="false" onAction="#returnBook" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: lightskyblue; -fx-border-color: black;" text="Return Book">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </Button>
+            <Button layoutX="1173.0" layoutY="39.0" mnemonicParsing="false" onAction="#issueBook" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: lightgreen; -fx-border-color: black;" text="Issue Book">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </Button>
+            <Line endX="1158.0" endY="-101.0" layoutX="162.0" layoutY="132.0" opacity="0.21" startX="-154.0" startY="-101.0" />
+            <StackedBarChart layoutX="3.0" layoutY="75.0" prefHeight="221.0" prefWidth="484.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </StackedBarChart>
+            <FontAwesomeIconView glyphName="TABLE" layoutX="507.0" layoutY="64.0" size="22" />
+            <FontAwesomeIconView glyphName="BAR_CHART" layoutX="21.0" layoutY="66.0" size="23" />
+            <Text layoutX="53.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quarterly Transactions">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+                     </children></AnchorPane>
+   </children>
+</Pane>

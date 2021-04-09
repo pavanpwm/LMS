@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="staffTabPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.staff.StaffManagementController">
+   <children>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="641.0" prefWidth="1330.0">
+                     <children>
+                        <Text layoutX="35.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Name : ">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="newStaffName" layoutX="123.0" layoutY="25.0" prefHeight="25.0" prefWidth="200.0">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+                        <Text layoutX="336.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email : ">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="newStaffEmail" layoutX="389.0" layoutY="25.0" prefHeight="25.0" prefWidth="347.0">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+                        <Text layoutX="757.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password : ">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="newStaffPassword" layoutX="835.0" layoutY="25.0" prefHeight="25.0" prefWidth="188.0">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+                        <TextField fx:id="staffSearch" layoutX="43.0" layoutY="101.0" prefHeight="30.0" prefWidth="1279.0" promptText=" Search">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+                        <Button layoutX="1053.0" layoutY="21.0" mnemonicParsing="false" onAction="#registerNewStaff" prefHeight="33.0" prefWidth="79.0" style="-fx-background-color: lightblue; -fx-border-color: grey;" text="+ Add">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <TableView fx:id="staffTable" layoutX="10.0" layoutY="138.0" prefHeight="500.0" prefWidth="1310.0" tableMenuButtonVisible="true">
+                          <columns>
+                            <TableColumn fx:id="staffColumnId" editable="false" prefWidth="93.0" resizable="false" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Index" />
+                            <TableColumn fx:id="staffColumnName" editable="false" prefWidth="297.0" resizable="false" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Name" />
+                              <TableColumn fx:id="staffColumnEmail" editable="false" prefWidth="536.0" resizable="false" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Email" />
+                              <TableColumn fx:id="staffColumnPassword" editable="false" prefWidth="369.0" resizable="false" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Password" />
+                          </columns>
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#deleteStaff" text="Delete staff" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+                        </TableView>
+            <Label fx:id="staffTabPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="292.0" layoutY="70.0" prefHeight="21.0" prefWidth="747.0" textAlignment="CENTER" textFill="#f80000">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <FontAwesomeIconView glyphName="USER" layoutX="13.0" layoutY="44.0" size="20" />
+            <FontAwesomeIconView glyphName="SEARCH" layoutX="15.0" layoutY="120.0" size="20" />
+                     </children></AnchorPane>
+      <FontAwesomeIconView />
+   </children>
+</Pane>

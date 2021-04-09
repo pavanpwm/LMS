@@ -9,10 +9,10 @@
         <property name="dialect">org.sqlite.hibernate.dialect.SQLiteDialect</property>    				<!-- there are varieties of sqlite dialects on maven  -->
         <property name="connection.url">jdbc:sqlite:lmsdb.db</property>    								<!-- must provide extension, if the db doesnt exist, then it will automatically be created  -->
         <property name="connection.driver_class">org.sqlite.JDBC</property>   
-        <mapping class="application.Staff"/>  
-        <mapping class="application.Student"/>  
-        <mapping class="application.Book"/> 
-        <mapping class="application.BookTransaction"/> 
+        <mapping class="application.staff.Staff"/>  
+        <mapping class="application.student.Student"/>  
+        <mapping class="application.book.Book"/> 
+        <mapping class="application.transaction.BookTransaction"/> 
     </session-factory>
 </hibernate-configuration>
 

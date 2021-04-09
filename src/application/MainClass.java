@@ -1,16 +1,11 @@
 package application;
 	
+import application.staff.StaffManagementService;
 import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.fxml.FXMLLoader;
 
 
@@ -25,9 +20,9 @@ public class MainClass extends Application {
 		boolean isRegistered = regService.isRegisterd();
 		
 		if(!isRegistered) {
-			runStageFXML("RegisterPage.fxml");
+			runStageFXML("FXML/RegisterPage.fxml");
 		}else if(isRegistered) {
-			runStageFXML("LoginPage.fxml");
+			runStageFXML("FXML/LoginPage.fxml");
 		}	
 	}
 	
@@ -43,7 +38,7 @@ public class MainClass extends Application {
 		newStage.setResizable(false);
 		newStage.sizeToScene();			// to solve the extra margins caused by setResizable(false) method
 		newStage.setTitle("LMS GECR");
-		newStage.getIcons().add(new Image("/images/icon.png"));
+		newStage.getIcons().add(new Image("/application/images/icon.png"));
 		newStage.show();
 	}
 	
@@ -60,6 +55,7 @@ public class MainClass extends Application {
 //	newStage.initStyle(StageStyle.TRANSPARENT);
 //	root.setStyle(  "-fx-background-color: rgba(255, 255, 255, 0.1);"   );
 //	scene.setFill(Color.TRANSPARENT);
+	
 
 	
 	

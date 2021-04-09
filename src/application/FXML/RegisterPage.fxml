@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="487.0" minWidth="800.0" prefHeight="493.0" prefWidth="1039.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.home.RegisterAndLoginController">
+   <children>
+      <AnchorPane layoutX="615.0" layoutY="25.0" prefHeight="444.0" prefWidth="406.0" style="-fx-border-color: #735FCD; -fx-border-radius: 10px; -fx-border-width: 2px;">
+         <children>
+            <TextField fx:id="regName" layoutX="26.0" layoutY="73.0" prefHeight="44.0" prefWidth="351.0" promptText="Admin name">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="regCollege" layoutX="26.0" layoutY="139.0" prefHeight="44.0" prefWidth="351.0" promptText="College name">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="regEmail" layoutX="26.0" layoutY="205.0" prefHeight="44.0" prefWidth="351.0" promptText="E-mail">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="regPassword" layoutX="26.0" layoutY="272.0" prefHeight="44.0" prefWidth="351.0" promptText="Password">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </PasswordField>
+            <Button layoutX="26.0" layoutY="346.0" mnemonicParsing="false" onAction="#adminRegister" prefHeight="44.0" prefWidth="351.0" style="-fx-background-color: #735FCD;" text="Submit" textFill="WHITE">
+               <font>
+                  <Font name="Open Sans" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Glow level="0.41" />
+               </effect>
+            </Button>
+            <Text layoutX="102.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create an account here">
+               <font>
+                  <Font name="SansSerif Regular" size="19.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <Pane layoutX="-1.0" prefHeight="493.0" prefWidth="596.0" style="-fx-background-color: #b897e5;">
+         <children>
+            <Text fill="WHITE" layoutX="74.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Library Management System" textAlignment="CENTER">
+               <font>
+                  <Font name="SansSerif Bold" size="29.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="124.0" fitWidth="149.0" layoutX="210.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icon.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="74.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to LMS, a simple, easy-to-use, specially tailored library mangement software for Government Engineering College of Raichur." textAlignment="JUSTIFY" wrappingWidth="465.99998458474874">
+               <font>
+                  <Font name="SansSerif Regular" size="19.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</Pane>

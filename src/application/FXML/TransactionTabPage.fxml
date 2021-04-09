@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="bookTransactionTabPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.transaction.BookTransactionManagementController">
+   <children>
+      <MenuButton layoutX="37.0" layoutY="19.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="167.0" style="-fx-border-color: lightgrey; -fx-background-color: white;" text="Filter transactions">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#populateBookTransactionTableForShowAll" text="Show All                               " />
+          <MenuItem mnemonicParsing="false" onAction="#populateBookTransactionTableForIssued" text="Issued" />
+            <MenuItem mnemonicParsing="false" onAction="#populateBookTransactionTableForReturned" text="Returned" />
+            <MenuItem mnemonicParsing="false" onAction="#populateBookTransactionTableForDamaged" text="Damaged" />
+            <MenuItem mnemonicParsing="false" onAction="#populateBookTransactionTableForLost" text="Lost" />
+        </items>
+         <font>
+            <Font size="15.0" />
+         </font>
+      </MenuButton>
+      <TextField fx:id="bookTransactionSearch" layoutX="246.0" layoutY="20.0" prefHeight="31.0" prefWidth="1075.0" promptText="Search book transactions here">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <TableView fx:id="bookTransactionTable" layoutX="5.0" layoutY="92.0" prefHeight="549.0" prefWidth="1320.0" style="-fx-font-size: 14; -fx-alignment: CENTER;" tableMenuButtonVisible="true">
+        <columns>
+          <TableColumn fx:id="bookTransactionColumnId" prefWidth="100.0" sortType="DESCENDING" text="Index" />
+          <TableColumn fx:id="bookTransactionColumnUsn" prefWidth="100.0" text="USN" />
+            <TableColumn fx:id="bookTransactionColumnName" prefWidth="100.0" text="Name" />
+            <TableColumn fx:id="bookTransactionColumnBranch" prefWidth="100.0" text="Branch" />
+            <TableColumn fx:id="bookTransactionColumnSem" prefWidth="100.0" text="Sem" />
+            <TableColumn fx:id="bookTransactionColumnBookCode" prefWidth="100.0" text="Book Code" />
+            <TableColumn fx:id="bookTransactionColumnBookTitle" prefWidth="100.0" text="Book Title" />
+            <TableColumn fx:id="bookTransactionColumnStatus" prefWidth="100.0" text="Status" />
+            <TableColumn fx:id="bookTransactionColumnPhone" prefWidth="100.0" text="Phone" />
+            <TableColumn fx:id="bookTransactionColumnEmail" prefWidth="100.0" text="Email" />
+            <TableColumn fx:id="bookTransactionColumnIssueDate" prefWidth="100.0" text="Issue Date" />
+            <TableColumn fx:id="bookTransactionColumnReturnDate" minWidth="0.0" prefWidth="100.0" text="Return Date" />
+            <TableColumn fx:id="bookTransactionColumnRemarks" prefWidth="105.0" text="Remarks" />
+        </columns>
+         <padding>
+            <Insets right="2.0" />
+         </padding>
+      </TableView>
+      <Label fx:id="bookTransactionTabPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="355.0" layoutY="57.0" prefHeight="21.0" prefWidth="621.0" text="Showing results for : " textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <FontAwesomeIconView glyphName="FILTER" layoutX="14.0" layoutY="43.0" size="25" />
+      <FontAwesomeIconView glyphName="SEARCH" layoutX="218.0" layoutY="43.0" size="24" />
+      <FontAwesomeIconView id="print" glyphName="FILE_PDF_ALT" layoutX="1292.0" layoutY="82.0" onMouseClicked="#exportAsPDF" size="27" />
+   </children>
+</Pane>
