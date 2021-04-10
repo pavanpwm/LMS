@@ -31,7 +31,7 @@
                   <Font size="16.0" />
                </font>
             </PasswordField>
-            <Button defaultButton="true" layoutX="59.0" layoutY="263.0" mnemonicParsing="false" onAction="#loginRedirect" prefHeight="31.0" prefWidth="88.0" style="-fx-background-color: black; -fx-background-radius: 10px;" text="Submit" textFill="#f8f8f8">
+            <Button defaultButton="true" layoutX="59.0" layoutY="263.0" mnemonicParsing="false" onAction="#loginRedirect" prefHeight="31.0" prefWidth="88.0" style="-fx-background-color: black; -fx-background-radius: 10px; -fx-text-fill: white;" text="Submit" textFill="#f8f8f8">
                <font>
                   <Font size="15.0" />
                </font>

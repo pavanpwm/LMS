@@ -24,14 +24,24 @@ public class StudentManagementService {
         	//if id is not empty then update else save
         	if(id.isEmpty()) {
         		// check if the usn exists! then follow
-        		TypedQuery query = session.getNamedQuery("findStudentByUsn");
-                query.setParameter("usn",usn.toUpperCase());
-                List<Student> studentList = query.getResultList();
-                if(studentList.isEmpty()) {
+        		Student getStudentbyUsn = getStudentByUsn(usn);
+                if(getStudentbyUsn == null) {
                 	//save new student
                     transaction = session.beginTransaction();
                     Student student = new Student(name, branch, sem, usn.toUpperCase(), email, mobile);
                     session.save(student);
+                    transaction.commit();
+                    return true;
+                }else {
+                	//update existing student   :  this is for importing data from excel
+            		transaction = session.beginTransaction();
+            		getStudentbyUsn.setName(name);
+                    getStudentbyUsn.setBranch(branch);
+                    getStudentbyUsn.setUsn(usn.toUpperCase().trim());
+                    getStudentbyUsn.setEmail(email);
+                    getStudentbyUsn.setSem(sem);
+                    getStudentbyUsn.setMobile(mobile);
+                    session.update(getStudentbyUsn);
                     transaction.commit();
                     return true;
                 }
@@ -44,7 +54,6 @@ public class StudentManagementService {
                 return true;
         	}
         }
-        return false;
 	}
 	
 	
@@ -103,7 +112,7 @@ public class StudentManagementService {
 		List<Student> studentList;
 		 try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			 TypedQuery query = session.getNamedQuery("findStudentByUsn");
-             query.setParameter("usn",usn.toUpperCase());
+             query.setParameter("usn",usn.toUpperCase().trim());
              studentList = query.getResultList();
 		 }
 		 if (studentList.isEmpty()) {
@@ -111,7 +120,6 @@ public class StudentManagementService {
 		}else {
 			return studentList.get(0);
 		}
-		
 	}
 	
 	

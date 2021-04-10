@@ -51,27 +51,36 @@
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="settingsPageName" layoutX="25.0" layoutY="107.0" prefHeight="25.0" prefWidth="310.0" />
+                              <TextField fx:id="settingsPageName" layoutX="25.0" layoutY="107.0" prefHeight="25.0" prefWidth="310.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></TextField>
                               <Text layoutX="25.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Email :">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="settingsPageEmail" layoutX="25.0" layoutY="175.0" prefHeight="25.0" prefWidth="310.0" />
-                              <Text layoutX="25.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Password : ">
+                              <TextField fx:id="settingsPageEmail" layoutX="25.0" layoutY="175.0" prefHeight="25.0" prefWidth="310.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></TextField>
+                              <Text layoutX="25.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Password : ">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="setingsPagePassword" layoutX="25.0" layoutY="247.0" prefHeight="25.0" prefWidth="310.0" />
+                              <TextField fx:id="setingsPagePassword" layoutX="25.0" layoutY="244.0" prefHeight="25.0" prefWidth="310.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></TextField>
                               <Text layoutX="109.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Personal Details">
                                  <font>
                                     <Font name="System Bold" size="16.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="75.0" layoutY="299.0" mnemonicParsing="false" onAction="#updatePersonalSettings" prefHeight="31.0" prefWidth="219.0" style="-fx-background-color: lightgreen; -fx-border-color: grey;" text="Update">
+                              <Button layoutX="71.0" layoutY="305.0" mnemonicParsing="false" onAction="#updatePersonalSettings" prefHeight="31.0" prefWidth="219.0" style="-fx-background-color: lightgreen; -fx-border-color: grey;" text="Update">
                                  <font>
-                                    <Font name="System Bold" size="13.0" />
+                                    <Font name="System Bold" size="15.0" />
                                  </font>
                               </Button>
                               <Label fx:id="setingsPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="31.0" layoutY="350.0" prefHeight="17.0" prefWidth="303.0" textAlignment="CENTER" textFill="#f20303" />
@@ -87,7 +96,7 @@
           </Tab>
         </tabs>
       </TabPane>
-      <Text layoutX="1071.0" layoutY="744.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Designed And Developed By JMP Group ECE 2021" wrappingWidth="256.99999767541885">
+      <Text layoutX="1044.0" layoutY="744.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Designed And Developed By JMP Group GECR ECE 2021" wrappingWidth="288.99999767541885">
          <font>
             <Font name="System Bold Italic" size="11.0" />
          </font>

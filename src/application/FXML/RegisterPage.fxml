@@ -48,7 +48,7 @@
                   <Font size="15.0" />
                </font>
             </PasswordField>
-            <Button layoutX="26.0" layoutY="346.0" mnemonicParsing="false" onAction="#adminRegister" prefHeight="44.0" prefWidth="351.0" style="-fx-background-color: #735FCD;" text="Submit" textFill="WHITE">
+            <Button layoutX="26.0" layoutY="346.0" mnemonicParsing="false" onAction="#adminRegister" prefHeight="44.0" prefWidth="351.0" style="-fx-background-color: #735FCD; -fx-text-fill: white;" text="Submit" textFill="WHITE">
                <font>
                   <Font name="Open Sans" size="17.0" />
                </font>

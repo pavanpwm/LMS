@@ -83,7 +83,7 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Text>
-                        <Button layoutX="1167.0" layoutY="63.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="152.0" style="-fx-background-color: lightgreen; -fx-border-color: grey;" text="Import From Excel">
+                        <Button layoutX="1167.0" layoutY="63.0" mnemonicParsing="false" onAction="#importStudentDetails" prefHeight="31.0" prefWidth="152.0" style="-fx-background-color: lightgreen; -fx-border-color: grey;" text="Import From Excel">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>

@@ -52,17 +52,21 @@ public class BookTransactionManagementService {
 	}
 
 
-	public List<BookTransaction> getSearchedBookTransactionList(String searchText, String queryType) {
+	public List<BookTransaction> getSearchedBookTransactionList(List<String> searchTokenList, String queryType) {
 		List<BookTransaction> fullBookTransactionList = getFullBookTransactionList();
 		List<BookTransaction> searchedBookTransactionList = new ArrayList<BookTransaction>();		// always use ArrayList to constucta list else returning a list might throw NPE
-		
-		if (queryType.equalsIgnoreCase("search")) {
-			for(int i=0; i<fullBookTransactionList.size(); i++) {
-				if(fullBookTransactionList.get(i).toString().toLowerCase().contains(searchText.toLowerCase())) {
-					searchedBookTransactionList.add(fullBookTransactionList.get(i));
+		if (queryType.equalsIgnoreCase("search") && !searchTokenList.isEmpty()) {
+			for (int i = 0; i < searchTokenList.size(); i++) {
+				for(int j=0; j<fullBookTransactionList.size(); j++) {
+					if(fullBookTransactionList.get(j).toString().toLowerCase().contains(searchTokenList.get(i).toLowerCase())) {
+						searchedBookTransactionList.add(fullBookTransactionList.get(j));
+					}
 				}
+				fullBookTransactionList.clear();
+				fullBookTransactionList.addAll(searchedBookTransactionList);
+				searchedBookTransactionList.clear();
 			}
-			return searchedBookTransactionList;
+			return fullBookTransactionList;	// dont mind the name
 		}else if (queryType.equalsIgnoreCase("issued")) {
 			for(int i=0; i<fullBookTransactionList.size(); i++) {
 				if(fullBookTransactionList.get(i).getStatus().toString().toLowerCase().contains("issued")) {

@@ -1,6 +1,10 @@
 package application.transaction;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -262,8 +266,8 @@ public class BookTransaction implements Serializable {
 
 	@Override
 	public String toString() {
-		return id + "____" + usn + "____" + name + "____" + branch + "____" + sem + "____" + code  + "____" + title + "____"
-				+ phone + "____" + email + "____" + issueDate + "____" + returnDate + "____" + status + "____" + remarks;
+		return id + " " + usn + " " + name + " " + branch + " " + sem + " " + code  + " " + title + " "
+				+ phone + " " + email + " " + issueDate + " " + returnDate + " " + status + " " + remarks;
 	}
 	
 	

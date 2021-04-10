@@ -1,11 +1,17 @@
 package application.student;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import com.mchange.v1.xml.StdErrErrorHandler;
+
+import application.exp.imp.ImportService;
 import application.home.SettingsController;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,6 +28,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -150,19 +158,12 @@ public class StudentManagementController implements Initializable {
 			studentTabPageStatus.setTextFill(Paint.valueOf("RED"));
 			
 		}else {
-			StudentManagementService addStudentService = new StudentManagementService();
-			
-			if(addStudentService.addOrEditStudent(id, newStudentUsn.getText(), newStudentName.getText(), newStudentBranch.getText(), newStudentSem.getText(), newStudentPhone.getText(), newStudentEmail.getText()) ) {
+			if(new StudentManagementService().addOrEditStudent(id, newStudentUsn.getText(), newStudentName.getText(), newStudentBranch.getText(), newStudentSem.getText(), newStudentPhone.getText(), newStudentEmail.getText()) ) {
 				if (id.isEmpty()) {
 					studentTabPageStatus.setText("New Student added Successfully");
-					studentTabPageStatus.setTextFill(Paint.valueOf("GREEN"));
 				}else {
 					studentTabPageStatus.setText("Student updated Successfully");
-					studentTabPageStatus.setTextFill(Paint.valueOf("GREEN"));
 				}
-			}else {
-				studentTabPageStatus.setText("Student already registered");
-				studentTabPageStatus.setTextFill(Paint.valueOf("RED"));
 			}
 			//after saving, show the saved data on table
 			studentTable.getItems().setAll(new StudentManagementService().getObservableStudentList(new StudentManagementService().getSearchedStudentList(newStudentUsn.getText())));
@@ -239,7 +240,7 @@ public class StudentManagementController implements Initializable {
 	
 	
 	//method to populate table data
-	private void populateStudentTable() {
+	public void populateStudentTable() {
 		studentTable.getItems().setAll(new StudentManagementService().getObservableStudentList(new StudentManagementService().getFullStudentList()));
 	}
 	
@@ -250,12 +251,43 @@ public class StudentManagementController implements Initializable {
 	
 	
 	
-	//method to get excel file and save it to database
+	//method to get excel file and save data to database
+	public void importStudentDetails(ActionEvent event) {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Select EXCEL Files");
+		//fileChooser.setInitialDirectory(new File("X:\\testdir\\two"));
+		fileChooser.getExtensionFilters().addAll(
+		        new ExtensionFilter("Excel Files", "*.xlsx"));
+		List<File> selectedFiles = fileChooser.showOpenMultipleDialog((Stage) studentTable.getScene().getWindow());
+		List<Student> list = new ArrayList<Student>();
+		if (selectedFiles != null) {
+		    selectedFiles.forEach(file->{
+		    	try {
+					list.addAll(new ImportService().getStudentListFromExcel(file));
+				} catch (IOException e) {
+					studentTabPageStatus.setText("Something went wrong!!");
+				}
+		    });
+		}
+		
+		if (!list.isEmpty()) {
+			int size = list.size();
+			for (int i = 0; i<size; i++) {
+				new StudentManagementService().addOrEditStudent("", list.get(i).getUsn(), list.get(i).getName(), list.get(i).getBranch(), list.get(i).getSem(), list.get(i).getMobile(), list.get(i).getEmail());
+				studentTabPageStatus.setText("Importing  " + i +"/" + size + "......Please wait");
+			}
+			refreshTab();
+			studentTabPageStatus.setText("Import completed.");
+		}else {
+			studentTabPageStatus.setText("Something went wrong!");
+		}
+		
+		
+	}
 	
-	//method to search table was added as event in initialize method
 	
-	//method to export / print students displayed on table
-	
+
+		
 	
 	
 	
