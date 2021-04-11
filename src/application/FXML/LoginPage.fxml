@@ -44,7 +44,7 @@
                   <Font name="Cooper Black" size="23.0" />
                </font>
             </Text>
-            <Hyperlink layoutX="219.0" layoutY="266.0" text="Forgot password?">
+            <Hyperlink layoutX="219.0" layoutY="266.0" onAction="#forgotPassword" text="Forgot password?">
                <font>
                   <Font size="14.0" />
                </font>
@@ -52,7 +52,7 @@
                   <Tooltip text="Please enter your email before clicking. Note : You need internet connection to reset password or please contact admin!" />
                </tooltip>
             </Hyperlink>
-            <Label fx:id="loginStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="59.0" layoutY="316.0" prefHeight="20.0" prefWidth="282.0" textAlignment="CENTER" textFill="RED">
+            <Label fx:id="loginStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="313.0" prefHeight="31.0" prefWidth="376.0" textAlignment="CENTER" textFill="RED">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -66,7 +66,7 @@
                   <Font name="Cooper Black" size="23.0" />
                </font>
             </Text>
-            <Text layoutX="54.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please login to continue using LMS." textAlignment="CENTER">
+            <Text layoutX="54.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please login to continue using LMS." textAlignment="CENTER">
                <font>
                   <Font name="Open Sans" size="16.0" />
                </font>
@@ -76,7 +76,7 @@
                   <Font name="Cooper Black" size="17.0" />
                </font>
             </Text>
-            <Text layoutX="52.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please connect with internet to get a your password on your registerd email OR contact admin." wrappingWidth="438.75390625">
+            <Text layoutX="54.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please connect with the internet to get a your password on your registerd email OR contact admin." wrappingWidth="438.75390625">
                <font>
                   <Font name="Open Sans" size="13.0" />
                </font>

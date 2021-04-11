@@ -10,6 +10,8 @@ import javax.persistence.*;
 import org.hibernate.*;
 
 import application.MainClass;
+import application.mail.MailService;
+import application.staff.Staff;
 import application.staff.StaffManagementService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,14 +58,14 @@ public class RegisterAndLoginController {
 	
 	
 	
+	
 	MainClass stage = new MainClass();
-	StaffManagementService regService = new StaffManagementService();
+	StaffManagementService staffService = new StaffManagementService();
 
 	
 	
 	public void adminRegister(ActionEvent event) throws Exception {						// to handle exception you can wither use throws or try and  catch block
-		StaffManagementService regService = new StaffManagementService();
-			if( !( regName.getText().isEmpty() || regCollege.getText().isEmpty() || regEmail.getText().isEmpty() || regPassword.getText().isEmpty() )  && regService.registerStaff(regName.getText(), regCollege.getText(), regEmail.getText(), regPassword.getText(), "admin") ) {
+			if( !( regName.getText().isEmpty() || regCollege.getText().isEmpty() || regEmail.getText().isEmpty() || regPassword.getText().isEmpty() )  && staffService.registerStaff(regName.getText(), regCollege.getText(), regEmail.getText(), regPassword.getText(), "admin") ) {
 				stage.runStageFXML("FXML/LoginPage.fxml");
 				((Node)(event.getSource())).getScene().getWindow().hide();				// note the sequence of these two lines i.e first open a new stage and close previous one
 			}
@@ -72,7 +74,7 @@ public class RegisterAndLoginController {
 	
 	
 	public void loginRedirect(ActionEvent event) throws Exception {
-		if(regService.login(loginEmail.getText(), loginPassword.getText())) {
+		if(staffService.login(loginEmail.getText(), loginPassword.getText())) {
 			stage.runStageFXML("FXML/HomePage.fxml");
 			((Node)(event.getSource())).getScene().getWindow().hide();
 		}else {
@@ -82,7 +84,22 @@ public class RegisterAndLoginController {
 
 	
 	
-	
+	public void forgotPassword(ActionEvent event) throws Exception {
+		if (loginEmail.getText().isEmpty()) {
+			loginStatus.setText("Please enter your email!");
+		}else {
+			Staff staff = staffService.getStaffByEmail(loginEmail.getText().trim());
+			if (staff == null) {
+				loginStatus.setText("Your email is not registerd with us!");
+			}else {
+				loginStatus.setText("Password will be sent to your mail.");
+				// to avoid application not responding in windows
+				new Thread(() -> {
+					MailService.sendMail(staff.getEmail(), "Your password for LMS login", "Password : " +  staff.getPassword());
+				}).start();
+			}
+		}
+	}
 	
 	
 

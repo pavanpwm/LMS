@@ -68,10 +68,8 @@ public class StaffManagementService {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
         	// check if the eamil exists! then follow
-        	TypedQuery query = session.getNamedQuery("findStaffByEmail");
-            query.setParameter("email",email);   
-            List<Staff> staffList = query.getResultList();
-            if(staffList.isEmpty()) {
+        	Staff s = getStaffByEmail(email);
+            if(s == null) {
             	// start a transaction
                 transaction = session.beginTransaction();
                 Staff staff = new Staff(name, college, email, password, role);
@@ -84,6 +82,20 @@ public class StaffManagementService {
             	return false;
             }
         }
+	}
+	
+	
+	public Staff getStaffByEmail(String email) {
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			TypedQuery query = session.getNamedQuery("findStaffByEmail");
+	        query.setParameter("email",email);   
+	        List<Staff> staffList = query.getResultList();
+	        if(!staffList.isEmpty()) {
+	        	return staffList.get(0);
+	        }
+			return null;
+		}
+		
 	}
 	
 	

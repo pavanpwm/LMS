@@ -2,6 +2,7 @@ package application;
 	
 import application.staff.StaffManagementService;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -40,12 +41,22 @@ public class MainClass extends Application {
 		newStage.setTitle("LMS GECR");
 		newStage.getIcons().add(new Image("/application/images/icon.png"));
 		newStage.show();
+		newStage.setOnCloseRequest(w->{
+			Platform.exit();
+			System.exit(0);
+		});
 	}
 	
 	
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
+	
+	public void stop(Stage primaryStage) throws Exception {
+		Platform.exit();
+	}
+
 	
 	
 	
