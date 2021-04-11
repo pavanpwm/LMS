@@ -15,7 +15,7 @@ public class MailService {
 	
 	public static boolean sendMail(String to, String sub, String msg) {
 		 String from = "gecr.library.mail.service@gmail.com";
-		 String password = "enterYourPasswordHere";
+		 String password = "";
 		 
 		 Properties props = new Properties();    
          props.put("mail.smtp.host", "smtp.gmail.com");    
