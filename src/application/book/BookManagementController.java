@@ -6,6 +6,9 @@ import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 import application.home.SettingsController;
+import application.student.Student;
+import application.student.StudentManagementService;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -44,6 +47,10 @@ public class BookManagementController implements Initializable {
 	@FXML
 	public TextField bookSearch;
 	@FXML
+	public Label tableCountStatus;
+	
+	
+	@FXML
 	public TableView<Book> bookTable;
 	@FXML
 	public TableColumn<Book, Integer> bookColumnId;
@@ -72,7 +79,7 @@ public class BookManagementController implements Initializable {
 		//initial populate table
 		refreshTab();
 				
-		//search book event
+		//search book event handler
 		bookSearch.setOnKeyReleased(new EventHandler<KeyEvent>() {
 			         @Override  
 			         public void handle(KeyEvent keyEvent) {
@@ -83,6 +90,8 @@ public class BookManagementController implements Initializable {
 				        	 bookTabPageStatus.setText("Searching.... Please wait!");
 				        	 populateBookTable();
 				        	 bookTabPageStatus.setText("");
+						}else {
+							refreshTab();
 						}
 			        	 
 			         }  
@@ -123,8 +132,7 @@ public class BookManagementController implements Initializable {
 		//method for books request checkBox
 		public void ifBookRequest(ActionEvent event) {
 			if (bookRequestCheckBox.isSelected()) {
-				//clear text fields and disable em
-				newBookCode.setText("");
+				//clear text fields and disable e=============de.setText("");
 				newBookShelf.setText("");
 				bookTabPageStatus.setText("");
 				newBookCode.setDisable(true);
@@ -141,7 +149,6 @@ public class BookManagementController implements Initializable {
 
 		//method to add new book
 		public void addOrEditBook(ActionEvent event) {
-			
 			String id;
 			String status= "Available";
 			if (bookTabPageStatus.getText().contains("Editing")) {
@@ -149,19 +156,14 @@ public class BookManagementController implements Initializable {
 			}else {
 				id = "";
 			}
-			
 			if(bookRequestCheckBox.isSelected()) {
 				status= "Requested";
 			}
-					
 			if (!bookRequestCheckBox.isSelected() && ( newBookCode.getText().trim().isEmpty() || newBookShelf.getText().trim().isEmpty() ) ||  newBookTitle.getText().trim().isEmpty() ){
-				
 				bookTabPageStatus.setText("Please dont leave empty fields!");
 				bookTabPageStatus.setTextFill(Paint.valueOf("RED"));
-				
 			}else {
 				BookManagementService addBookService = new BookManagementService();
-				
 				if( addBookService.addOrEditBook(id, newBookCode.getText(), newBookTitle.getText(), newBookShelf.getText(), status) ) {
 					if (id.isEmpty()) {
 						bookTabPageStatus.setText("New book added successfully");
@@ -187,7 +189,7 @@ public class BookManagementController implements Initializable {
 		
 		
 		//method to edit book
-		//just need to set id on status label and fill form with slected book details
+		//need to set id on status label and fill form with selected book details
 		public void editBook(ActionEvent event) {
 			Book editBook = bookTable.getSelectionModel().getSelectedItem();
 			if (editBook != null && !editBook.getStatus().toLowerCase().contains("req")) {
@@ -201,7 +203,7 @@ public class BookManagementController implements Initializable {
 			}
 			if(editBook.getStatus().toLowerCase().contains("req")) {
 				refreshTab();
-				bookTabPageStatus.setText("Requested books cannpt be edited.");
+				bookTabPageStatus.setText("Requested books cannot be edited.");
 			}
 		}
 	
@@ -212,11 +214,8 @@ public class BookManagementController implements Initializable {
 			Book deleteBook = bookTable.getSelectionModel().getSelectedItem();
 				if (deleteBook != null) {
 					new BookManagementService().deleteBook(deleteBook);
+					refreshTab();
 					bookTabPageStatus.setText("Book deleted");
-					BookManagementService.searchText ="";
-		       	    BookManagementService.lastPageIndex = 0;
-		       	    bookTable.getItems().clear();
-				    populateBookTable();
 				}else {
 					bookTabPageStatus.setText("Select a book to delete");
 				}
@@ -225,7 +224,12 @@ public class BookManagementController implements Initializable {
 
 
 		public void populateBookTable() {
-	         bookTable.getItems().addAll(new BookManagementService().getObservableBookList(new BookManagementService().getNextScrollBooks()));
+			 ObservableList<Book> list = new BookManagementService().getObservableBookList(new BookManagementService().getNextScrollBooks());
+			 bookTable.getItems().addAll(list);
+			 tableCountStatus.setText("Showing " + bookTable.getItems().size());
+			 if (!list.isEmpty()) {
+				 bookTable.scrollTo(list.get(0));
+			 }
 		}
 
 	

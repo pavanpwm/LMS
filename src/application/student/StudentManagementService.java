@@ -3,20 +3,25 @@ package application.student;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 import javax.persistence.TypedQuery;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
+import application.book.Book;
 import application.dbutil.HibernateUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class StudentManagementService {
+	
+	public static int lastPageIndex = 0;
+	public static int pageSize = 50;
+	public static String searchText = "";
 
 	
-	
+	//add and update methods /////////////////////////////////////////////////////////////////////////
+
 	public boolean addOrEditStudent(String id, String usn, String name, String branch, String sem, String mobile, String email) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -58,21 +63,48 @@ public class StudentManagementService {
 	
 	
 	
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public List<Student> getFullStudentList() {
-		List<Student> studentList;
+
+	
+	//Retrieve methods ////////////////////////////////////////////////////////////////////////////////////
+
+	
+	
+	public List<Student> getNextScrollStudents() {
+		List<Student> studentList =  new ArrayList<Student>();
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			studentList = session.createQuery("from Student s", Student.class).list();
+			if (getStudentsAddedCount() >= lastPageIndex+1) {
+				//paginating results
+			    Query query;
+			    if (!searchText.isEmpty()) {
+			    	query = session.getNamedQuery("searchStudents");
+			    	query.setParameter("search", searchText);
+				}else {
+					query = session.createQuery("from Student s order by s.id desc");
+				} 
+			    query.setFirstResult(lastPageIndex);
+			    query.setMaxResults(pageSize);
+			    lastPageIndex += pageSize;
+			    studentList = query.list();
+			}
         }
 		return studentList;
 	}
 	
 	
+	public Long getStudentsAddedCount() {
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			Query query = session.createQuery("select count(s.id) from Student s");
+		    Long count = (Long) query.uniqueResult();
+			return  count;
+        }
+	}
 	
 	
 	public ObservableList<Student> getObservableStudentList(List<Student> studentListForTable) {
-			ObservableList<Student> data;
-	        data = FXCollections.observableArrayList();
+			ObservableList<Student> data = FXCollections.observableArrayList();
 	        Iterator<Student> studentListIterator = studentListForTable.iterator();
 	        while (studentListIterator.hasNext()) {
 	            Student eachStudent = (Student) studentListIterator.next();
@@ -80,32 +112,6 @@ public class StudentManagementService {
 	        }
 	        return data;
 	}
-
-
-	public List<Student> getSearchedStudentList(String searchText) {
-		List<Student> fullStudentList = getFullStudentList();
-		List<Student> searchedStudentList = new ArrayList<Student>();							// always use ArrayList to constucta list else returning a list might throw NPE
-		for(int i=0; i<fullStudentList.size(); i++) {
-			if(fullStudentList.get(i).toString().toLowerCase().contains(searchText.toLowerCase())) {
-				searchedStudentList.add(fullStudentList.get(i));
-			}
-		}
-		return searchedStudentList;
-	}
-
-
-	public void deleteStudent(Student deleteStudent) {
-		// TODO Auto-generated method stub
-		Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            session.delete(deleteStudent);
-            transaction.commit();
-        }
-	}
-	
-	
-	
 	
 	// this method is for issue book
 	public Student getStudentByUsn(String usn) {
@@ -120,7 +126,29 @@ public class StudentManagementService {
 		}else {
 			return studentList.get(0);
 		}
+	}		
+
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+	//Delete method ////////////////////////////////////////////////////////////////////////////////////
+
+	public void deleteStudent(Student deleteStudent) {
+		// TODO Auto-generated method stub
+		Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.delete(deleteStudent);
+            transaction.commit();
+        }
 	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	
+	
+	
 	
 	
 	

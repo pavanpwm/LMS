@@ -23,7 +23,7 @@ import javax.persistence.*;
 	        		),
 	        @NamedQuery(  
 	    	        name = "searchBooks", 
-	    	        query = "from Book b where lower(concat(b.code, '', b.title, '', b.shelf, '', b.status, '')) like lower(concat('%', :search, '%'))  order by b.id desc"  			
+	    	        query = "from Book b where upper(concat(b.code, '', b.title, '', b.shelf, '', b.status, '')) like upper(concat('%', :search, '%'))  order by b.id desc"  			
 	        		)
 	        
 	    } 

@@ -93,7 +93,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-                        <TextField fx:id="studentSearch" layoutX="47.0" layoutY="134.0" prefHeight="31.0" prefWidth="1272.0" promptText="Search">
+                        <TextField fx:id="studentSearch" layoutX="47.0" layoutY="134.0" prefHeight="31.0" prefWidth="978.0" promptText="Search">
                            <font>
                               <Font size="15.0" />
                            </font></TextField>
@@ -122,6 +122,12 @@
                </contextMenu>
                         </TableView>
             <FontAwesomeIconView glyphName="SEARCH" layoutX="16.0" layoutY="154.0" size="20" />
+            <Label fx:id="tableCountStatus" alignment="CENTER_RIGHT" layoutX="1044.0" layoutY="133.0" prefHeight="30.0" prefWidth="184.0" textAlignment="RIGHT" />
+            <Button layoutX="1241.0" layoutY="135.0" mnemonicParsing="false" onAction="#populateStudentTable" style="-fx-background-color: lightblue;" text="Load more">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
                      </children></AnchorPane>
    </children>
 </Pane>

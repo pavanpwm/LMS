@@ -3,14 +3,10 @@ package application.student;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-import com.mchange.v1.xml.StdErrErrorHandler;
-
 import application.exp.imp.ImportService;
 import application.home.SettingsController;
 import javafx.collections.ObservableList;
@@ -59,6 +55,10 @@ public class StudentManagementController implements Initializable {
 	@FXML
 	private TextField studentSearch;
 	@FXML
+	private Label tableCountStatus;
+	
+	
+	@FXML
 	public TableView<Student> studentTable;
 	@FXML
 	public TableColumn<Student, Integer> studentColumnId;
@@ -90,17 +90,25 @@ public class StudentManagementController implements Initializable {
     	studentColumnSem.setCellValueFactory(new PropertyValueFactory<Student, String>("sem"));
     	studentColumnEmail.setCellValueFactory(new PropertyValueFactory<Student, String>("email"));
     	studentColumnPhone.setCellValueFactory(new PropertyValueFactory<Student, String>("mobile")); 	
-    	studentTable.setTableMenuButtonVisible(true);
-		populateStudentTable();
-		studentTabPageStatus.setText("");
+
+
+    	//initial populate table
+    	refreshTab();
 		
 		//search event
 		studentSearch.setOnKeyReleased(new EventHandler<KeyEvent>() {
 	         @Override  
 	         public void handle(KeyEvent keyEvent) {
-	        	 studentTabPageStatus.setText("Searching.... Please wait!");
-	        	 studentTable.getItems().setAll(new StudentManagementService().getObservableStudentList(new StudentManagementService().getSearchedStudentList(studentSearch.getText())));
-	        	 studentTabPageStatus.setText("");
+	        	 if (!studentSearch.getText().trim().isEmpty()) {
+	        		 studentTabPageStatus.setText("Searching.... Please wait!");
+	        		 studentTable.getItems().clear();
+	        		 StudentManagementService.lastPageIndex = 0;
+	        		 StudentManagementService.searchText = studentSearch.getText();
+		        	 populateStudentTable();
+		        	 studentTabPageStatus.setText("");
+				}else {
+					refreshTab();
+				}
 	         }  
 	     });
 		
@@ -120,6 +128,9 @@ public class StudentManagementController implements Initializable {
 	//refresh action event
 	public void refreshTab() {
    	 	studentTabPageStatus.setText("Getting data.... Please wait!");
+   	    studentTable.getItems().clear();
+	    StudentManagementService.lastPageIndex = 0;
+	    StudentManagementService.searchText = "";
 		populateStudentTable();
 		studentTabPageStatus.setText("");
 		newStudentBranch.setText("");
@@ -166,7 +177,10 @@ public class StudentManagementController implements Initializable {
 				}
 			}
 			//after saving, show the saved data on table
-			studentTable.getItems().setAll(new StudentManagementService().getObservableStudentList(new StudentManagementService().getSearchedStudentList(newStudentUsn.getText())));
+			studentTable.getItems().clear();
+		    StudentManagementService.lastPageIndex = 0;
+		    StudentManagementService.searchText = "";
+			populateStudentTable();
 		}
 		
 	}
@@ -175,7 +189,7 @@ public class StudentManagementController implements Initializable {
 	
 	
 	//method to edit student
-	//just need to set id on status label and fill form with slected student details
+	//just need to set id on status label and fill form with selected student details
 	public void editStudent(ActionEvent event) {
 		Student editStudent = studentTable.getSelectionModel().getSelectedItem();
 		if (editStudent != null) {
@@ -188,7 +202,7 @@ public class StudentManagementController implements Initializable {
 			newStudentUsn.setText(editStudent.getUsn());
 			newStudentUsn.setDisable(true);
 		}else {
-			studentTabPageStatus.setText("Right click on a student to edit");
+			refreshTab();
 		}
 	}
 	
@@ -197,16 +211,16 @@ public class StudentManagementController implements Initializable {
 	
 	
 	//method to delete selected student
-		public void deleteStudent(ActionEvent event) {
-			Student deleteStudent = studentTable.getSelectionModel().getSelectedItem();
-			if (deleteStudent != null) {
-				new StudentManagementService().deleteStudent(deleteStudent);
-				studentTabPageStatus.setText("Student deleted");
-				populateStudentTable();
-			}else {
-				studentTabPageStatus.setText("Select a Student to delete");
-			}
+	public void deleteStudent(ActionEvent event) {
+		Student deleteStudent = studentTable.getSelectionModel().getSelectedItem();
+		if (deleteStudent != null) {
+			new StudentManagementService().deleteStudent(deleteStudent);
+			refreshTab();
+			studentTabPageStatus.setText("Student deleted");
+		}else {
+			studentTabPageStatus.setText("Select a Student to delete");
 		}
+	}	
 		
 		
 	
@@ -233,6 +247,7 @@ public class StudentManagementController implements Initializable {
     		manager.deleteStudent(deleteStudent);
     	});
 		refreshTab();
+		studentTabPageStatus.setText("Deleted displayed student entries");
 	}
 	
 	
@@ -241,7 +256,14 @@ public class StudentManagementController implements Initializable {
 	
 	//method to populate table data
 	public void populateStudentTable() {
-		studentTable.getItems().setAll(new StudentManagementService().getObservableStudentList(new StudentManagementService().getFullStudentList()));
+		ObservableList<Student> list = new StudentManagementService().getObservableStudentList(new StudentManagementService().getNextScrollStudents());
+		studentTable.getItems().addAll(list);
+		tableCountStatus.setText("Showing " + studentTable.getItems().size());
+		if (!list.isEmpty()) {
+			studentTable.scrollTo(list.get(0));
+		}
+
+		
 	}
 	
 	

@@ -19,6 +19,10 @@ import javax.persistence.*;
 	        @NamedQuery(  
 	        name = "findStudentByUsn",  
 	        query = "from Student s where s.usn = :usn"  		
+	        		),
+	        @NamedQuery(  
+	    	        name = "searchStudents", 
+	    	        query = "from Student s where upper(concat(s.name, '', s.branch, '', s.sem, '', s.usn, '', s.email, '', s.mobile, '')) like upper(concat('%', :search, '%'))  order by s.id desc"  			
 	        		)
 	    } 
 	    
