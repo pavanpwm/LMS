@@ -4,6 +4,7 @@ import application.staff.StaffManagementService;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
@@ -30,9 +31,7 @@ public class MainClass extends Application {
 	
 	public void runStageFXML(String fxml) throws Exception{
 		Stage newStage = new Stage();
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource(fxml));							// setLocation method rectifies Base location is undefined while including one fxml file in another
-		Pane root = loader.load();
+		Parent root = FXMLLoader.load(getClass().getResource(fxml));
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		newStage.setScene(scene);

@@ -39,7 +39,7 @@
                   <TableColumn fx:id="todaysTransactionsTableStatus" prefWidth="155.0" style="-fx-alignment: CENTER;" text="Status" />
                            </columns>
                         </TableView>
-            <HBox prefHeight="30.0" prefWidth="1330.0">
+            <HBox prefHeight="30.0" prefWidth="1330.0" style="-fx-background-color: ffefd5;">
                <children>
                   <Label fx:id="totalBooksAdded" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="332.0" text="Total Books Added : ">
                      <font>
@@ -75,7 +75,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button layoutX="1173.0" layoutY="39.0" mnemonicParsing="false" onAction="#issueBook" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: lightgreen; -fx-border-color: black;" text="Issue Book">
+            <Button layoutX="1173.0" layoutY="39.0" mnemonicParsing="false" onAction="#issueBook" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: lightgreen; -fx-border-color: black;" text="Issue Book" textFill="#141414">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -86,7 +86,7 @@
             <Line endX="1158.0" endY="-101.0" layoutX="162.0" layoutY="132.0" opacity="0.21" startX="-154.0" startY="-101.0" />
             <FontAwesomeIconView glyphName="TABLE" layoutX="507.0" layoutY="64.0" size="22" />
             <FontAwesomeIconView glyphName="BAR_CHART" layoutX="21.0" layoutY="66.0" size="23" />
-            <Text layoutX="53.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quarterly Transactions">
+            <Text layoutX="53.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly Transactions">
                <font>
                   <Font size="18.0" />
                </font>

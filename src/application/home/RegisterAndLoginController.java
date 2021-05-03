@@ -92,7 +92,7 @@ public class RegisterAndLoginController {
 			if (staff == null) {
 				loginStatus.setText("Your email is not registerd with us!");
 			}else {
-				loginStatus.setText("Password will be sent to your mail.");
+				loginStatus.setText("Password has been sent to your mail.");
 				// to avoid application not responding in windows
 				new Thread(() -> {
 					MailService.sendMail(staff.getEmail(), "Your password for LMS login", "Password : " +  staff.getPassword());

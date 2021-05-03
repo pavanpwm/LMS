@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.persistence.TypedQuery;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -13,7 +15,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 public class BookManagementService {
 
-	
+	public static int lastPageIndex = 0;
+	public static int pageSize = 2;
+	public static String searchText = "";
 	
 	public boolean addOrEditBook(String id, String code, String title, String shelf, String status) {
         Transaction transaction = null;
@@ -60,27 +64,47 @@ public class BookManagementService {
 	
 	
 
-	public List<Book> getFullBookList() {
+	public List<Book> getNextScrollBooks() {
 		List<Book> bookList;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			bookList = session.createQuery("from Book b", Book.class).list();
-        }
-		return bookList;
+			
+		    //paginating results
+		    Query selectQuery;
+		    if (!searchText.isEmpty()) {
+		    	selectQuery = session.getNamedQuery("searchBooks");
+		    	selectQuery.setParameter("search", searchText);
+		    	System.out.println("above");
+			}else {
+				selectQuery = session.createQuery("from Book b order by b.id desc");
+		    	System.out.println("below");
+
+			} 
+		    selectQuery.setFirstResult(lastPageIndex);
+		    selectQuery.setMaxResults(pageSize);
+		    lastPageIndex += pageSize;
+		    bookList = selectQuery.list();
+		    return bookList;
+        }catch (Exception e) {
+			// TODO: handle exception
+        	System.out.println(e);
+		}
+		return null;
+		
 	}
 	
 	
 	public Long getBooksAddedCount() {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			Query query = session.createQuery("select count(distinct b.id) from Book b");
-			Long count = (Long) query.iterate().next();
-			return (Long)count;
+			Query countQuery = session.createQuery("select count(b.id) from Book b");
+		    Long countResults = (Long) countQuery.uniqueResult();
+			return  countResults;
         }
 	}
 	
 	
 	public Long getBooksAvailableCount() {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			Query query = session.createQuery("select count(distinct b.id) from Book b where b.status='Available'");
+			Query query = session.createQuery("select count(b.id) from Book b where b.status='Available'");
 			Long count = (Long) query.iterate().next();
 			return count;
         }
@@ -103,16 +127,16 @@ public class BookManagementService {
 	}
 
 
-	public List<Book> getSearchedBookList(String searchText) {
-		List<Book> fullBookList = getFullBookList();
-		List<Book> searchedBookList = new ArrayList<Book>();							// always use ArrayList to construct a list else returning a list might throw NPE
-		for(int i=0; i<fullBookList.size(); i++) {
-			if(fullBookList.get(i).toString().toLowerCase().contains(searchText.toLowerCase())) {
-				searchedBookList.add(fullBookList.get(i));
-			}
-		}
-		return searchedBookList;
-	}
+//	public List<Book> getSearchedBookList(String searchText) {
+//		List<Book> fullBookList = getFullBookList();
+//		List<Book> searchedBookList = new ArrayList<Book>();							// always use ArrayList to construct a list else returning a list might throw NPE
+//		for(int i=0; i<fullBookList.size(); i++) {
+//			if(fullBookList.get(i).toString().toLowerCase().contains(searchText.toLowerCase())) {
+//				searchedBookList.add(fullBookList.get(i));
+//			}
+//		}
+//		return searchedBookList;
+//	}
 
 
 	public void deleteBook(Book deleteBook) {

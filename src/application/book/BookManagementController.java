@@ -56,8 +56,6 @@ public class BookManagementController implements Initializable {
 	@FXML
 	public TableColumn<Book, String> bookColumnStatus;
 	
-	
-	
 
 	
 	
@@ -69,16 +67,24 @@ public class BookManagementController implements Initializable {
 		bookColumnTitle.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
 		bookColumnShelf.setCellValueFactory(new PropertyValueFactory<Book, String>("shelf"));
 		bookColumnStatus.setCellValueFactory(new PropertyValueFactory<Book, String>("status")); 	
-		populateBookTable();
-		bookTabPageStatus.setText("");
+		
+		
+		//initial populate table
+		refreshTab();
 				
-				//search book event
+		//search book event
 		bookSearch.setOnKeyReleased(new EventHandler<KeyEvent>() {
 			         @Override  
 			         public void handle(KeyEvent keyEvent) {
-			        	 bookTabPageStatus.setText("Searching.... Please wait!");
-			        	 bookTable.getItems().setAll(new BookManagementService().getObservableBookList(new BookManagementService().getSearchedBookList(bookSearch.getText())));
-			        	 bookTabPageStatus.setText("");
+			        	 if (!bookSearch.getText().trim().isEmpty()) {
+			        		 bookTable.getItems().clear();
+			        		 BookManagementService.lastPageIndex = 0;
+				        	 BookManagementService.searchText = bookSearch.getText();
+				        	 bookTabPageStatus.setText("Searching.... Please wait!");
+				        	 populateBookTable();
+				        	 bookTabPageStatus.setText("");
+						}
+			        	 
 			         }  
 			});
 		
@@ -96,6 +102,9 @@ public class BookManagementController implements Initializable {
 	//refresh action event
 		public void refreshTab() {
        	    bookTabPageStatus.setText("Getting data.... Please wait!");
+       	    BookManagementService.searchText ="";
+       	    BookManagementService.lastPageIndex = 0;
+       	    bookTable.getItems().clear();
 			populateBookTable();
 			bookTabPageStatus.setText("");
 			newBookCode.setText("");
@@ -166,7 +175,10 @@ public class BookManagementController implements Initializable {
 					bookTabPageStatus.setTextFill(Paint.valueOf("RED"));
 				}
 				//after saving, show the saved data on table
-				bookTable.getItems().setAll(new BookManagementService().getObservableBookList(new BookManagementService().getSearchedBookList(newBookCode.getText())));
+				BookManagementService.searchText ="";
+	       	    BookManagementService.lastPageIndex = 0;
+	       	    bookTable.getItems().clear();
+				populateBookTable();
 			}
 			
 		}
@@ -201,7 +213,10 @@ public class BookManagementController implements Initializable {
 				if (deleteBook != null) {
 					new BookManagementService().deleteBook(deleteBook);
 					bookTabPageStatus.setText("Book deleted");
-					populateBookTable();
+					BookManagementService.searchText ="";
+		       	    BookManagementService.lastPageIndex = 0;
+		       	    bookTable.getItems().clear();
+				    populateBookTable();
 				}else {
 					bookTabPageStatus.setText("Select a book to delete");
 				}
@@ -210,18 +225,10 @@ public class BookManagementController implements Initializable {
 
 
 		public void populateBookTable() {
-			bookTable.getItems().setAll(new BookManagementService().getObservableBookList(new BookManagementService().getFullBookList()));
-			
+	         bookTable.getItems().addAll(new BookManagementService().getObservableBookList(new BookManagementService().getNextScrollBooks()));
 		}
+
 	
-		
-	
-		//  delete all books should be in settings page
-	
-	
-	
-		//method to export / print students displayed on table
-		
 		
 		
 

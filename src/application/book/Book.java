@@ -20,14 +20,31 @@ import javax.persistence.*;
 	        @NamedQuery(  
 	    	        name = "updateBookStatus", 
 	    	        query = "update Book b set b.status = :status  where b.code = :code"  			
+	        		),
+	        @NamedQuery(  
+	    	        name = "searchBooks", 
+	    	        query = "from Book b where lower(concat(b.code, '', b.title, '', b.shelf, '', b.status, '')) like lower(concat('%', :search, '%'))  order by b.id desc"  			
 	        		)
-	        
 	        
 	    } 
 	    
 ) 
 
 
+
+/**
+ * 
+ 
+1. get count
+2.  
+ 
+ 
+ 
+ 
+ 
+ *
+ *
+ */
 
 
 @Entity
@@ -51,8 +68,6 @@ public class Book implements Serializable {
 	@Column(name = "status")
 	private String status;
 	
-	@Column(name = "price")
-	private String price;
 
 	public Book() {
 		super();
@@ -64,17 +79,15 @@ public class Book implements Serializable {
 		this.title = title;
 		this.shelf = shelf;
 		this.status = status;
-		this.price = price;
 	}
 
-	public Book(int id, String code, String title, String shelf, String status, String price) {
+	public Book(int id, String code, String title, String shelf, String status) {
 		super();
 		this.id = id;
 		this.code = code;
 		this.title = title;
 		this.shelf = shelf;
 		this.status = status;
-		this.price = price;
 	}
 
 	public int getId() {
@@ -115,15 +128,6 @@ public class Book implements Serializable {
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-
-	public String getPrice() {
-		return price;
-	}
-
-	public void setPrice(String price) {
-		this.price = price;
 	}
 
 	@Override

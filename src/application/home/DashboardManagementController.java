@@ -268,7 +268,10 @@ public class DashboardManagementController implements Initializable{
 				count++;
             }
 		}
+
 		return count;
+
+	
 	}
 	
 	
