@@ -52,12 +52,7 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <Text layoutX="14.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Books : ">
-                                             <font>
-                                                <Font size="16.0" />
-                                             </font>
-                                          </Text>
-                                          <TextField fx:id="bookSearch" layoutX="120.0" layoutY="171.0" prefHeight="30.0" prefWidth="908.0">
+                                          <TextField fx:id="bookSearch" layoutX="46.0" layoutY="171.0" prefHeight="30.0" prefWidth="982.0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
@@ -95,6 +90,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <FontAwesomeIconView glyphName="SEARCH" layoutX="14.0" layoutY="194.0" size="24" />
                                        </children></AnchorPane>
    </children>
 </Pane>

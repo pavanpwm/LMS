@@ -38,14 +38,6 @@ import javax.persistence.*;
 )  
 
 
-//To use the above named query in controller class
-//TypedQuery query = session.getNamedQuery("findAdmin");    
-//query.setParameter("role","admin");
-
-
-
-
-
 @Entity
 @Table(name = "staff")
 public class Staff implements Serializable {
@@ -131,17 +123,5 @@ public class Staff implements Serializable {
 		this.role = role;
 	}
 
-	@Override
-	public String toString() {
-		return id + "___" + name + "___" + email
-				+ "___" + password;
-	}
-	
-
-	
-	
-	
-	
-	
 
 }

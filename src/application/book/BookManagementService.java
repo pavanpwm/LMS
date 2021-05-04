@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import application.dbutil.HibernateUtil;
+import application.transaction.BookTransaction;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -69,7 +70,12 @@ public class BookManagementService {
 	public void  updateBookStatus(String status, String code) {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
         		Transaction transaction = session.beginTransaction();
-        		TypedQuery uQuery = session.getNamedQuery("updateBookStatus");
+        		TypedQuery uQuery;
+        		if (status.equals("Issued")) {
+        			uQuery = session.getNamedQuery("updateBookStatusWithRank");
+				}else {
+					uQuery = session.getNamedQuery("updateBookStatus");
+				}
         		uQuery.setParameter("code",code.toUpperCase());
         		uQuery.setParameter("status", status);
                 uQuery.executeUpdate();
@@ -92,10 +98,10 @@ public class BookManagementService {
 				//paginating results
 			    Query query;
 			    if (!searchText.isEmpty()) {
-			    	query = session.getNamedQuery("searchBooks");
-			    	query.setParameter("search", searchText);
+			    	 query = session.getNamedQuery("searchBooks");
+			    	 query.setParameter("search", searchText);
 				}else {
-					query = session.createQuery("from Book b order by b.id desc");
+					 query = session.createQuery("from Book b order by b.id desc");
 				} 
 			    query.setFirstResult(lastPageIndex);
 			    query.setMaxResults(pageSize);
@@ -163,6 +169,18 @@ public class BookManagementService {
             transaction.commit();
         }
 	}
+
+	public List<Book> getRankedBook() {
+		List<Book> bookList = new ArrayList<Book>();
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			    Query query = session.getNamedQuery("getRankedBooks");
+			    query.setFirstResult(0);
+			    query.setMaxResults(10);
+			    bookList = query.list();
+	    }
+		return bookList;
+	}
+
 
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -132,8 +132,6 @@ public class IssueBookController implements Initializable{
 	              SettingsController.refreshed = false;
 	          }
 	      });
-    
-    	
 	}
 
 

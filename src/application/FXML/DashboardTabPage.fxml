@@ -22,8 +22,8 @@
                      <children>
                         <TableView fx:id="mostFamousBooksTable" layoutX="14.0" layoutY="302.0" prefHeight="333.0" prefWidth="465.0" style="-fx-font-size: 16; -fx-alignment: CENTER;">
                           <columns>
-                            <TableColumn fx:id="mostFamousBooksTableRank" prefWidth="59.000030517578125" style="-fx-alignment: CENTER;" text="Rank" />
-                            <TableColumn fx:id="mostFamousBooksTableName" prefWidth="404.0" style="-fx-alignment: CENTER;" text="Popular Books" />
+                            <TableColumn fx:id="mostFamousBooksTableRank" prefWidth="71.0" style="-fx-alignment: CENTER;" text="Issued" />
+                            <TableColumn fx:id="mostFamousBooksTableName" prefWidth="393.0" style="-fx-alignment: CENTER;" text="Popular Titles" />
                           </columns>
                         </TableView>
                         <Text layoutX="534.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Today's Transaction Records">

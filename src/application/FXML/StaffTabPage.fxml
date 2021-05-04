@@ -44,16 +44,12 @@
                <font>
                   <Font size="14.0" />
                </font></TextField>
-                        <TextField fx:id="staffSearch" layoutX="43.0" layoutY="101.0" prefHeight="30.0" prefWidth="1279.0" promptText=" Search">
-               <font>
-                  <Font size="14.0" />
-               </font></TextField>
                         <Button layoutX="1053.0" layoutY="21.0" mnemonicParsing="false" onAction="#registerNewStaff" prefHeight="33.0" prefWidth="79.0" style="-fx-background-color: lightblue; -fx-border-color: grey;" text="+ Add">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Button>
-                        <TableView fx:id="staffTable" layoutX="10.0" layoutY="138.0" prefHeight="500.0" prefWidth="1310.0" tableMenuButtonVisible="true">
+                        <TableView fx:id="staffTable" layoutX="10.0" layoutY="109.0" prefHeight="529.0" prefWidth="1310.0" tableMenuButtonVisible="true">
                           <columns>
                             <TableColumn fx:id="staffColumnId" editable="false" prefWidth="93.0" resizable="false" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Index" />
                             <TableColumn fx:id="staffColumnName" editable="false" prefWidth="297.0" resizable="false" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Name" />
@@ -74,7 +70,6 @@
                </font>
             </Label>
             <FontAwesomeIconView glyphName="USER" layoutX="13.0" layoutY="44.0" size="20" />
-            <FontAwesomeIconView glyphName="SEARCH" layoutX="15.0" layoutY="120.0" size="20" />
                      </children></AnchorPane>
       <FontAwesomeIconView />
    </children>

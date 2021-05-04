@@ -43,8 +43,6 @@ public class StaffManagementController implements Initializable{				// a simply 
 	public TextField newStaffEmail;
 	@FXML
 	public TextField newStaffPassword;
-	@FXML
-	public TextField staffSearch;
 	
 	@FXML
 	public TableView<Staff> staffTable;
@@ -59,13 +57,6 @@ public class StaffManagementController implements Initializable{				// a simply 
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
 	// this method is fired when the fxml related to this controller is triggerd
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -73,22 +64,7 @@ public class StaffManagementController implements Initializable{				// a simply 
     	staffColumnName.setCellValueFactory(new PropertyValueFactory<Staff, String>("name"));
     	staffColumnEmail.setCellValueFactory(new PropertyValueFactory<Staff, String>("email"));
     	staffColumnPassword.setCellValueFactory(new PropertyValueFactory<Staff, String>("password"));
-    	staffTable.setTableMenuButtonVisible(true);
-		populateStaffTable();
-
-		//search staff event
-		staffSearch.setOnKeyReleased(new EventHandler<KeyEvent>() {
-	         @Override  
-	         public void handle(KeyEvent keyEvent) {
-	        	 staffTable.getItems().setAll(new StaffManagementService().getObservableStaffList(new StaffManagementService().getSearchedStaffList(staffSearch.getText()))); 
-	         }  
-	     });
-		
-		// to clear the label
-		staffTabPage.setOnMouseClicked(mouseClikEVent->{
-			staffTabPageStatus.setText("");
-		});
-
+    	refreshTab();
 		
 		staffTabPage.setOnMouseEntered(event->{
 			if (!SettingsController.refreshed) {
@@ -99,21 +75,13 @@ public class StaffManagementController implements Initializable{				// a simply 
 		
 	}
 	
-
-	
-	
 	public void refreshTab(){
 		staffTabPageStatus.setText("");
 		newStaffName.setText("");
 		newStaffEmail.setText("");
 		newStaffPassword.setText("");
-		staffSearch.setText("");
 		populateStaffTable();
 	}
-	
-	
-	
-	
 	
 	//method to add new staff
 	public void registerNewStaff(ActionEvent event) {
@@ -134,16 +102,6 @@ public class StaffManagementController implements Initializable{				// a simply 
 		
 	}
 	
-	
-	
-	
-	
-	//method to handle table search
-
-	
-	
-	
-	
 	//method to delete staff
 	public void deleteStaff(ActionEvent event) {
 		Staff deleteStaff = staffTable.getSelectionModel().getSelectedItem();
@@ -155,32 +113,11 @@ public class StaffManagementController implements Initializable{				// a simply 
 			staffTabPageStatus.setText("Select a staff to delete");
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	// method to populate table data
     public void populateStaffTable() {
     	staffTable.getItems().setAll(new StaffManagementService().getObservableStaffList(new StaffManagementService().getFulltStaffList()));
     }
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }

@@ -29,7 +29,15 @@ import javax.persistence.Table;
 	        @NamedQuery(  
 	    	        name = "findBookTransactionById", 
 	    	        query = "from BookTransaction b where b.id = :id"  			
-	        		)
+	        		),
+	        @NamedQuery(  
+	    	        name = "searchBookTransactions", 
+	    	        query = "from BookTransaction b where upper(concat(b.usn, '', b.name, '', b.branch, '', b.sem, '', b.code, '', b.title, '', b.phone, '', b.email, '', b.issueDate, '', b.returnDate, '', b.status, '', b.remarks, '')) like upper(concat('%', :search, '%'))  order by b.id desc"  			
+	        		),
+	        @NamedQuery(  
+	    	    	    name = "getBookTransactionsByStatus", 
+	    	    	    query = "from BookTransaction b where b.status = :status  order by b.id desc"  			
+	    	        )
 	    } 
 	    
 ) 
@@ -87,8 +95,6 @@ public class BookTransaction implements Serializable {
 		super();
 	}
 	
-	
-	
 	public BookTransaction(String usn, String name, String branch, String sem, String code, String title, String phone,
 			String email, String issuDate, String returnDate, String status, String remarks) {
 		super();
@@ -106,180 +112,111 @@ public class BookTransaction implements Serializable {
 		this.remarks = remarks;
 	}
 
-
-
 	public int getId() {
 		return id;
 	}
-
-
-
+	
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
 
 	public String getUsn() {
 		return usn;
 	}
 
-
-
 	public void setUsn(String usn) {
 		this.usn = usn;
 	}
-
-
 
 	public String getName() {
 		return name;
 	}
 
-
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
 
 	public String getBranch() {
 		return branch;
 	}
 
-
-
 	public void setBranch(String branch) {
 		this.branch = branch;
 	}
-
-
 
 	public String getSem() {
 		return sem;
 	}
 
-
-
 	public void setSem(String sem) {
 		this.sem = sem;
 	}
-
-
 
 	public String getCode() {
 		return code;
 	}
 
-
-
 	public void setCode(String code) {
 		this.code = code;
 	}
-
-
 
 	public String getTitle() {
 		return title;
 	}
 
-
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-
 
 	public String getPhone() {
 		return phone;
 	}
 
-
-
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 
 	public String getIssueDate() {
 		return issueDate;
 	}
 
-
-
 	public void setIssueDate(String issuDate) {
 		this.issueDate = issuDate;
 	}
-
-
 
 	public String getReturnDate() {
 		return returnDate;
 	}
 
-
-
 	public void setReturnDate(String returnDate) {
 		this.returnDate = returnDate;
 	}
-
-
 
 	public String getStatus() {
 		return status;
 	}
 
-
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
 
-
-
 	public String getRemarks() {
 		return remarks;
 	}
-
-
 
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
 
 
-
-	@Override
-	public String toString() {
-		return id + " " + usn + " " + name + " " + branch + " " + sem + " " + code  + " " + title + " "
-				+ phone + " " + email + " " + issueDate + " " + returnDate + " " + status + " " + remarks;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
 	
 	
 }

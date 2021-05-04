@@ -22,6 +22,14 @@ import javax.persistence.*;
 	    	        query = "update Book b set b.status = :status  where b.code = :code"  			
 	        		),
 	        @NamedQuery(  
+	    	        name = "updateBookStatusWithRank", 
+	    	        query = "update Book b set b.status = :status, b.rank = b.rank+1 where b.code = :code"  			
+	        		),
+	        @NamedQuery(  
+	    	        name = "getRankedBooks", 
+	    	        query = "from Book b order by b.rank desc"  			
+	        		),
+	        @NamedQuery(  
 	    	        name = "searchBooks", 
 	    	        query = "from Book b where upper(concat(b.code, '', b.title, '', b.shelf, '', b.status, '')) like upper(concat('%', :search, '%'))  order by b.id desc"  			
 	        		)
@@ -30,21 +38,6 @@ import javax.persistence.*;
 	    
 ) 
 
-
-
-/**
- * 
- 
-1. get count
-2.  
- 
- 
- 
- 
- 
- *
- *
- */
 
 
 @Entity
@@ -68,6 +61,8 @@ public class Book implements Serializable {
 	@Column(name = "status")
 	private String status;
 	
+	@Column(name = "rank")
+	private int rank;
 
 	public Book() {
 		super();
@@ -130,10 +125,13 @@ public class Book implements Serializable {
 		this.status = status;
 	}
 
-	@Override
-	public String toString() {
-		return code + "___" + title + "___" + shelf + "___" + status;
+	public int getRank() {
+		return rank;
 	}
+
+
+
+
 	
 	
 	

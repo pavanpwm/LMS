@@ -10,6 +10,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import application.book.Book;
 import application.book.BookManagementService;
 import application.transaction.BookTransaction;
 import application.transaction.BookTransactionManagementService;
@@ -45,11 +47,11 @@ public class DashboardManagementController implements Initializable{
 
 
 	@FXML
-	public TableView<BookTransaction> mostFamousBooksTable;
+	public TableView<Book> mostFamousBooksTable;
 	@FXML
-	public TableColumn<BookTransaction, Integer> mostFamousBooksTableRank;
+	public TableColumn<Book, Integer> mostFamousBooksTableRank;
 	@FXML
-	public TableColumn<BookTransaction, String> mostFamousBooksTableName;
+	public TableColumn<Book, String> mostFamousBooksTableName;
 	
 	@FXML
 	public TableView<BookTransaction> todaysTransactionsTable;
@@ -86,8 +88,8 @@ public class DashboardManagementController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		
-		mostFamousBooksTableRank.setCellValueFactory(new PropertyValueFactory<BookTransaction, Integer>("id"));
-		mostFamousBooksTableName.setCellValueFactory(new PropertyValueFactory<BookTransaction, String>("title"));
+		mostFamousBooksTableRank.setCellValueFactory(new PropertyValueFactory<Book, Integer>("rank"));
+		mostFamousBooksTableName.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
     	
     	
 		todaysTransactionsTableId.setCellValueFactory(new PropertyValueFactory<BookTransaction, Integer>("id"));
@@ -111,96 +113,58 @@ public class DashboardManagementController implements Initializable{
 	
 	
 	public void refreshTab(){
-		// get all transactions in a list and pass it to below methods
-		List<BookTransaction> list = new BookTransactionManagementService() .getFullBookTransactionList();
-		populateRankTable(list);
-		populateTodaysTransacntionTable(list);
-		drawChartAndSetCounts(list);
-		pupolateBarChart(list);
+		populateRankTable();
+		populateTodaysTransacntionTable();
+		setCounts();
+		pupolateBarChart();
 	}
-	
-	
-	
-	
-	
-	
-	
-	public void pupolateBarChart(List<BookTransaction> list) {
-		barChart.getData().clear();
-		//Configuring Series for XY chart   
+	public void populateRankTable(){
+		mostFamousBooksTable.getItems().setAll(new BookManagementService().getObservableBookList(new BookManagementService().getRankedBook()));
+	}
+	public void populateTodaysTransacntionTable(){
+		BookTransactionManagementService.searchText = LocalDate.now().toString();
+		BookTransactionManagementService.lastPageIndex = 0;
+		BookTransactionManagementService.searchType = "loose";
+		todaysTransactionsTable.getItems().setAll(new BookTransactionManagementService().getObservableBookTransactionList(new BookTransactionManagementService().getNextScrollBookTransactions()));
+	}	
+	public void setCounts() {
+		totalBooksAdded.setText("Total Books Added : " + new BookManagementService().getBooksAddedCount());
+		totalBooksAvailable.setText("Books Available : " + new BookManagementService().getBooksAvailableCount());
+		totalBooksIssuedToday.setText("Books Issued Today : " + getBooksIssuedTodayCount());
+		totalBooksReturnedToday.setText("Books Returned Today : " + getBooksReturnedTodayCount());
+	}
+	public int getBooksIssuedTodayCount() {
+		ObservableList<BookTransaction> list =  todaysTransactionsTable.getItems();
+		int count =0;
+		for (int i = 0; i < list.size(); i++) {
+			if(list.get(i).getStatus().equalsIgnoreCase("Issued")) {
+				count++;
+            }
+		}
+		return count;
+	}
+	public int getBooksReturnedTodayCount() {
+		ObservableList<BookTransaction> list =  todaysTransactionsTable.getItems();
+		int count =0;
+		for (int i = 0; i < list.size(); i++) {
+			if(list.get(i).getStatus().equalsIgnoreCase("Returned")) {
+				count++;
+            }
+		}
+		return count;
+	}
+	public void pupolateBarChart() {
 	    XYChart.Series series = new XYChart.Series<>();
-	    for (int i = 01; i < 13; i++) {
+	    for (int i = 1; i < 13; i++) {
 	    	String query = "";
 	    	if (i<10) {
 				query = "-0" + i + "-";
 			}else {
 				query = "-" + i + "-";
 			}
-	    	List<BookTransaction> tempList =  new BookTransactionManagementService().getSearchedBookTransactionList(Arrays.asList(new String[] {query}), "search");
-		    series.getData().add(new XYChart.Data(  Month.of(i).toString().substring(0, 3)  , tempList.size() ));
+		    series.getData().add(new XYChart.Data(  Month.of(i).toString().substring(0, 3)  , new BookTransactionManagementService().getBookTransactionsCountForBarChart(query)));
 		}
-	    //Adding series to the barchart
-	    barChart.getData().addAll(series);
-	}
-	
-	
-	
-	
-	public void populateRankTable(List<BookTransaction> list){
-		
-		List<BookTransaction> countedList = new ArrayList<BookTransaction>(); 
-		List<String> bookTitles = new ArrayList<String>();
-		
-		
-		// get repeated titles list
-		for (int i = 0; i < list.size(); i++) {
-			bookTitles.add(list.get(i).getTitle());
-		}
-		
-		// get countedList
-		for (int i = 0; i < bookTitles.size(); i++) {
-			BookTransaction bt = new BookTransaction();
-			bt.setTitle(bookTitles.get(i));
-			bt.setId(Collections.frequency(bookTitles, bookTitles.get(i)));			// count set in place of id
-			if (  !countedList.stream().map(BookTransaction::getTitle).filter(bookTitles.get(i)::equals).findFirst().isPresent() ) {   // I dont know ehy the heck  !contedList.contains(bt) didnt work at all
-				countedList.add(bt);
-			}
-		}
-
-		
-		//arrange counted List in decreasing count
-		Comparator<BookTransaction> myList = Comparator.comparing(BookTransaction :: getId);
-		Collections.sort(countedList, myList);
-		Collections.reverse(countedList);
-		//set rank in place of id's
-		for (int i = 0; i < countedList.size(); i++) {
-			countedList.get(i).setId(i+1);
-		}
-		mostFamousBooksTable.getItems().setAll(new BookTransactionManagementService().getObservableBookTransactionList(countedList));
-		
-	}
-
-	
-	public void populateTodaysTransacntionTable(List<BookTransaction> list){
-		
-		todaysTransactionsTable.getItems()
-		.setAll(new BookTransactionManagementService().getObservableBookTransactionList(new BookTransactionManagementService().getSearchedBookTransactionList( Arrays.asList(new String[] {LocalDate.now().toString()}) , "search" )));
-		todaysTransactionsTableId.setSortType(SortType.DESCENDING);
-		todaysTransactionsTable.getSortOrder().setAll(todaysTransactionsTableId);
-	}
-	
-	
-	
-	public void drawChartAndSetCounts(List<BookTransaction> list) {
-		totalBooksAdded.setText("Total Books Added : " + new BookManagementService().getBooksAddedCount());
-		totalBooksAvailable.setText("Books Available : " + new BookManagementService().getBooksAvailableCount());
-		totalBooksIssuedToday.setText("Books Issued Today : " + getBooksIssuedTodayCount());
-		totalBooksReturnedToday.setText("Books Returned Today : " + getBooksReturnedTodayCount());
-		
-		
-		
-		
-		//  code  for chart
+	    barChart.getData().setAll(series);
 	}
 	
 	
@@ -249,30 +213,7 @@ public class DashboardManagementController implements Initializable{
 	}
 	
 	
-	public int getBooksIssuedTodayCount() {
-		ObservableList<BookTransaction> list =  todaysTransactionsTable.getItems();
-		int count =0;
-		for (int i = 0; i < list.size(); i++) {
-			if(list.get(i).getStatus().equalsIgnoreCase("Issued")) {
-				count++;
-            }
-		}
-		return count;
-	}
 	
-	public int getBooksReturnedTodayCount() {
-		ObservableList<BookTransaction> list =  todaysTransactionsTable.getItems();
-		int count =0;
-		for (int i = 0; i < list.size(); i++) {
-			if(list.get(i).getStatus().equalsIgnoreCase("Returned")) {
-				count++;
-            }
-		}
-
-		return count;
-
-	
-	}
 	
 	
 	

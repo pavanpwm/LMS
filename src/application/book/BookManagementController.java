@@ -93,7 +93,6 @@ public class BookManagementController implements Initializable {
 						}else {
 							refreshTab();
 						}
-			        	 
 			         }  
 			});
 		

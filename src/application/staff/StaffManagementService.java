@@ -19,7 +19,7 @@ import javafx.collections.ObservableList;
  * 
  * @author pavan BTD
  *
- Note that controller classes uses hibernate package classes like session and transaction and not of javax since javax jpa was only used to avoid using hbm.xml mapping config file
+ Note that service classes uses hibernate package classes like session and transaction and not of javax since javax jpa was only used to avoid using hbm.xml mapping config file
  *
  *
  */
@@ -32,6 +32,31 @@ public class StaffManagementService {
 	public static Staff loggedInStaff;
 	
 	
+	//add method /////////////////////////////////////////////////////////////////////////
+	
+	public boolean registerStaff(String name, String college, String email, String password, String role) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        	Staff s = getStaffByEmail(email);
+            if(s == null) {
+                transaction = session.beginTransaction();
+                Staff staff = new Staff(name, college, email, password, role);
+                session.save(staff);
+                transaction.commit();
+                return true;
+            }else {
+            	return false;
+            }
+        }
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
+	//Retrieve methods ////////////////////////////////////////////////////////////////////////////////////
+
 	public boolean isRegisterd() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
         	TypedQuery query = session.getNamedQuery("checkIfRegistered");
@@ -44,7 +69,6 @@ public class StaffManagementService {
             }
         }
 	}
-	
 	
 	public boolean login(String email, String password) {
 		 try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -61,30 +85,7 @@ public class StaffManagementService {
 	     }
 	}
 	
-	
-	
-	
-	public boolean registerStaff(String name, String college, String email, String password, String role) {
-        Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-        	// check if the eamil exists! then follow
-        	Staff s = getStaffByEmail(email);
-            if(s == null) {
-            	// start a transaction
-                transaction = session.beginTransaction();
-                Staff staff = new Staff(name, college, email, password, role);
-                // save the staff objects
-                session.save(staff);
-                // commit transaction
-                transaction.commit();
-                return true;
-            }else {
-            	return false;
-            }
-        }
-	}
-	
-	
+	// to get password and mail it.
 	public Staff getStaffByEmail(String email) {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			TypedQuery query = session.getNamedQuery("findStaffByEmail");
@@ -95,11 +96,7 @@ public class StaffManagementService {
 	        }
 			return null;
 		}
-		
 	}
-	
-	
-	
 	
 	
 	public List<Staff> getFulltStaffList() {
@@ -110,12 +107,8 @@ public class StaffManagementService {
 		return staffList;
 	}
 	
-	
-	
-	
-	public ObservableList<Staff> data;
 	public List<Staff> getObservableStaffList(List<Staff> staffListForTable) {
-	        data = FXCollections.observableArrayList();
+			ObservableList<Staff> data = FXCollections.observableArrayList();
 	        Iterator<Staff> staffListIterator = staffListForTable.iterator();
 	        while (staffListIterator.hasNext()) {
 	            Staff eachStaff = (Staff) staffListIterator.next();
@@ -124,18 +117,13 @@ public class StaffManagementService {
 	        return data;
 	}
 
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public List<Staff> getSearchedStaffList(String searchText) {
-		List<Staff> fullStaffList = getFulltStaffList();
-		List<Staff> searchedStaffList = new ArrayList<Staff>();							// always use ArrayList to constucta list else returning a list might throw NPE
-		for(int i=0; i<fullStaffList.size(); i++) {
-			if(fullStaffList.get(i).toString().contains(searchText)) {
-				searchedStaffList.add(fullStaffList.get(i));
-			}
-		}
-		return searchedStaffList;
-	}
-
+	
+	
+	
+	
+	//Delete method ////////////////////////////////////////////////////////////////////////////////////
 
 	public void deleteStaff(Staff deleteStaff) {
 		// TODO Auto-generated method stub
@@ -147,8 +135,8 @@ public class StaffManagementService {
         }
 	}
 	 
-	 
-	 
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	 
 	 
 	 
