@@ -44,7 +44,7 @@
                <font>
                   <Font size="14.0" />
                </font></TextField>
-                        <Button layoutX="1053.0" layoutY="21.0" mnemonicParsing="false" onAction="#registerNewStaff" prefHeight="33.0" prefWidth="79.0" style="-fx-background-color: lightblue; -fx-border-color: grey;" text="+ Add">
+                        <Button layoutX="1053.0" layoutY="21.0" mnemonicParsing="false" onAction="#registerNewStaff" prefHeight="33.0" prefWidth="79.0" style="-fx-background-color: lightblue;" text="+ Add">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -64,7 +64,7 @@
                   </ContextMenu>
                </contextMenu>
                         </TableView>
-            <Label fx:id="staffTabPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="292.0" layoutY="70.0" prefHeight="21.0" prefWidth="747.0" textAlignment="CENTER" textFill="#f80000">
+            <Label fx:id="staffTabPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="292.0" layoutY="70.0" prefHeight="21.0" prefWidth="747.0" textAlignment="CENTER" textFill="RED">
                <font>
                   <Font size="15.0" />
                </font>

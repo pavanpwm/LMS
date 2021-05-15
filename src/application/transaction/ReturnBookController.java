@@ -190,22 +190,6 @@ public class ReturnBookController implements Initializable{
 		}
 
 	}
-	
-
-	
-	
-	
-	/*
-	 * 
-	 * returnBookId
-	returnBookName
-	returnBookBranch
-	returnBookSem
-	returnBookBookTitle
-	returnBookShelf
-	returnBookIssueDate
-	 */
-	
  
 	
 	

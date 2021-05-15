@@ -51,7 +51,7 @@
             <Insets right="2.0" />
          </padding>
       </TableView>
-      <Label fx:id="bookTransactionTabPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="355.0" layoutY="57.0" prefHeight="21.0" prefWidth="621.0" text="Showing results for : " textFill="RED">
+      <Label fx:id="bookTransactionTabPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="355.0" layoutY="57.0" prefHeight="21.0" prefWidth="621.0" textFill="RED">
          <font>
             <Font size="15.0" />
          </font>

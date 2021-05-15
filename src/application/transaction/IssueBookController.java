@@ -127,7 +127,7 @@ public class IssueBookController implements Initializable{
 	         }  
     	});
     	
-    	DashboardManagementController.issueOrReturnStage.setOnCloseRequest(new EventHandler<WindowEvent>() { 			//get iisueStage that was show() from DashboardManagementController class
+    	DashboardManagementController.issueOrReturnStage.setOnCloseRequest(new EventHandler<WindowEvent>() { 			//get ixsueStage that was show() from DashboardManagementController class
 	          public void handle(WindowEvent we) {
 	              SettingsController.refreshed = false;
 	          }
@@ -185,7 +185,7 @@ public class IssueBookController implements Initializable{
 			}
 			
 			issueBookTable.getItems().clear();
-	    	issueBookTabPageStatus.setText("Books Successfully issued.");
+	    	issueBookTabPageStatus.setText("Books successfully issued.");
 		}
 		
 	}

@@ -6,11 +6,11 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -57,7 +57,7 @@
             <Font size="15.0" />
          </font>
       </TextField>
-      <Button defaultButton="true" layoutX="1251.0" layoutY="214.0" mnemonicParsing="false" onAction="#updateIssueBookTable" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: lightblue; -fx-border-color: grey;" text="+ Add">
+      <Button defaultButton="true" layoutX="1251.0" layoutY="214.0" mnemonicParsing="false" onAction="#updateIssueBookTable" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: lightblue;" text="+ Add">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -97,7 +97,6 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <Line endX="1205.0" layoutX="115.0" layoutY="170.0" opacity="0.33" startX="-100.0" />
       <Text layoutX="36.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Books Details" underline="true">
          <font>
             <Font size="16.0" />
@@ -143,12 +142,13 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <Label fx:id="issueBookTabPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="242.0" layoutY="181.0" prefHeight="21.0" prefWidth="844.0" text="Found book with book code : " textFill="RED">
+      <Label fx:id="issueBookTabPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="242.0" layoutY="181.0" prefHeight="21.0" prefWidth="844.0" textFill="RED">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
       <FontAwesomeIconView glyphName="USER" layoutX="13.0" layoutY="57.0" size="20" />
       <FontAwesomeIconView glyphName="BOOK" layoutX="11.0" layoutY="198.0" size="20" />
+      <Separator layoutX="29.0" layoutY="169.0" prefHeight="0.0" prefWidth="1273.0" />
    </children>
 </Pane>

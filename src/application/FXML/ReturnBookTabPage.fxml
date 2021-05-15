@@ -4,12 +4,12 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -30,7 +30,7 @@
             <Font name="Calibri Bold" size="28.0" />
          </font>
       </Text>
-      <Label fx:id="returnBookTabPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="95.0" prefHeight="21.0" prefWidth="665.0" text="N record(s) found. Please select one from below table" textFill="RED">
+      <Label fx:id="returnBookTabPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="95.0" prefHeight="21.0" prefWidth="665.0" textFill="RED">
          <font>
             <Font size="15.0" />
          </font>
@@ -68,7 +68,6 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Text>
-      <Line endX="318.0" layoutX="992.0" layoutY="352.0" opacity="0.33" startX="-287.0" />
       <Text layoutX="703.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remarks : " wrappingWidth="92.27734252810478">
          <font>
             <Font name="System Bold" size="16.0" />
@@ -84,7 +83,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Line endX="-100.0" endY="577.0" layoutX="788.0" layoutY="56.0" opacity="0.29" startX="-100.0" />
       <Label layoutX="705.0" layoutY="129.0" prefHeight="25.0" prefWidth="56.0" text="Name : ">
          <font>
             <Font size="16.0" />
@@ -120,40 +118,43 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="returnBookIssueDate" layoutX="887.0" layoutY="304.0" prefHeight="25.0" prefWidth="422.0" text="|">
+      <Label fx:id="returnBookIssueDate" layoutX="887.0" layoutY="304.0" prefHeight="25.0" prefWidth="422.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="returnBookShelf" layoutX="887.0" layoutY="274.0" prefHeight="25.0" prefWidth="422.0" text="|">
+      <Label fx:id="returnBookShelf" layoutX="887.0" layoutY="274.0" prefHeight="25.0" prefWidth="422.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="returnBookBookTitle" layoutX="887.0" layoutY="238.0" prefHeight="25.0" prefWidth="422.0" text="|">
+      <Label fx:id="returnBookBookTitle" layoutX="887.0" layoutY="238.0" prefHeight="25.0" prefWidth="422.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="returnBookSem" layoutX="887.0" layoutY="200.0" prefHeight="25.0" prefWidth="422.0" text="|">
+      <Label fx:id="returnBookSem" layoutX="887.0" layoutY="200.0" prefHeight="25.0" prefWidth="422.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="returnBookBranch" layoutX="887.0" layoutY="165.0" prefHeight="25.0" prefWidth="422.0" text="|">
+      <Label fx:id="returnBookBranch" layoutX="887.0" layoutY="165.0" prefHeight="25.0" prefWidth="422.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="returnBookName" layoutX="887.0" layoutY="129.0" prefHeight="25.0" prefWidth="422.0" text="|">
+      <Label fx:id="returnBookName" layoutX="887.0" layoutY="129.0" prefHeight="25.0" prefWidth="422.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="returnBookId" layoutX="887.0" layoutY="93.0" prefHeight="25.0" prefWidth="422.0" text="|">
+      <Label fx:id="returnBookId" layoutX="887.0" layoutY="93.0" prefHeight="25.0" prefWidth="422.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
+      <Separator layoutX="683.0" layoutY="65.0" orientation="VERTICAL" prefHeight="562.0" prefWidth="4.0" />
+      <Separator prefWidth="200.0" />
+      <Separator layoutX="706.0" layoutY="350.0" prefHeight="3.0" prefWidth="598.0" />
    </children>
 </Pane>

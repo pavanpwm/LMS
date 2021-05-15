@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -40,58 +46,251 @@
               <fx:include fx:id="staffTabPage" source="StaffTabPage.fxml" />
             </content>
           </Tab>
-          <Tab text="Personal Settings">
+          <Tab text="Settings          ">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Pane layoutX="492.0" layoutY="83.0" prefHeight="406.0" prefWidth="360.0" style="-fx-background-color: white; -fx-border-color: grey; -fx-border-radius: 5px;">
+                        <Pane layoutX="28.0" layoutY="21.0" prefHeight="320.0" prefWidth="517.0">
                            <children>
-                              <Text layoutX="25.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Name : ">
+                              <Text layoutX="13.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Name : ">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="settingsPageName" layoutX="25.0" layoutY="107.0" prefHeight="25.0" prefWidth="310.0">
+                              <TextField fx:id="settingsPageName" layoutX="157.0" layoutY="69.0" prefHeight="30.0" prefWidth="306.0">
                                  <font>
                                     <Font size="14.0" />
                                  </font></TextField>
-                              <Text layoutX="25.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Email :">
+                              <Text layoutX="13.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Email :">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="settingsPageEmail" layoutX="25.0" layoutY="175.0" prefHeight="25.0" prefWidth="310.0">
+                              <TextField fx:id="settingsPageEmail" layoutX="157.0" layoutY="110.0" prefHeight="30.0" prefWidth="306.0">
                                  <font>
                                     <Font size="14.0" />
                                  </font></TextField>
-                              <Text layoutX="25.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Password : ">
+                              <Text layoutX="14.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Password : ">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="setingsPagePassword" layoutX="25.0" layoutY="244.0" prefHeight="25.0" prefWidth="310.0">
+                              <TextField fx:id="setingsPagePassword" layoutX="157.0" layoutY="152.0" prefHeight="30.0" prefWidth="307.0">
                                  <font>
                                     <Font size="14.0" />
                                  </font></TextField>
-                              <Text layoutX="109.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Personal Details">
+                              <Text layoutX="13.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Personal Details">
                                  <font>
                                     <Font name="System Bold" size="16.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="71.0" layoutY="305.0" mnemonicParsing="false" onAction="#updatePersonalSettings" prefHeight="31.0" prefWidth="219.0" style="-fx-background-color: lightgreen; -fx-border-color: grey;" text="Update">
+                              <Button layoutX="337.0" layoutY="199.0" mnemonicParsing="false" onAction="#updatePersonalSettings" prefHeight="33.0" prefWidth="126.0" style="-fx-background-color: lightgreen;" text="Update">
                                  <font>
-                                    <Font name="System Bold" size="15.0" />
+                                    <Font size="14.0" />
                                  </font>
                               </Button>
-                              <Label fx:id="setingsPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="31.0" layoutY="350.0" prefHeight="17.0" prefWidth="303.0" textAlignment="CENTER" textFill="#f20303" />
                            </children>
                         </Pane>
+                        <Pane layoutX="655.0" layoutY="36.0" prefHeight="196.0" prefWidth="670.0">
+                           <children>
+                              <Text layoutX="17.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backup and Restore">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="17.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backup Database">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Button layoutX="175.0" layoutY="57.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="Select backup folder">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Text layoutX="17.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restore Databse">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Button layoutX="175.0" layoutY="105.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: lightblue;" text="Select database file">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Text layoutX="20.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clear Tables">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <CheckBox layoutX="175.0" layoutY="153.0" mnemonicParsing="false" text="Transactions" />
+                              <CheckBox layoutX="293.0" layoutY="153.0" mnemonicParsing="false" text="Books" />
+                              <CheckBox layoutX="381.0" layoutY="153.0" mnemonicParsing="false" text="Students" />
+                              <Button layoutX="482.0" layoutY="145.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: FFFF33;" text="Clear selected">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="655.0" layoutY="253.0" prefHeight="82.0" prefWidth="686.0">
+                           <children>
+                              <Text layoutX="20.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clear Database and Reset Everything">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Button layoutX="479.0" layoutY="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: FF3333; -fx-text-fill: white;" text="Reset">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Label fx:id="setingsPageStatus12" alignment="CENTER" contentDisplay="CENTER" layoutX="417.0" layoutY="376.0" prefHeight="28.0" prefWidth="376.0" textAlignment="CENTER" textFill="#f20303" />
+                        <Separator layoutX="581.0" layoutY="39.0" orientation="VERTICAL" prefHeight="272.0" prefWidth="6.0" />
+                        <Separator layoutX="794.0" layoutY="248.0" prefHeight="8.0" prefWidth="396.0" />
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="Help             ">
+          <Tab text="About &amp; Help             ">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane layoutX="14.0" layoutY="14.0" prefHeight="616.0" prefWidth="645.0" style="-fx-border-color: grey;">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="612.0" prefWidth="641.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <Text layoutX="14.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About" underline="true" wrappingWidth="170.13671875">
+                                       <font>
+                                          <Font name="System Bold" size="17.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Product : GECR Library Management System">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A tailored lirary managemnt software to suite most if not all needs of Govenment Engineering College Raichur." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Features:" textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A standalone windows sofatware that is easy to naviagte and use." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Can add books, students and staff members." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Two roles avaiable. Admin and staff." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Students details can be imported from excel sheet download from google forms." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Can add book details such as title, shelf number and code." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We can use Barcode Scanner to read barcodes printed on books." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backup and restore of  of database is available." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin can modify staff, and clear tables. While staff only has permission to make a transaction." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Can export transaction table in PDF format." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shows transaction analytics such as popular books and monthly transactions." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100% free of cost. " textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About Us">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="14.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GECR LMS was developed as a final year project in the year of 2021 by a team of three namely, Jabbar, Mallappa and Pavan from Electronics and Communication department of Government Engineering College Raichur." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Separator layoutX="205.0" layoutY="386.0" prefWidth="200.0" />
+                                    <Text layoutX="14.0" layoutY="558.0" strokeType="OUTSIDE" strokeWidth="0.0" text="For any queries you can directly mail us at  :" textAlignment="JUSTIFY" wrappingWidth="275.10546875">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="289.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="gecr.library.mail.service@gmail.com" underline="true" wrappingWidth="275.10546875">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
+                        <ScrollPane layoutX="671.0" layoutY="14.0" prefHeight="616.0" prefWidth="645.0" style="-fx-border-color: grey;">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="611.0" prefWidth="641.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <Text layoutX="20.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Help" underline="true" wrappingWidth="170.13671875">
+                                       <font>
+                                          <Font name="System Bold" size="17.0" />
+                                       </font>
+                                    </Text>
+                                    <Accordion layoutX="91.0" layoutY="58.0" />
+                                    <Text layoutX="20.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All frequently asked queries such as how to register, login, forgot password, add, edit &amp; delete, books, student and staffs, issue and return books are addressed in below youtube videos. Please click on the link or scan the QR code to open the playlist in your mobile phone." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="211.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Hyperlink layoutX="265.0" layoutY="285.0" text="https://youtube.com" />
+                                    <Text layoutX="30.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="For any other technical help, you can post an issue on the official github repository. We will try to reach you in 24 hrs." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Hyperlink layoutX="239.0" layoutY="555.0" text="https://github.com/pavanpwm" />
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="224.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="221.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                     </children></AnchorPane>
             </content>
           </Tab>
         </tabs>
@@ -112,6 +311,7 @@
          </font></Label>
       <Label fx:id="staffId" layoutX="14.0" layoutY="724.0" prefHeight="17.0" prefWidth="86.0" visible="false" />
       <FontAwesomeIconView glyphName="INSTITUTION" layoutX="4.0" layoutY="19.0" size="17" />
+      <Hyperlink text="Hyperlink" />
      
    </children>
 </Pane>
