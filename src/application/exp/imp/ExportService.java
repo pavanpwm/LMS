@@ -3,6 +3,10 @@ package application.exp.imp;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -13,6 +17,7 @@ import be.quodlibet.boxable.BaseTable;
 import be.quodlibet.boxable.Cell;
 import be.quodlibet.boxable.Row;
 import be.quodlibet.boxable.datatable.DataTable;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -67,7 +72,7 @@ public class ExportService {
     }
 	
 	
-	public static boolean initPDFExprot(Stage stage, List<List> data) {
+	public static boolean initPDFExport(Stage stage, List<List> data) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save as PDF");
         fileChooser.setInitialFileName("LMS");
@@ -75,8 +80,10 @@ public class ExportService {
                 = new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf");
         fileChooser.getExtensionFilters().add(extFilter);
         File saveLoc = fileChooser.showSaveDialog(stage);
-        return ExportService.exportToPdf(data, saveLoc, ExportService.Orientation.LANDSCAPE);
+        return exportToPdf(data, saveLoc, ExportService.Orientation.LANDSCAPE);
 
     }
+	
+	
 
 }

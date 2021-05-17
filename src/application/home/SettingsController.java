@@ -1,17 +1,25 @@
 package application.home;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import application.staff.StaffManagementService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class SettingsController implements Initializable {
 	
@@ -30,6 +38,13 @@ public class SettingsController implements Initializable {
 	public TextField setingsPagePassword;
 	@FXML
 	public Label setingsPageStatus;
+	@FXML
+	public CheckBox transactions;
+	@FXML
+	public CheckBox books;
+	@FXML
+	public CheckBox students;	
+	
 	
 	@FXML
 	public Tab dashboardTab;
@@ -114,8 +129,38 @@ public class SettingsController implements Initializable {
 		settingsPageEmail.clear();
 		setingsPagePassword.clear();
 	}
+	
+	
+	
+	public void backupDatabase(ActionEvent event) {
+		try {
+			SettingsPageService.backupDb((Stage) staffId.getScene().getWindow());
+			setingsPageStatus.setText("Database backup success.");
+		} catch (Exception e) {
+			setingsPageStatus.setText("Error! please try again.");
+		}
+	}
 
-
+	public void restoreDatabase() {
+		try {
+			SettingsPageService.restoreDb((Stage) staffId.getScene().getWindow());
+		} catch (Exception e) {
+			setingsPageStatus.setText("Error! please try again.");
+		}
+	}
+	
+	public void clearTables() {
+		SettingsPageService.clearTables((Stage) staffId.getScene().getWindow(), transactions, books, students);
+		setingsPageStatus.setText("Cleared selected tables");
+	}
+	
+	public void resetEverything() {
+		try {
+			SettingsPageService.deleteDbAndRestart((Stage) staffId.getScene().getWindow());
+		} catch (Exception e){
+			setingsPageStatus.setText("Error! please try again.");
+		}
+	}
 	
 	
 	

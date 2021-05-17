@@ -213,7 +213,7 @@ public class BookTransactionManagementController implements Initializable {
             row.add(info.getRemarks());
             printData.add(row);
         }
-        if (ExportService.initPDFExprot( (Stage) bookTransactionTable.getScene().getWindow(), printData)) {
+        if (ExportService.initPDFExport( (Stage) bookTransactionTable.getScene().getWindow(), printData)) {
 			bookTransactionTabPageStatus.setText("PDF downloaded successfully.");
 		}else {
 			bookTransactionTabPageStatus.setText("Couldnt download the PDF!");

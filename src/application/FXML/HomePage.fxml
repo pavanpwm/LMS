@@ -21,7 +21,7 @@
    <children>
       <TabPane fx:id="tab" layoutY="31.0" prefHeight="701.0" prefWidth="1330.0" style="-fx-background-color: white;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab fx:id="dashboardTab" text="Home         ">
+          <Tab fx:id="dashboardTab" text="Home     ">
             <content>
               <fx:include fx:id="dashboardTabPage" source="DashboardTabPage.fxml" />
             </content>
@@ -46,11 +46,11 @@
               <fx:include fx:id="staffTabPage" source="StaffTabPage.fxml" />
             </content>
           </Tab>
-          <Tab text="Settings          ">
+          <Tab text="Settings     ">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Pane layoutX="28.0" layoutY="21.0" prefHeight="320.0" prefWidth="517.0">
+                        <Pane layoutX="24.0" layoutY="106.0" prefHeight="288.0" prefWidth="517.0">
                            <children>
                               <Text layoutX="13.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Name : ">
                                  <font>
@@ -91,7 +91,7 @@
                               </Button>
                            </children>
                         </Pane>
-                        <Pane layoutX="655.0" layoutY="36.0" prefHeight="196.0" prefWidth="670.0">
+                        <Pane layoutX="655.0" layoutY="113.0" prefHeight="196.0" prefWidth="670.0">
                            <children>
                               <Text layoutX="17.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backup and Restore">
                                  <font>
@@ -103,17 +103,17 @@
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="175.0" layoutY="57.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="Select backup folder">
+                              <Button layoutX="175.0" layoutY="57.0" mnemonicParsing="false" onAction="#backupDatabase" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="Select backup folder">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Button>
-                              <Text layoutX="17.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restore Databse">
+                              <Text layoutX="17.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restore Database">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="175.0" layoutY="105.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: lightblue;" text="Select database file">
+                              <Button layoutX="175.0" layoutY="105.0" mnemonicParsing="false" onAction="#restoreDatabase" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: lightblue;" text="Select database file">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -123,37 +123,39 @@
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <CheckBox layoutX="175.0" layoutY="153.0" mnemonicParsing="false" text="Transactions" />
-                              <CheckBox layoutX="293.0" layoutY="153.0" mnemonicParsing="false" text="Books" />
-                              <CheckBox layoutX="381.0" layoutY="153.0" mnemonicParsing="false" text="Students" />
-                              <Button layoutX="482.0" layoutY="145.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: FFFF33;" text="Clear selected">
+                              <CheckBox fx:id="transactions" layoutX="175.0" layoutY="153.0" mnemonicParsing="false" text="Transactions" />
+                              <CheckBox fx:id="books" layoutX="293.0" layoutY="153.0" mnemonicParsing="false" text="Books" />
+                              <CheckBox fx:id="students" layoutX="381.0" layoutY="153.0" mnemonicParsing="false" text="Students" />
+                              <Button layoutX="482.0" layoutY="145.0" mnemonicParsing="false" onAction="#clearTables" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: FFFF33;" text="Clear selected">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Button>
                            </children>
                         </Pane>
-                        <Pane layoutX="655.0" layoutY="253.0" prefHeight="82.0" prefWidth="686.0">
+                        <Pane layoutX="655.0" layoutY="313.0" prefHeight="82.0" prefWidth="686.0">
                            <children>
                               <Text layoutX="20.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clear Database and Reset Everything">
                                  <font>
                                     <Font name="System Bold" size="16.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="479.0" layoutY="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: FF3333; -fx-text-fill: white;" text="Reset">
+                              <Button layoutX="479.0" layoutY="25.0" mnemonicParsing="false" onAction="#resetEverything" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: FF3333; -fx-text-fill: white;" text="Reset">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Button>
                            </children>
                         </Pane>
-                        <Label fx:id="setingsPageStatus12" alignment="CENTER" contentDisplay="CENTER" layoutX="417.0" layoutY="376.0" prefHeight="28.0" prefWidth="376.0" textAlignment="CENTER" textFill="#f20303" />
-                        <Separator layoutX="581.0" layoutY="39.0" orientation="VERTICAL" prefHeight="272.0" prefWidth="6.0" />
-                        <Separator layoutX="794.0" layoutY="248.0" prefHeight="8.0" prefWidth="396.0" />
+                        <Label fx:id="setingsPageStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="435.0" layoutY="395.0" prefHeight="28.0" prefWidth="376.0" textAlignment="CENTER" textFill="#f20303" />
+                        <Separator layoutX="623.0" layoutY="123.0" orientation="VERTICAL" prefHeight="272.0" prefWidth="6.0" />
+                        <Separator layoutX="800.0" layoutY="310.0" prefHeight="8.0" prefWidth="396.0" />
+                        <Separator layoutX="19.0" layoutY="91.0" prefHeight="15.0" prefWidth="1299.0" />
+                        <Separator layoutX="19.0" layoutY="426.0" prefHeight="15.0" prefWidth="1299.0" />
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="About &amp; Help             ">
+          <Tab text="About &amp; Help       ">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -246,7 +248,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <Separator layoutX="205.0" layoutY="386.0" prefWidth="200.0" />
+                                    <Separator layoutX="205.0" layoutY="399.0" prefWidth="200.0" />
                                     <Text layoutX="14.0" layoutY="558.0" strokeType="OUTSIDE" strokeWidth="0.0" text="For any queries you can directly mail us at  :" textAlignment="JUSTIFY" wrappingWidth="275.10546875">
                                        <font>
                                           <Font size="14.0" />
@@ -311,7 +313,6 @@
          </font></Label>
       <Label fx:id="staffId" layoutX="14.0" layoutY="724.0" prefHeight="17.0" prefWidth="86.0" visible="false" />
       <FontAwesomeIconView glyphName="INSTITUTION" layoutX="4.0" layoutY="19.0" size="17" />
-      <Hyperlink text="Hyperlink" />
      
    </children>
 </Pane>
