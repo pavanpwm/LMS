@@ -11,6 +11,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -123,9 +124,18 @@
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <CheckBox fx:id="transactions" layoutX="175.0" layoutY="153.0" mnemonicParsing="false" text="Transactions" />
-                              <CheckBox fx:id="books" layoutX="293.0" layoutY="153.0" mnemonicParsing="false" text="Books" />
-                              <CheckBox fx:id="students" layoutX="381.0" layoutY="153.0" mnemonicParsing="false" text="Students" />
+                              <CheckBox fx:id="transactions" layoutX="175.0" layoutY="153.0" mnemonicParsing="false" text="Transactions">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></CheckBox>
+                              <CheckBox fx:id="books" layoutX="293.0" layoutY="153.0" mnemonicParsing="false" text="Books">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></CheckBox>
+                              <CheckBox fx:id="students" layoutX="381.0" layoutY="153.0" mnemonicParsing="false" text="Students">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></CheckBox>
                               <Button layoutX="482.0" layoutY="145.0" mnemonicParsing="false" onAction="#clearTables" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: FFFF33;" text="Clear selected">
                                  <font>
                                     <Font size="14.0" />
@@ -173,7 +183,7 @@
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Text>
-                                    <Text layoutX="14.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A tailored lirary managemnt software to suite most if not all needs of Govenment Engineering College Raichur." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                    <Text layoutX="14.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A tailored library managemnt software to suite most if not all needs of libray of Govenment Engineering College Raichur." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -233,7 +243,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <Text layoutX="14.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100% free of cost. " textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                    <Text layoutX="14.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Free of cost. " textAlignment="JUSTIFY" wrappingWidth="581.10546875">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -278,16 +288,22 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="211.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Hyperlink layoutX="265.0" layoutY="285.0" text="https://youtube.com" />
+                                    <ImageView fitHeight="153.0" fitWidth="203.0" layoutX="234.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/youtubeQR.png" />
+                                       </image></ImageView>
+                                    <Hyperlink layoutX="114.0" layoutY="283.0" text="https://www.youtube.com/playlist?list=PLvx8YiNTxEsQG2Rw2dzwDZmugNz_PZyEp" />
                                     <Text layoutX="30.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="For any other technical help, you can post an issue on the official github repository. We will try to reach you in 24 hrs." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <Hyperlink layoutX="239.0" layoutY="555.0" text="https://github.com/pavanpwm" />
+                                    <Hyperlink layoutX="194.0" layoutY="555.0" text="https://github.com/pavanpwm/LMS/issues" />
                                     <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="224.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" />
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="221.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="145.0" fitWidth="175.0" layoutX="238.0" layoutY="387.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/githubQR.png" />
+                                       </image></ImageView>
                                  </children>
                               </AnchorPane>
                            </content>
