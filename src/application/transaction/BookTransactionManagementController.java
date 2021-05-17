@@ -193,7 +193,13 @@ public class BookTransactionManagementController implements Initializable {
 	
 	//method to export / print bookTransactions displayed on table
     public void exportAsPDF(MouseEvent event) {
-		bookTransactionTabPageStatus.setText("Downloading PDF...... Please wait!");
+    	bookTransactionTabPageStatus.setText("Downloading PDF...... Please wait!");
+    	int tableCountBefore = bookTransactionTable.getItems().size(); 
+    	populateBookTransactionTable();
+    	while (tableCountBefore < bookTransactionTable.getItems().size()) {
+    		tableCountBefore = bookTransactionTable.getItems().size(); 
+        	populateBookTransactionTable();			
+		}
     	ObservableList<BookTransaction> list = bookTransactionTable.getItems();
         List<List> printData = new ArrayList<>();
         String[] headers = {"Index", "   USN   ", "    Name    ", " Phone ", "Branch", "Sem", " Book Code ", "           Title          ", "IssueDate", "ReturnDate", "Remarks"};

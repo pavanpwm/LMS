@@ -20,7 +20,7 @@ import javafx.collections.ObservableList;
 public class BookTransactionManagementService {
 	
 	public static int lastPageIndex = 0;
-	public static int pageSize = 50;
+	public static int pageSize = 5;
 	public static String searchText = "";
 	public static String searchType = "";
 	
