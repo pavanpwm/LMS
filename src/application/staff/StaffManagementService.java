@@ -102,7 +102,7 @@ public class StaffManagementService {
 	public List<Staff> getFulltStaffList() {
 		List<Staff> staffList;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			staffList = session.createQuery("from Staff s", Staff.class).list();
+			staffList = session.createQuery("from Staff s where s.role='staff'", Staff.class).list();
         }
 		return staffList;
 	}

@@ -115,8 +115,6 @@
                         <MenuItem mnemonicParsing="false" onAction="#editStudent" text="Edit Student" />
                         <MenuItem disable="true" mnemonicParsing="false" text="-----------------" />
                       <MenuItem mnemonicParsing="false" onAction="#deleteStudent" text="Delete Student" />
-                        <MenuItem disable="true" mnemonicParsing="false" text="-----------------" />
-                        <MenuItem mnemonicParsing="false" onAction="#confirmDeleteAllStudents" text="Delete All Students" />
                     </items>
                   </ContextMenu>
                </contextMenu>

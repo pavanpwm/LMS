@@ -68,19 +68,19 @@
       </AnchorPane>
       <Pane layoutX="-1.0" prefHeight="493.0" prefWidth="596.0" style="-fx-background-color: #b897e5;">
          <children>
-            <Text fill="WHITE" layoutX="74.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Library Management System" textAlignment="CENTER">
+            <Text fill="WHITE" layoutX="58.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIBRARY MANAGEMENT SYSTEM" textAlignment="CENTER">
                <font>
-                  <Font name="SansSerif Bold" size="29.0" />
+                  <Font name="Bookman Old Style Bold" size="29.0" />
                </font>
             </Text>
-            <ImageView fitHeight="124.0" fitWidth="149.0" layoutX="210.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="124.0" fitWidth="149.0" layoutX="236.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/icon.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" layoutX="74.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to LMS, a simple, easy-to-use, specially tailored library mangement software for Government Engineering College of Raichur." textAlignment="JUSTIFY" wrappingWidth="465.99998458474874">
+            <Text fill="WHITE" layoutX="79.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to LMS, a simple, easy-to-use, specially tailored library mangement software for the library of Government Engineering College of Raichur." textAlignment="JUSTIFY" wrappingWidth="465.99998458474874">
                <font>
-                  <Font name="SansSerif Regular" size="19.0" />
+                  <Font name="Book Antiqua" size="19.0" />
                </font>
             </Text>
          </children>

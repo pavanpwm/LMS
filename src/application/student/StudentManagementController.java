@@ -224,31 +224,31 @@ public class StudentManagementController implements Initializable {
 		
 		
 	
-	//method to delete all students visible in the table
-	public void confirmDeleteAllStudents(ActionEvent event) throws IOException {
-		Stage primaryStage = (Stage) studentTabPage.getScene().getWindow();
-		Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"");
-		alert.initModality(Modality.APPLICATION_MODAL);
-		alert.initOwner(primaryStage);
-		alert.getDialogPane().setHeaderText("Delete All!!");
-		alert.getDialogPane().setContentText("Are you sure you want to delete all the entries currently displayed on the table??");
-		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == ButtonType.OK) {
-			deleteAllStudents();
-		}
-	}
+//	//method to delete all students visible in the table
+//	public void confirmDeleteAllStudents(ActionEvent event) throws IOException {
+//		Stage primaryStage = (Stage) studentTabPage.getScene().getWindow();
+//		Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"");
+//		alert.initModality(Modality.APPLICATION_MODAL);
+//		alert.initOwner(primaryStage);
+//		alert.getDialogPane().setHeaderText("Delete All!!");
+//		alert.getDialogPane().setContentText("Are you sure you want to delete all the entries currently displayed on the table??");
+//		Optional<ButtonType> result = alert.showAndWait();
+//		if (result.get() == ButtonType.OK) {
+//			deleteAllStudents();
+//		}
+//	}
 	
 	
-	public void deleteAllStudents() {
-		StudentManagementService manager = new StudentManagementService();
-		ObservableList<Student> studentListOnTable =  studentTable.getItems();
-		studentListOnTable.forEach(student->{
-    		Student deleteStudent = new Student(student.getId(), student.getName(), student.getBranch(), student.getSem(), student.getUsn(), student.getEmail(), student.getMobile());
-    		manager.deleteStudent(deleteStudent);
-    	});
-		refreshTab();
-		studentTabPageStatus.setText("Deleted displayed student entries");
-	}
+//	public void deleteAllStudents() {
+//		StudentManagementService manager = new StudentManagementService();
+//		ObservableList<Student> studentListOnTable =  studentTable.getItems();
+//		studentListOnTable.forEach(student->{
+//    		Student deleteStudent = new Student(student.getId(), student.getName(), student.getBranch(), student.getSem(), student.getUsn(), student.getEmail(), student.getMobile());
+//    		manager.deleteStudent(deleteStudent);
+//    	});
+//		refreshTab();
+//		studentTabPageStatus.setText("Deleted displayed student entries");
+//	}
 	
 	
 	
