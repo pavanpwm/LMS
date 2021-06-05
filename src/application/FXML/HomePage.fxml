@@ -92,7 +92,7 @@
                               </Button>
                            </children>
                         </Pane>
-                        <Pane layoutX="655.0" layoutY="113.0" prefHeight="196.0" prefWidth="670.0">
+                        <Pane fx:id="backupPane" layoutX="655.0" layoutY="113.0" prefHeight="196.0" prefWidth="670.0">
                            <children>
                               <Text layoutX="17.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backup and Restore">
                                  <font>
@@ -143,7 +143,7 @@
                               </Button>
                            </children>
                         </Pane>
-                        <Pane layoutX="655.0" layoutY="313.0" prefHeight="82.0" prefWidth="686.0">
+                        <Pane fx:id="resetPane" layoutX="655.0" layoutY="313.0" prefHeight="82.0" prefWidth="686.0">
                            <children>
                               <Text layoutX="20.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clear Database and Reset Everything">
                                  <font>
@@ -173,7 +173,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="612.0" prefWidth="641.0" style="-fx-background-color: white;">
                                  <children>
-                                    <Text layoutX="14.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About" underline="true" wrappingWidth="170.13671875">
+                                    <Text layoutX="14.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ABOUT" underline="true" wrappingWidth="170.13671875">
                                        <font>
                                           <Font name="System Bold" size="17.0" />
                                        </font>
@@ -208,42 +208,42 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <Text layoutX="14.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Students details can be imported from excel sheet download from google forms." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                    <Text layoutX="14.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Students details can be imported from excel sheet download from google forms." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <Text layoutX="14.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Can add book details such as title, shelf number and code." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                    <Text layoutX="14.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Can add book details such as title, shelf number and code." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <Text layoutX="14.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We can use Barcode Scanner to read barcodes printed on books." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                    <Text layoutX="14.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We can use Barcode Scanner to read barcodes printed on books." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <Text layoutX="14.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backup and restore of  of database is available." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                    <Text layoutX="14.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backup and restore of  of database is available." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <Text layoutX="14.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin can modify staff, and clear tables. While staff only has permission to make a transaction." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                    <Text layoutX="14.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin can modify staff, and clear tables. While staff only has permission to make a transaction." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <Text layoutX="14.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Can export transaction table in PDF format." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                    <Text layoutX="14.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Can export transaction table in PDF format." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <Text layoutX="14.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shows transaction analytics such as popular books and monthly transactions." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                    <Text layoutX="14.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shows transaction analytics such as popular books and monthly transactions." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <Text layoutX="14.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Free of cost. " textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                    <Text layoutX="14.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Free of lifetime. " textAlignment="JUSTIFY" wrappingWidth="581.10546875">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -269,6 +269,11 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
+                                    <Text layoutX="14.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RFID login for both admin and staff providing extra security and multiple ways to login." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
                                  </children>
                               </AnchorPane>
                           </content>
@@ -277,7 +282,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="611.0" prefWidth="641.0" style="-fx-background-color: white;">
                                  <children>
-                                    <Text layoutX="20.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Help" underline="true" wrappingWidth="170.13671875">
+                                    <Text layoutX="20.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELP" underline="true" wrappingWidth="170.13671875">
                                        <font>
                                           <Font name="System Bold" size="17.0" />
                                        </font>

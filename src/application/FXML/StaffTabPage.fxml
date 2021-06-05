@@ -22,29 +22,29 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="newStaffName" layoutX="123.0" layoutY="25.0" prefHeight="25.0" prefWidth="200.0">
+                        <TextField fx:id="newStaffName" layoutX="127.0" layoutY="25.0" prefHeight="30.0" prefWidth="178.0">
                <font>
                   <Font size="14.0" />
                </font></TextField>
-                        <Text layoutX="336.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email : ">
+                        <Text layoutX="313.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email : ">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="newStaffEmail" layoutX="389.0" layoutY="25.0" prefHeight="25.0" prefWidth="347.0">
+                        <TextField fx:id="newStaffEmail" layoutX="363.0" layoutY="25.0" prefHeight="30.0" prefWidth="278.0">
                <font>
                   <Font size="14.0" />
                </font></TextField>
-                        <Text layoutX="757.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password : ">
+                        <Text layoutX="646.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password : ">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="newStaffPassword" layoutX="835.0" layoutY="25.0" prefHeight="25.0" prefWidth="188.0">
+                        <TextField fx:id="newStaffPassword" layoutX="725.0" layoutY="25.0" prefHeight="25.0" prefWidth="188.0">
                <font>
                   <Font size="14.0" />
                </font></TextField>
-                        <Button layoutX="1053.0" layoutY="21.0" mnemonicParsing="false" onAction="#registerNewStaff" prefHeight="33.0" prefWidth="79.0" style="-fx-background-color: lightblue;" text="+ Add">
+                        <Button layoutX="1237.0" layoutY="24.0" mnemonicParsing="false" onAction="#registerNewStaff" prefHeight="33.0" prefWidth="79.0" style="-fx-background-color: lightblue;" text="+ Add">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -53,8 +53,9 @@
                           <columns>
                             <TableColumn fx:id="staffColumnId" editable="false" prefWidth="93.0" resizable="false" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Index" />
                             <TableColumn fx:id="staffColumnName" editable="false" prefWidth="297.0" resizable="false" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Name" />
-                              <TableColumn fx:id="staffColumnEmail" editable="false" prefWidth="536.0" resizable="false" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Email" />
-                              <TableColumn fx:id="staffColumnPassword" editable="false" prefWidth="369.0" resizable="false" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Password" />
+                              <TableColumn fx:id="staffColumnEmail" editable="false" prefWidth="436.0" resizable="false" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Email" />
+                              <TableColumn fx:id="staffColumnPassword" editable="false" prefWidth="246.0" resizable="false" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="Password" />
+                  <TableColumn fx:id="staffColumnRfid" editable="false" prefWidth="225.0" resizable="false" style="-fx-font-size: 16; -fx-alignment: CENTER;" text="RFID" />
                           </columns>
                <contextMenu>
                   <ContextMenu>
@@ -70,7 +71,16 @@
                </font>
             </Label>
             <FontAwesomeIconView glyphName="USER" layoutX="13.0" layoutY="44.0" size="20" />
+            <Text layoutX="925.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RFID : ">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <TextField fx:id="newStaffRfid" layoutX="971.0" layoutY="24.0" prefHeight="30.0" prefWidth="237.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
                      </children></AnchorPane>
-      <FontAwesomeIconView />
    </children>
 </Pane>

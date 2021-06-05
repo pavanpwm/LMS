@@ -84,13 +84,10 @@
                                           </Label>
             <CheckBox fx:id="bookRequestCheckBox" layoutX="14.0" layoutY="134.0" mnemonicParsing="false" onAction="#ifBookRequest" text="Add as a book request" />
             <FontAwesomeIconView glyphName="BARCODE" layoutX="101.0" layoutY="27.0" size="25" wrappingWidth="27.0" />
-            <Label fx:id="tableCountStatus" alignment="CENTER_RIGHT" layoutX="1055.0" layoutY="172.0" prefHeight="30.0" prefWidth="184.0" textAlignment="RIGHT" />
-            <Button layoutX="1249.0" layoutY="174.0" mnemonicParsing="false" onAction="#populateBookTable" style="-fx-background-color: lightblue;" text="Load more">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
+            <Label fx:id="tableCountStatus" alignment="CENTER_RIGHT" layoutX="1054.0" layoutY="172.0" prefHeight="30.0" prefWidth="184.0" textAlignment="RIGHT" />
             <FontAwesomeIconView glyphName="SEARCH" layoutX="14.0" layoutY="194.0" size="24" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text layoutX="1241.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(scroll for more)" wrappingWidth="89.56249922513962" />
                                        </children></AnchorPane>
    </children>
 </Pane>

@@ -21,6 +21,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 
@@ -68,7 +69,6 @@ public class BookManagementController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		bookColumnId.setCellValueFactory(new PropertyValueFactory<Book, Integer>("id"));
 		bookColumnCode.setCellValueFactory(new PropertyValueFactory<Book, String>("code"));
 		bookColumnTitle.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
@@ -102,6 +102,13 @@ public class BookManagementController implements Initializable {
 				refreshTab();
 			}
 		});
+		
+		bookTable.addEventFilter(ScrollEvent.ANY, new EventHandler<ScrollEvent>() {
+            @Override
+            public void handle(ScrollEvent scrollEvent) {
+               populateBookTable();
+            }
+        });
 
 	}
 	
@@ -131,7 +138,6 @@ public class BookManagementController implements Initializable {
 		//method for books request checkBox
 		public void ifBookRequest(ActionEvent event) {
 			if (bookRequestCheckBox.isSelected()) {
-				//clear text fields and disable e=============de.setText("");
 				newBookShelf.setText("");
 				bookTabPageStatus.setText("");
 				newBookCode.setDisable(true);

@@ -24,7 +24,7 @@
                   <Font size="15.0" />
                </font>
             </TextField>
-            <TextField fx:id="regCollege" layoutX="26.0" layoutY="139.0" prefHeight="44.0" prefWidth="351.0" promptText="College name">
+            <TextField fx:id="regCollege" layoutX="26.0" layoutY="127.0" prefHeight="44.0" prefWidth="351.0" promptText="College name">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor>
@@ -32,7 +32,7 @@
                   <Font size="15.0" />
                </font>
             </TextField>
-            <TextField fx:id="regEmail" layoutX="26.0" layoutY="205.0" prefHeight="44.0" prefWidth="351.0" promptText="E-mail">
+            <TextField fx:id="regEmail" layoutX="26.0" layoutY="183.0" prefHeight="44.0" prefWidth="351.0" promptText="E-mail">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor>
@@ -40,7 +40,7 @@
                   <Font size="15.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="regPassword" layoutX="26.0" layoutY="272.0" prefHeight="44.0" prefWidth="351.0" promptText="Password">
+            <PasswordField fx:id="regPassword" layoutX="26.0" layoutY="238.0" prefHeight="44.0" prefWidth="351.0" promptText="Password">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor>
@@ -64,6 +64,14 @@
                   <Font name="SansSerif Regular" size="19.0" />
                </font>
             </Text>
+            <PasswordField fx:id="regRfid" layoutX="26.0" layoutY="292.0" prefHeight="44.0" prefWidth="351.0" promptText="Scan your RF-ID here">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </PasswordField>
          </children>
       </AnchorPane>
       <Pane layoutX="-1.0" prefHeight="493.0" prefWidth="596.0" style="-fx-background-color: #b897e5;">
@@ -78,7 +86,7 @@
                   <Image url="@../images/icon.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" layoutX="79.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to LMS, a simple, easy-to-use, specially tailored library mangement software for the library of Government Engineering College of Raichur." textAlignment="JUSTIFY" wrappingWidth="465.99998458474874">
+            <Text fill="WHITE" layoutX="58.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to LMS, a simple, easy-to-use, specially tailored library mangement software for the library of Government Engineering College of Raichur." textAlignment="JUSTIFY" wrappingWidth="508.10888797044754">
                <font>
                   <Font name="Book Antiqua" size="19.0" />
                </font>

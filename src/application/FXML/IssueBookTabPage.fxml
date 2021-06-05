@@ -50,8 +50,7 @@
       <TextField fx:id="issueBookBookCode" layoutX="109.0" layoutY="216.0" prefHeight="31.0" prefWidth="229.0" promptText="Scan barcode here">
          <font>
             <Font size="15.0" />
-         </font>
-      </TextField>
+         </font></TextField>
       <TextField fx:id="issueBookBookTitle" layoutX="442.0" layoutY="214.0" prefHeight="31.0" prefWidth="796.0">
          <font>
             <Font size="15.0" />

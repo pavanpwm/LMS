@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -57,6 +58,10 @@ public class SettingsController implements Initializable {
 	@FXML
 	public Tab staffManagementTab;
 	
+	
+	@FXML
+	public Pane backupPane, resetPane;
+	
 	public static boolean refreshed = false;
 	
 	
@@ -68,6 +73,8 @@ public class SettingsController implements Initializable {
 		
 		if (StaffManagementService.loggedInStaff.getRole().equalsIgnoreCase("staff")) {
 			staffManagementTab.setDisable(true);
+			backupPane.setDisable(true);
+			resetPane.setDisable(true);
 		}
 		
 		initialiseHomePage();

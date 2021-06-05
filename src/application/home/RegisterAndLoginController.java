@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -48,11 +49,15 @@ public class RegisterAndLoginController {
 	@FXML
 	private TextField regEmail;
 	@FXML
-	private TextField regPassword;
+	private PasswordField regPassword;
+	@FXML
+	private PasswordField regRfid;
+	@FXML
+	private PasswordField loginRfid;
 	@FXML
 	private TextField loginEmail;
 	@FXML
-	private TextField loginPassword;
+	private PasswordField loginPassword;
 	@FXML
 	private Label loginStatus;
 	
@@ -65,7 +70,7 @@ public class RegisterAndLoginController {
 	
 	
 	public void adminRegister(ActionEvent event) throws Exception {						// to handle exception you can wither use throws or try and  catch block
-			if( !( regName.getText().isEmpty() || regCollege.getText().isEmpty() || regEmail.getText().isEmpty() || regPassword.getText().isEmpty() )  && staffService.registerStaff(regName.getText(), regCollege.getText(), regEmail.getText(), regPassword.getText(), "admin") ) {
+			if( !( regName.getText().isEmpty() || regCollege.getText().isEmpty() || regEmail.getText().isEmpty() || regPassword.getText().isEmpty() )  && staffService.registerStaff(regName.getText(), regCollege.getText(), regEmail.getText(), regPassword.getText(), "admin", regRfid.getText()) ) {
 				stage.runStageFXML("FXML/LoginPage.fxml");
 				((Node)(event.getSource())).getScene().getWindow().hide();				// note the sequence of these two lines i.e first open a new stage and close previous one
 			}
@@ -75,6 +80,9 @@ public class RegisterAndLoginController {
 	
 	public void loginRedirect(ActionEvent event) throws Exception {
 		if(staffService.login(loginEmail.getText(), loginPassword.getText())) {
+			stage.runStageFXML("FXML/HomePage.fxml");
+			((Node)(event.getSource())).getScene().getWindow().hide();
+		}else if (staffService.getStaffByRfid(loginRfid.getText()) != null) {
 			stage.runStageFXML("FXML/HomePage.fxml");
 			((Node)(event.getSource())).getScene().getWindow().hide();
 		}else {

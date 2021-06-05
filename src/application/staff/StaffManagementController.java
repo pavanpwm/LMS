@@ -15,6 +15,7 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -43,6 +44,8 @@ public class StaffManagementController implements Initializable{				// a simply 
 	public TextField newStaffEmail;
 	@FXML
 	public TextField newStaffPassword;
+	@FXML
+	public TextField newStaffRfid;
 	
 	@FXML
 	public TableView<Staff> staffTable;
@@ -54,6 +57,8 @@ public class StaffManagementController implements Initializable{				// a simply 
 	public TableColumn<Staff, String> staffColumnEmail;
 	@FXML
 	public TableColumn<Staff, String> staffColumnPassword;
+	@FXML
+	public TableColumn<Staff, String> staffColumnRfid;
 	
 	
 	
@@ -64,6 +69,7 @@ public class StaffManagementController implements Initializable{				// a simply 
     	staffColumnName.setCellValueFactory(new PropertyValueFactory<Staff, String>("name"));
     	staffColumnEmail.setCellValueFactory(new PropertyValueFactory<Staff, String>("email"));
     	staffColumnPassword.setCellValueFactory(new PropertyValueFactory<Staff, String>("password"));
+    	staffColumnRfid.setCellValueFactory(new PropertyValueFactory<Staff, String>("rfid"));
     	refreshTab();
 		
 		staffTabPage.setOnMouseEntered(event->{
@@ -80,22 +86,22 @@ public class StaffManagementController implements Initializable{				// a simply 
 		newStaffName.setText("");
 		newStaffEmail.setText("");
 		newStaffPassword.setText("");
+		newStaffRfid.setText("");
 		populateStaffTable();
 	}
+
 	
 	//method to add new staff
 	public void registerNewStaff(ActionEvent event) {
 		if (newStaffName.getText().isEmpty() || newStaffEmail.getText().isEmpty() || newStaffPassword.getText().isEmpty() ) {
-			staffTabPageStatus.setText("Please dont leave empty fields!");
+			staffTabPageStatus.setText("Please dont leave * marked fields empty!");
 			staffTabPageStatus.setTextFill(Paint.valueOf("RED"));
 		}else {
 			StaffManagementService regService = new StaffManagementService();
-			if( regService.registerStaff(newStaffName.getText(), StaffManagementService.loggedInStaff.getCollege(), newStaffEmail.getText(), newStaffPassword.getText(), "staff") ) {
+			if( regService.registerStaff(newStaffName.getText(), StaffManagementService.loggedInStaff.getCollege(), newStaffEmail.getText(), newStaffPassword.getText(), "staff", newStaffRfid.getText()) ) {
 				staffTabPageStatus.setText("New Satff added Successfully");
-				staffTabPageStatus.setTextFill(Paint.valueOf("GREEN"));
 			}else {
 				staffTabPageStatus.setText("Please use another Email!");
-				staffTabPageStatus.setTextFill(Paint.valueOf("RED"));
 			}
 			populateStaffTable();
 		}

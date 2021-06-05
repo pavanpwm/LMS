@@ -34,13 +34,14 @@ public class StaffManagementService {
 	
 	//add method /////////////////////////////////////////////////////////////////////////
 	
-	public boolean registerStaff(String name, String college, String email, String password, String role) {
+	public boolean registerStaff(String name, String college, String email, String password, String role,String rfid) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
         	Staff s = getStaffByEmail(email);
-            if(s == null) {
+        	Staff s2 = getStaffByRfid(rfid);
+            if(s == null && ( rfid.isEmpty() || s2 == null) ) {
                 transaction = session.beginTransaction();
-                Staff staff = new Staff(name, college, email, password, role);
+                Staff staff = new Staff(name, college, email, password, role, rfid);
                 session.save(staff);
                 transaction.commit();
                 return true;
@@ -56,6 +57,8 @@ public class StaffManagementService {
 	
 	
 	//Retrieve methods ////////////////////////////////////////////////////////////////////////////////////
+
+	
 
 	public boolean isRegisterd() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -92,6 +95,19 @@ public class StaffManagementService {
 	        query.setParameter("email",email);   
 	        List<Staff> staffList = query.getResultList();
 	        if(!staffList.isEmpty()) {
+	        	return staffList.get(0);
+	        }
+			return null;
+		}
+	}
+	
+	public Staff getStaffByRfid(String rfid) {
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			TypedQuery query = session.getNamedQuery("findStaffByRfid");
+	        query.setParameter("rfid",rfid);   
+	        List<Staff> staffList = query.getResultList();
+	        if(!staffList.isEmpty()) {
+	        	loggedInStaff = staffList.get(0);
 	        	return staffList.get(0);
 	        }
 			return null;

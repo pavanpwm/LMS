@@ -15,7 +15,15 @@
    <children>
       <Pane prefHeight="400.0" prefWidth="389.0" style="-fx-background-color: #fee4d4;">
          <children>
-            <TextField fx:id="loginEmail" layoutX="59.0" layoutY="140.0" prefHeight="34.0" prefWidth="282.0" promptText="E-mail">
+            <PasswordField fx:id="loginRfid" layoutX="59.0" layoutY="87.0" prefHeight="34.0" prefWidth="282.0" promptText="Scan your RF-ID here">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </PasswordField>
+            <TextField fx:id="loginEmail" layoutX="59.0" layoutY="159.0" prefHeight="34.0" prefWidth="282.0" promptText="E-mail">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor>
@@ -39,7 +47,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Text layoutX="59.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER">
+            <Text layoutX="59.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER">
                <font>
                   <Font name="Cooper Black" size="23.0" />
                </font>
@@ -57,6 +65,11 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
+            <Text layoutX="183.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OR" textAlignment="CENTER">
+               <font>
+                  <Font name="Open Sans" size="16.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
       <Pane layoutX="389.0" prefHeight="400.0" prefWidth="511.0" style="-fx-background-color: #fb966f;">
@@ -76,7 +89,7 @@
                   <Font name="Cooper Black" size="17.0" />
                </font>
             </Text>
-            <Text layoutX="54.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please connect with the internet to get a your password on your registerd email OR contact admin." wrappingWidth="438.75390625">
+            <Text layoutX="54.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please connect with the internet to get a your password on your registered email OR contact admin." wrappingWidth="438.75390625">
                <font>
                   <Font name="Open Sans" size="13.0" />
                </font>

@@ -30,6 +30,10 @@ import javax.persistence.*;
 	        @NamedQuery(  
 	    	        name = "findStaffByEmail", 
 	    	        query = "from Staff s where s.email = :email"  			
+	        		),
+	        @NamedQuery(  
+	    	        name = "findStaffByRfid", 
+	    	        query = "from Staff s where s.rfid = :rfid"  			
 	        		)
 	        
 	        
@@ -61,17 +65,21 @@ public class Staff implements Serializable {
 	
 	@Column(name = "role")
 	private String role;
+	
+	@Column(name = "rfid")
+	private String rfid;
 
 	public Staff() {
 	}
 	
 
-	public Staff(String name, String college, String email, String password, String role) {
+	public Staff(String name, String college, String email, String password, String role, String rfid) {
 		this.name = name;
 		this.college = college;
 		this.email = email;
 		this.password = password;
 		this.role = role;
+		this.rfid = rfid;
 	}
 
 
@@ -122,6 +130,18 @@ public class Staff implements Serializable {
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+
+	public String getRfid() {
+		return rfid;
+	}
+
+
+	public void setRfid(String rfid) {
+		this.rfid = rfid;
+	}
+	
+	
 
 
 }
