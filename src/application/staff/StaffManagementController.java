@@ -122,7 +122,7 @@ public class StaffManagementController implements Initializable{				// a simply 
 
 	// method to populate table data
     public void populateStaffTable() {
-    	staffTable.getItems().setAll(new StaffManagementService().getObservableStaffList(new StaffManagementService().getFulltStaffList()));
+    	staffTable.getItems().setAll(new StaffManagementService().getObservableStaffList(new StaffManagementService().getStaffListWithoutAdmin()));
     }
 	
 	

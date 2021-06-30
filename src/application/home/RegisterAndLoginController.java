@@ -1,13 +1,10 @@
 package application.home;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+
+
 import java.net.URL;
-import java.util.*;  
-import javax.persistence.*;  
-import org.hibernate.*;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import application.MainClass;
 import application.mail.MailService;
@@ -20,9 +17,10 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.stage.Stage;  
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
+ 
 
 
 
@@ -32,15 +30,18 @@ import javafx.stage.Stage;
  *
  Note that controller classes uses hibernate package classes like session and transaction and not of javax since javax jpa was only used to avoid using hbm.xml mapping config file
  *
+ 
+ RFID text field was used instead of an invisible key event listener bcoz, user may press keys before scanning their card
  *
  */
 
 
-public class RegisterAndLoginController {
+public class RegisterAndLoginController implements Initializable {
 	
 	
 	
 	
+
 
 	@FXML
 	private TextField regName;
@@ -52,8 +53,12 @@ public class RegisterAndLoginController {
 	private PasswordField regPassword;
 	@FXML
 	private PasswordField regRfid;
+	
 	@FXML
-	private PasswordField loginRfid;
+	private Pane loginPane;
+	static String loginRfid = "";
+//	@FXML
+//	private PasswordField loginRfid;
 	@FXML
 	private TextField loginEmail;
 	@FXML
@@ -82,9 +87,6 @@ public class RegisterAndLoginController {
 		if(staffService.login(loginEmail.getText(), loginPassword.getText())) {
 			stage.runStageFXML("FXML/HomePage.fxml");
 			((Node)(event.getSource())).getScene().getWindow().hide();
-		}else if (staffService.getStaffByRfid(loginRfid.getText()) != null) {
-			stage.runStageFXML("FXML/HomePage.fxml");
-			((Node)(event.getSource())).getScene().getWindow().hide();
 		}else {
 			loginStatus.setText("Incorrect login credentials!");
 		}
@@ -107,6 +109,30 @@ public class RegisterAndLoginController {
 				}).start();
 			}
 		}
+	}
+
+
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		loginPane.setOnKeyPressed( keyEvent ->{
+			if (keyEvent.getCode()!= KeyCode.ENTER) {
+				loginRfid += keyEvent.getText();
+			}else {
+				staffService.getFulltStaffList().forEach( staff->{
+					if (loginRfid.contains(staff.getRfid())) {
+						staffService.loggedInStaff = staff;
+						try {
+							stage.runStageFXML("FXML/HomePage.fxml");
+						} catch (Exception e) {}
+						((Node)(keyEvent.getSource())).getScene().getWindow().hide();
+					}else {
+						loginStatus.setText("Incorrect login credentials!");
+					}
+				});
+			}
+		});
 	}
 	
 	

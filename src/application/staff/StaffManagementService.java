@@ -118,7 +118,7 @@ public class StaffManagementService {
 	public List<Staff> getFulltStaffList() {
 		List<Staff> staffList;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			staffList = session.createQuery("from Staff s where s.role='staff'", Staff.class).list();
+			staffList = session.createQuery("from Staff s", Staff.class).list();
         }
 		return staffList;
 	}
@@ -149,6 +149,14 @@ public class StaffManagementService {
             session.delete(deleteStaff);
             transaction.commit();
         }
+	}
+
+	public List<Staff> getStaffListWithoutAdmin() {
+		List<Staff> staffList;
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			staffList = session.createQuery("from Staff s where s.role='staff'", Staff.class).list();
+        }
+		return staffList;
 	}
 	 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
