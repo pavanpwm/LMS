@@ -253,7 +253,7 @@
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Text>
-                                    <Text layoutX="14.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GECR LMS was developed as a final year project in the year of 2021 by a team of three namely, Jabbar, Mallappa and Pavan from Electronics and Communication department of Government Engineering College Raichur." textAlignment="JUSTIFY" wrappingWidth="581.10546875">
+                                    <Text layoutX="14.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GECR LMS was developed as a final year project in the year of 2021 by a team of three namely, Jabbar, Mallappa and Pavan under the guidance of H.O.D Saraswati mam of Electronics and Communication department of Government Engineering College Raichur." textAlignment="JUSTIFY" wrappingWidth="597.10546875">
                                        <font>
                                           <Font size="14.0" />
                                        </font>

@@ -1,18 +1,7 @@
 package application.student;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
-/**
- * 
- * @author pavan BTD
- *
- Note that entity or model class use javax annotations and not hibernate(we can use for eg. hibernate validations) unlike the controller class
- i.e we are use hibernate with JPA annotations to avoid using hibernate mapping xml -hbm.xml
- *
- *
- */
 
 @NamedQueries(  
 	    {  
@@ -24,48 +13,31 @@ import javax.persistence.*;
 	    	        name = "searchStudents", 
 	    	        query = "from Student s where upper(concat(s.name, '', s.branch, '', s.sem, '', s.usn, '', s.email, '', s.mobile, '')) like upper(concat('%', :search, '%'))  order by s.id desc"  			
 	        		)
-	    } 
-	    
+	    } 	    
 )  
-
 
 @Entity
 @Table(name = "student")
 public class Student implements Serializable {
 	
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
 	@Column(name = "name")
 	private String name;
-	
 	@Column(name = "branch")
 	private String branch;
-
 	@Column(name = "sem")
 	private String sem;
-
 	@Column(name = "usn", unique = true)
 	private String usn;
-	
 	@Column(name = "email")
 	private String email;
-	
 	@Column(name = "mobile")
 	private String mobile;
 	
-	
-
 	public Student() {
-		
 	}
-	
-	
-
-
-
 	public Student(int id, String name, String branch, String sem, String usn, String email, String mobile) {
 		super();
 		this.id = id;
@@ -76,10 +48,6 @@ public class Student implements Serializable {
 		this.email = email;
 		this.mobile = mobile;
 	}
-
-
-
-
 	public Student(String name, String branch, String sem, String usn, String email, String mobile) {
 		super();
 		this.name = name;
@@ -89,9 +57,8 @@ public class Student implements Serializable {
 		this.email = email;
 		this.mobile = mobile;
 	}
-
-
-
+	//getters and setters
+	
 	public int getId() {
 		return id;
 	}

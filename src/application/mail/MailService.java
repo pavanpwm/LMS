@@ -1,7 +1,6 @@
 package application.mail;
 
 import java.util.Properties;
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -11,12 +10,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class MailService {
-
 	
 	public static boolean sendMail(String to, String sub, String msg) {
 		 String from = "gecr.library.mail.service@gmail.com";
 		 String password = "";
-		 
 		 Properties props = new Properties();    
          props.put("mail.smtp.host", "smtp.gmail.com");    
          props.put("mail.smtp.socketFactory.port", "465");    
@@ -30,8 +27,7 @@ public class MailService {
           protected PasswordAuthentication getPasswordAuthentication() {    
           return new PasswordAuthentication(from,password);  
           }    
-         });    
-         //compose message    
+         });      
          try {    
           MimeMessage message = new MimeMessage(session);    
           message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));    
@@ -43,5 +39,5 @@ public class MailService {
          } catch (MessagingException e) {
         	 return false;
          }
-	}  
+	}
 }

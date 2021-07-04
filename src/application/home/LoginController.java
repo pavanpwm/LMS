@@ -3,9 +3,8 @@ package application.home;
 
 
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
-
 import application.MainClass;
 import application.mail.MailService;
 import application.staff.Staff;
@@ -18,7 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
  
 
@@ -29,30 +27,13 @@ import javafx.scene.layout.Pane;
  * @author pavan BTD
  *
  Note that controller classes uses hibernate package classes like session and transaction and not of javax since javax jpa was only used to avoid using hbm.xml mapping config file
- *
  
- RFID text field was used instead of an invisible key event listener bcoz, user may press keys before scanning their card
  *
  */
 
 
-public class RegisterAndLoginController implements Initializable {
-	
-	
-	
-	
+public class LoginController implements Initializable {
 
-
-	@FXML
-	private TextField regName;
-	@FXML
-	private TextField regCollege;
-	@FXML
-	private TextField regEmail;
-	@FXML
-	private PasswordField regPassword;
-	@FXML
-	private PasswordField regRfid;
 	
 	@FXML
 	private Pane loginPane;
@@ -74,12 +55,7 @@ public class RegisterAndLoginController implements Initializable {
 
 	
 	
-	public void adminRegister(ActionEvent event) throws Exception {						// to handle exception you can wither use throws or try and  catch block
-			if( !( regName.getText().isEmpty() || regCollege.getText().isEmpty() || regEmail.getText().isEmpty() || regPassword.getText().isEmpty() )  && staffService.registerStaff(regName.getText(), regCollege.getText(), regEmail.getText(), regPassword.getText(), "admin", regRfid.getText()) ) {
-				stage.runStageFXML("FXML/LoginPage.fxml");
-				((Node)(event.getSource())).getScene().getWindow().hide();				// note the sequence of these two lines i.e first open a new stage and close previous one
-			}
-	}
+	
 	
 	
 	
@@ -120,17 +96,20 @@ public class RegisterAndLoginController implements Initializable {
 			if (keyEvent.getCode()!= KeyCode.ENTER) {
 				loginRfid += keyEvent.getText();
 			}else {
-				staffService.getFulltStaffList().forEach( staff->{
-					if (loginRfid.contains(staff.getRfid())) {
-						staffService.loggedInStaff = staff;
-						try {
-							stage.runStageFXML("FXML/HomePage.fxml");
-						} catch (Exception e) {}
-						((Node)(keyEvent.getSource())).getScene().getWindow().hide();
-					}else {
-						loginStatus.setText("Incorrect login credentials!");
-					}
-				});
+				List<Staff> staffList = staffService.getFulltStaffList();
+				if (staffList !=null) {
+					staffList.forEach( staff->{
+						if (loginRfid.contains(staff.getRfid())) {
+							staffService.loggedInStaff = staff;
+							try {
+								stage.runStageFXML("FXML/HomePage.fxml");
+							} catch (Exception e) {}
+							((Node)(keyEvent.getSource())).getScene().getWindow().hide();
+						}else {
+							loginStatus.setText("Incorrect login credentials!");
+						}
+					});
+				}
 			}
 		});
 	}

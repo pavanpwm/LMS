@@ -3,13 +3,11 @@ package application.transaction;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-
 import application.book.Book;
 import application.book.BookManagementService;
 import application.home.DashboardManagementController;
 import application.home.SettingsController;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

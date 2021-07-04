@@ -1,13 +1,8 @@
 package application.book;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ResourceBundle;
-
 import application.home.SettingsController;
-import application.student.Student;
-import application.student.StudentManagementService;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

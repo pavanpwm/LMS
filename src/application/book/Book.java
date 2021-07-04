@@ -1,7 +1,6 @@
 package application.book;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
 
 

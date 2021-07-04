@@ -1,7 +1,6 @@
 package application.staff;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
 
 /**

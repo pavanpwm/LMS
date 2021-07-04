@@ -1,5 +1,6 @@
 package application;
-	
+
+import com.sun.javafx.application.LauncherImpl;
 import application.staff.StaffManagementService;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -7,28 +8,23 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
 import javafx.fxml.FXMLLoader;
 
-
 public class MainClass extends Application {
-	
-	
-	
-	
+	static boolean isRegistered;
+	@Override
+	public void init() throws Exception {
+		StaffManagementService regService = new StaffManagementService();
+		isRegistered = regService.isRegisterd();
+	}
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		StaffManagementService regService = new StaffManagementService();
-		boolean isRegistered = regService.isRegisterd();
-		
 		if(!isRegistered) {
 			runStageFXML("FXML/RegisterPage.fxml");
 		}else if(isRegistered) {
 			runStageFXML("FXML/LoginPage.fxml");
-		}	
+		}
 	}
-	
-	
 	public void runStageFXML(String fxml) throws Exception{
 		Stage newStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource(fxml));
@@ -45,41 +41,11 @@ public class MainClass extends Application {
 			System.exit(0);
 		});
 	}
-	
-	
 	public static void main(String[] args) {
-		launch(args);
+		LauncherImpl.launchApplication(MainClass.class, PreLoaderClass.class, args);
 	}
-	
-	
 	public void stop(Stage primaryStage) throws Exception {
 		Platform.exit();
 	}
 
-	
-	
-	
-	
-	
-//	//for transparent stage
-//	newStage.initStyle(StageStyle.TRANSPARENT);
-//	root.setStyle(  "-fx-background-color: rgba(255, 255, 255, 0.1);"   );
-//	scene.setFill(Color.TRANSPARENT);
-	
-
-	
-	
-	
-	
-	/**
-	 * use below way to control the controller of one fxml from controller of another fxml
-
-				   HomeController home = (HomeController)loader.getController();		// note that loader should that the fxml that you want to control
-				   home.initialiseHomePage();
-	 * 
-	 */
-	
-	
-	
-	
 }

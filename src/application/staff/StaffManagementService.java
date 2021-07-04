@@ -1,14 +1,10 @@
 package application.staff;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 import javax.persistence.TypedQuery;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import application.dbutil.HibernateUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -123,6 +119,14 @@ public class StaffManagementService {
 		return staffList;
 	}
 	
+	public List<Staff> getStaffListWithoutAdmin() {
+		List<Staff> staffList;
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			staffList = session.createQuery("from Staff s where s.role='staff'", Staff.class).list();
+        }
+		return staffList;
+	}
+	
 	public List<Staff> getObservableStaffList(List<Staff> staffListForTable) {
 			ObservableList<Staff> data = FXCollections.observableArrayList();
 	        Iterator<Staff> staffListIterator = staffListForTable.iterator();
@@ -151,13 +155,7 @@ public class StaffManagementService {
         }
 	}
 
-	public List<Staff> getStaffListWithoutAdmin() {
-		List<Staff> staffList;
-		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			staffList = session.createQuery("from Staff s where s.role='staff'", Staff.class).list();
-        }
-		return staffList;
-	}
+	
 	 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 

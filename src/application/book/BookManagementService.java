@@ -9,7 +9,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import application.dbutil.HibernateUtil;
-import application.transaction.BookTransaction;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
