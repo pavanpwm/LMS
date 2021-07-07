@@ -20,6 +20,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 
@@ -70,7 +71,7 @@ public class BookTransactionManagementController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+
 		bookTransactionColumnId.setCellValueFactory(new PropertyValueFactory<BookTransaction, Integer>("id"));
     	bookTransactionColumnName.setCellValueFactory(new PropertyValueFactory<BookTransaction, String>("name"));
     	bookTransactionColumnUsn.setCellValueFactory(new PropertyValueFactory<BookTransaction, String>("usn"));
@@ -85,6 +86,7 @@ public class BookTransactionManagementController implements Initializable {
     	bookTransactionColumnReturnDate.setCellValueFactory(new PropertyValueFactory<BookTransaction, String>("returnDate"));	
     	bookTransactionColumnRemarks.setCellValueFactory(new PropertyValueFactory<BookTransaction, String>("remarks"));	
 
+    	bookTransactionTabPageStatus.setTextFill(Paint.valueOf("RED"));
     	
     	//initial populate table
     	refreshTab();

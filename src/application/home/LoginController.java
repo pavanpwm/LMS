@@ -18,6 +18,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Paint;
  
 
 
@@ -38,8 +39,6 @@ public class LoginController implements Initializable {
 	@FXML
 	private Pane loginPane;
 	static String loginRfid = "";
-//	@FXML
-//	private PasswordField loginRfid;
 	@FXML
 	private TextField loginEmail;
 	@FXML
@@ -91,7 +90,8 @@ public class LoginController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		loginStatus.setTextFill(Paint.valueOf("RED"));
+		
 		loginPane.setOnKeyPressed( keyEvent ->{
 			if (keyEvent.getCode()!= KeyCode.ENTER) {
 				loginRfid += keyEvent.getText();

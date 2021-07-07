@@ -80,10 +80,8 @@ public class DashboardManagementController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		
 		mostFamousBooksTableRank.setCellValueFactory(new PropertyValueFactory<Book, Integer>("rank"));
 		mostFamousBooksTableName.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
-    	
     	
 		todaysTransactionsTableId.setCellValueFactory(new PropertyValueFactory<BookTransaction, Integer>("id"));
 		todaysTransactionsTableName.setCellValueFactory(new PropertyValueFactory<BookTransaction, String>("name"));

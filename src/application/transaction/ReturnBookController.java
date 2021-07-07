@@ -21,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Paint;
 import javafx.stage.WindowEvent;
 
 public class ReturnBookController implements Initializable{
@@ -76,6 +77,7 @@ public class ReturnBookController implements Initializable{
 		returnBookColumnBookTitle.setCellValueFactory(new PropertyValueFactory<BookTransaction, String>("title"));
 		returnBookTable.getItems().clear();
 		returnBookTabPageStatus.setText("");
+		returnBookTabPageStatus.setTextFill(Paint.valueOf("RED"));
 		returnBookId.setText("");
 		returnBookName.setText("");
 		returnBookBranch.setText("");
@@ -83,6 +85,7 @@ public class ReturnBookController implements Initializable{
 		returnBookBookTitle.setText("");
 		returnBookShelf.setText("");
 		returnBookIssueDate.setText("");
+		
 		
     	//search event
 		returnBookUsn.setOnKeyReleased(new EventHandler<KeyEvent>() {

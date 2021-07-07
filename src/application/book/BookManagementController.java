@@ -69,7 +69,7 @@ public class BookManagementController implements Initializable {
 		bookColumnTitle.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
 		bookColumnShelf.setCellValueFactory(new PropertyValueFactory<Book, String>("shelf"));
 		bookColumnStatus.setCellValueFactory(new PropertyValueFactory<Book, String>("status")); 	
-		
+		bookTabPageStatus.setTextFill(Paint.valueOf("RED"));
 		
 		//initial populate table
 		refreshTab();
@@ -161,20 +161,16 @@ public class BookManagementController implements Initializable {
 			}
 			if (!bookRequestCheckBox.isSelected() && ( newBookCode.getText().trim().isEmpty() || newBookShelf.getText().trim().isEmpty() ) ||  newBookTitle.getText().trim().isEmpty() ){
 				bookTabPageStatus.setText("Please dont leave empty fields!");
-				bookTabPageStatus.setTextFill(Paint.valueOf("RED"));
 			}else {
 				BookManagementService addBookService = new BookManagementService();
 				if( addBookService.addOrEditBook(id, newBookCode.getText(), newBookTitle.getText(), newBookShelf.getText(), status) ) {
 					if (id.isEmpty()) {
 						bookTabPageStatus.setText("New book added successfully");
-						bookTabPageStatus.setTextFill(Paint.valueOf("GREEN"));
 					}else {
 						bookTabPageStatus.setText("Book updated successfully");
-						bookTabPageStatus.setTextFill(Paint.valueOf("GREEN"));
 					}
 				}else {
 					bookTabPageStatus.setText("Book already exists");
-					bookTabPageStatus.setTextFill(Paint.valueOf("RED"));
 				}
 				//after saving, show the saved data on table
 				BookManagementService.searchText ="";

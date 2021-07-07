@@ -79,15 +79,15 @@ public class StudentManagementController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		studentColumnId.setCellValueFactory(new PropertyValueFactory<Student, Integer>("id"));
     	studentColumnName.setCellValueFactory(new PropertyValueFactory<Student, String>("name"));
     	studentColumnUsn.setCellValueFactory(new PropertyValueFactory<Student, String>("usn"));
     	studentColumnBranch.setCellValueFactory(new PropertyValueFactory<Student, String>("branch"));
     	studentColumnSem.setCellValueFactory(new PropertyValueFactory<Student, String>("sem"));
     	studentColumnEmail.setCellValueFactory(new PropertyValueFactory<Student, String>("email"));
-    	studentColumnPhone.setCellValueFactory(new PropertyValueFactory<Student, String>("mobile")); 	
-
+    	studentColumnPhone.setCellValueFactory(new PropertyValueFactory<Student, String>("mobile")); 
+    	
+    	studentTabPageStatus.setTextFill(Paint.valueOf("RED"));
 
     	//initial populate table
     	refreshTab();
@@ -227,35 +227,7 @@ public class StudentManagementController implements Initializable {
 	}	
 		
 		
-	
-//	//method to delete all students visible in the table
-//	public void confirmDeleteAllStudents(ActionEvent event) throws IOException {
-//		Stage primaryStage = (Stage) studentTabPage.getScene().getWindow();
-//		Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"");
-//		alert.initModality(Modality.APPLICATION_MODAL);
-//		alert.initOwner(primaryStage);
-//		alert.getDialogPane().setHeaderText("Delete All!!");
-//		alert.getDialogPane().setContentText("Are you sure you want to delete all the entries currently displayed on the table??");
-//		Optional<ButtonType> result = alert.showAndWait();
-//		if (result.get() == ButtonType.OK) {
-//			deleteAllStudents();
-//		}
-//	}
-	
-	
-//	public void deleteAllStudents() {
-//		StudentManagementService manager = new StudentManagementService();
-//		ObservableList<Student> studentListOnTable =  studentTable.getItems();
-//		studentListOnTable.forEach(student->{
-//    		Student deleteStudent = new Student(student.getId(), student.getName(), student.getBranch(), student.getSem(), student.getUsn(), student.getEmail(), student.getMobile());
-//    		manager.deleteStudent(deleteStudent);
-//    	});
-//		refreshTab();
-//		studentTabPageStatus.setText("Deleted displayed student entries");
-//	}
-	
-	
-	
+
 	
 	
 	//method to populate table data
@@ -281,7 +253,6 @@ public class StudentManagementController implements Initializable {
 	public void importStudentDetails(ActionEvent event) {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Select EXCEL Files");
-		//fileChooser.setInitialDirectory(new File("X:\\testdir\\two"));
 		fileChooser.getExtensionFilters().addAll(
 		        new ExtensionFilter("Excel Files", "*.xlsx"));
 		List<File> selectedFiles = fileChooser.showOpenMultipleDialog((Stage) studentTable.getScene().getWindow());

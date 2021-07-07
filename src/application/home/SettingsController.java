@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 public class SettingsController implements Initializable {
@@ -64,6 +65,7 @@ public class SettingsController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		setingsPageStatus.setTextFill(Paint.valueOf("RED"));
 		if (StaffManagementService.loggedInStaff.getRole().equalsIgnoreCase("staff")) {
 			staffManagementTab.setDisable(true);
 			backupPane.setDisable(true);

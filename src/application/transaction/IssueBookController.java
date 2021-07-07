@@ -21,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Paint;
 import javafx.stage.WindowEvent;
 
 public class IssueBookController implements Initializable{
@@ -64,11 +65,12 @@ public class IssueBookController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		issueBookColumnBookCode.setCellValueFactory(new PropertyValueFactory<Book, String>("code"));
 		issueBookColumnBookTitle.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
 		issueBookTable.getItems().clear();
     	issueBookTabPageStatus.setText("");
+    	
+    	issueBookTabPageStatus.setTextFill(Paint.valueOf("RED"));
 		
     	//search event
     	issueBookUsn.setOnKeyReleased(new EventHandler<KeyEvent>() {
